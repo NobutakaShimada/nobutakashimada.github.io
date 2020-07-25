@@ -127,8 +127,6 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 2. 改造したコードをノートブックに添付しなさい。
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
-{% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 
 
