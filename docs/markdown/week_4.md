@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan4
-permalink: /docs/ritsumeikan/week4/
+ref: phyexp3_4
+permalink: /docs/week4/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan4"
+  title: ７・８コマ目
+  nav: "phyexp3_4"
 ---
 
 # Machine Learning

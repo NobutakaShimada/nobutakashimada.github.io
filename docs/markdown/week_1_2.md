@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan1-2
-permalink: /docs/ritsumeikan/week1-2/
+ref: phyexp3_1-2
+permalink: /docs/week1-2/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan1-2"
+  title: ２コマ目
+  nav: "phyexp3_1-2"
 ---
 
 # [Class 2] Gazebo Simulator & Switching Sim - Real robot

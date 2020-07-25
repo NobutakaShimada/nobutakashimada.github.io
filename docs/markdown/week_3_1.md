@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan3-1
-permalink: /docs/ritsumeikan/week3-1/
+ref: phyexp3_3-1
+permalink: /docs/week3-1/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan3-1"
+  title: ５コマ目
+  nav: "phyexp3_3-1"
 ---
 
 # [Class 5] Manipulation

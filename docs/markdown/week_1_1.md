@@ -4,7 +4,7 @@ lang: en
 ref: phyexp3_1-1
 permalink: /docs/week1-1/
 sidebar:
-  title: 第１日目
+  title: １コマ目
   nav: "phyexp3_1-1"
 ---
 

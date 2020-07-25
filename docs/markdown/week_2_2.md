@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan2-2
-permalink: /docs/ritsumeikan/week2-2/
+ref: phyexp3_2-1
+permalink: /docs/week2-2/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan2-2"
+  title: ４コマ目
+  nav: "phyexp3_2-2"
 ---
 
 # [Class 4] Navigation

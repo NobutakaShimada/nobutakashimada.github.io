@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan2-1
-permalink: /docs/ritsumeikan/week2-1/
+ref: phyexp3_2-1
+permalink: /docs/week2-1/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan2-1"
+  title: ３コマ目
+  nav: "phyexp3_2-1"
 ---
 
 # [Class 3] LRF(LDS)センサ

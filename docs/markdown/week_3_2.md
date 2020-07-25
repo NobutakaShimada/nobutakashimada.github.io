@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan3-2
-permalink: /docs/ritsumeikan/week3-2/
+ref: phyexp3_3-2
+permalink: /docs/week3-2/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan3-2"
+  title: ６コマ目
+  nav: "phyexp3_3-2"
 ---
 
 # [Class 6] TurtleBot3 Manipulatorを使用してSLAMを実行する
