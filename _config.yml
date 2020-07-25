@@ -245,4 +245,4 @@ defaults:
       share: true
       related: true
 
-theme: jekyll-theme-slate
+theme: jekyll-theme-time-machine
