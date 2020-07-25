@@ -54,6 +54,8 @@ sidebar:
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 
+## 実機とGazeboシミュレーションの差異
+
 |      | TurtleBot3  | シミュレーション(Gazebo) |
 |:----:|:----------------|:------------------------|
 | 環境 | 多様な実際の環境 |Gazebo環境<br />- 提供<br />&nbsp;&nbsp;- Empty World<br />&nbsp;&nbsp;- Turtlebot3 World<br />&nbsp;&nbsp;- Turtlebot3 House<br />- ユーザーが制作した環境<br />![](/assets/images/ritsumeikan/008.png)|

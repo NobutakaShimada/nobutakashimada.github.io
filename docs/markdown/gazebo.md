@@ -75,6 +75,7 @@ $ roslaunch exp3 gazebo manipulator_house.launch
 $ roslaunch exp3 gazebo manipulator_stage_4.launch
 ```
 
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/machine_learning/stage_4.jpg)
 
 
 ### Gazebo上のTurtleBot3の動作指令
