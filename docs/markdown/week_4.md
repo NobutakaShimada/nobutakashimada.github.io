@@ -32,14 +32,13 @@ Machine Learningフレームワークの一つであるchainerを利用して物
     ```
 
 3. 依存パッケージをインストール
+    - pipがない場合はインストール
+        ```
+        $ sudo apt install python-pip
+        ```
     - chainer, chainercv
         ```
         $ pip install chainer chainercv
-        ```
-        > pipがない場合はインストール
-        
-        ```
-        $ sudo apt install python-pip
         ```
     - ros_numpy
         ```
@@ -51,21 +50,15 @@ Machine Learningフレームワークの一つであるchainerを利用して物
         ```
         $ cd ~/catkin_ws/src
         ```
-    - object_detector_3d ソースコードをダウンロード
+    - github lfs をインストール
+        ```
+        $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+        $ sudo apt install git-lfs
+        ```
+    - object_detector_3d ソースコードをダウンロード, modelをダウンロード(github lfsを利用)
         ```
         $ git clone https://github.com/NobutakaShimada/object_detector_3d.git
         ```
-    - modelをダウンロード(github lfsを利用)
-        - github lfs をインストール
-            ```
-            $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-            $ sudo apt install git-lfs
-            ```
-        - ダウンロード
-            ```
-            $ cd ~/catkin_ws/src/object_detector_3d
-            $ git lfs pull
-            ```
     - コンパイル
         ```
         $ cd ~/catkin_ws

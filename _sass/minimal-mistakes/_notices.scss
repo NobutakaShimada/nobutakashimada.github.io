@@ -1,0 +1,100 @@
+/* ==========================================================================
+   NOTICE TEXT BLOCKS
+   ========================================================================== */
+
+/**
+ *  Default Kramdown usage (no indents!):
+ *  <div class="notice" markdown="1">
+ *  #### Headline for the Notice
+ *  Text for the notice
+ *  </div>
+ */
+
+@mixin notice($notice-color) {
+  margin-bottom: 1em !important;
+  margin-right: 0.5em !important;
+  padding: 1em;
+  font-family: $global-font-family;
+  font-size: 0.9em !important;
+  text-indent: initial; /* override*/
+  background-color: mix(#fff, $notice-color, 90%);
+  border-radius: $border-radius;
+  box-shadow: 0 1px 1px rgba($notice-color, 0.25);
+
+  ul {
+    &:last-child {
+      margin-bottom: 0; /* override*/
+      margin-left: 0;
+    }
+  }
+
+  img {
+    float: none;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@mixin notice-margin {
+  p, ol, table {
+    margin-left: 0 !important;
+  }
+}
+
+/* Default notice */
+
+.notice {
+  @include notice($gray);
+  @include notice-margin;
+}
+
+/* Primary notice */
+
+.notice--primary {
+  @include notice($primary-color);
+  @include notice-margin;
+}
+
+/* Info notice */
+
+.notice--info {
+  @include notice($info-color);
+  @include notice-margin;
+}
+
+/* Warning notice */
+
+.notice--warning {
+  @include notice($warning-color);
+  @include notice-margin;
+}
+
+/* Success notice */
+
+.notice--success {
+  @include notice($success-color);
+  @include notice-margin;
+}
+
+/* Danger notice */
+
+.notice--danger {
+  @include notice($danger-color);
+  @include notice-margin;
+}
+
+p>code, a>code, li>code, td>code {
+  padding: 1px 5px;
+  font-family: $monospace;
+  font-size: 0.8em;
+  white-space: nowrap;
+  border: 1px solid #000;
+  border-radius: $border-radius;
+  background-color: $code-background-color;
+  box-shadow: $box-shadow;
+
+  &:before, &:after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+  }
+}

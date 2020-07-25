@@ -1,0 +1,157 @@
+{% assign navigation = site.data.navigation[include.nav] %}
+<nav class="nav__list">
+
+  {% if page.sidebar.title %}<ul class="nav__items"><li><label><a href={{ page.permalink | absolute_url }} style="font-size:18px; color: #7a9c1b; text-decoration: none; font-weight: 600; line-height: 40px;">{{ page.sidebar.title }}</a></label></li>{% endif %}
+  {% assign parent_index = 0 %}
+  {% for nav in navigation %}
+    {% if page.lang=='kr' %}
+      {% if nav.titlekr %}
+        {% assign navtitle=nav.titlekr %}
+        {% if nav.urlkr %}
+          {% assign navurl=nav.urlkr %}
+        {% else %}
+          {% assign navurl=nav.url %}
+        {% endif %}
+      {% else %}
+        {% assign navtitle=null %}
+        {% assign navurl=null %}
+      {% endif %}
+    {% else %}
+      {% if nav.title %}
+        {% assign navtitle=nav.title %}
+      {% else %}
+        {% assign navtitle=null %}
+      {% endif %}
+      {% if nav.url %}
+        {% assign navurl=nav.url %}
+      {% else %}
+        {% assign navurl=null %}
+      {% endif %}
+    {% endif %}
+
+    {% if navtitle==null %}
+    {% else %}
+      {% assign parent_index = parent_index | plus: 1 %}
+
+      {% assign toplevel_id = navurl | split: "/" %}
+      {% assign toppage_id = toplevel_id | reverse %}
+      {% if nav.children != null %}
+      <li class="has-children">
+        <input type="checkbox" name="toplevel" id="{{ toppage_id[1] }}_{{ toplevel_id.last | remove: "#" | prepend: "toc_" }}">
+        <label for="{{ toppage_id[1] }}_{{ toplevel_id.last | remove: "#" | prepend: "toc_" }}"><button class="tocLevel1" onclick="movetopage('{{ site.url }}{{ site.baseurl }}/docs/{{page.lang}}{{ navurl }}');">{{ parent_index }}. {{ navtitle }}</button></label>
+      {% else %}
+      <li>
+        <a id="{{ toppage_id[1] }}_{{ toplevel_id.last | remove: "#" | prepend: "toc_" }}" href="{{ site.url }}{{ site.baseurl }}/docs/{{page.lang}}{{ navurl }}">{{ parent_index }}. {{ navtitle }}</a>
+      </li>
+      {% endif %}
+
+      {% if nav.children != null %}
+        <ul>
+        {% assign child_index = 0 %}
+        {% for child in nav.children %}
+
+          {% if page.lang=='kr' %}
+            {% if child.titlekr %}
+              {% assign childtitle=child.titlekr %}
+              {% if child.urlkr %}
+                {% assign childurl=child.urlkr %}
+              {% else %}
+                {% assign childurl=child.url %}
+              {% endif %}
+            {% else %}
+              {% assign childtitle=null %}
+              {% assign childurl=null %}
+            {% endif %}
+          {% elsif page.lang=='en' %}
+            {% if child.title %}
+              {% assign childtitle=child.title %}
+              {% if child.url %}
+                {% assign childurl=child.url %}
+              {% else %}
+                {% assign childurl=null %}
+              {% endif %}
+            {% else %}
+              {% assign childtitle=null %}
+              {% assign childurl=null %}
+            {% endif %}
+          {% else %}
+          {% endif %}
+
+          {% assign midlevel_id = childurl | split: "/" %}
+          {% assign midtoppage_id = midlevel_id | reverse %}
+          {% if child.children != null %}
+            {% if childtitle != null %}
+              {% assign child_index = child_index | plus: 1 %}
+              <li class="has-grandchildren">
+                <input type="checkbox" name="sublevel" id="{{ midtoppage_id[1] }}_{{ midlevel_id.last | remove: "#" | prepend: "toc_" }}">
+                <label for="{{ midtoppage_id[1] }}_{{ midlevel_id.last | remove: "#" | prepend: "toc_" }}"><button class="tocLevel2" onclick="movetopage('{{ site.url }}{{ site.baseurl }}/docs/{{page.lang}}{{ childurl }}');">{{ parent_index }}. {{ child_index }}. {{ childtitle }}</button></label>
+            {% endif %}
+          {% else %}
+            {% if childtitle != null %}
+              {% assign child_index = child_index | plus: 1 %}
+              <li><a class="tocLevel2" id="{{ midtoppage_id[1] }}_{{ midlevel_id.last | remove: "#" | prepend: "toc_" }}" href="{{ site.url }}{{ site.baseurl }}/docs/{{page.lang}}{{ childurl }}">{{ parent_index }}. {{ child_index }}. {{ childtitle }}</a></li>
+            {% endif %}
+          {% endif %}
+
+          {% if child.children != null %}
+            <ul>
+            {% for grandchild in child.children %}
+              {% if grandchild.url == page.url %}
+                {% assign active = "checked" %}
+              {% else %}
+                {% assign active = "" %}
+              {% endif %}
+
+              {% if page.lang=='kr' %}
+                {% if grandchild.titlekr %}
+                  {% assign grandchildtitle=grandchild.titlekr %}
+                  {% if grandchild.urlkr %}
+                    {% assign grandchildurl=grandchild.urlkr %}
+                  {% else %}
+                    {% assign grandchildurl=grandchild.url %}
+                  {% endif %}
+                {% else %}
+                  {% assign grandchildtitle=null %}
+                  {% assign grandchildurl=null %}
+                {% endif %}
+              {% else if page.lang=='en' %}
+                {% if grandchild.title %}
+                  {% assign grandchildtitle=grandchild.title %}
+                  {% if grandchild.url %}
+                    {% assign grandchildurl=grandchild.url %}
+                  {% else %}
+                    {% assign grandchildurl=null %}
+                  {% endif %}                  
+                {% else %}
+                  {% assign grandchildtitle=null %}
+                  {% assign grandchildurl=null %}
+                {% endif %}
+              {% else %}
+                {% assign grandchildtitle=grandchild.title %}
+                {% assign grandchildurl=grandchild.url %}
+              {% endif %}
+
+              {% if grandchildtitle != null %}
+              {% assign lowlevel_id = grandchildurl | split: "/" %}
+              {% assign lowpage_id = lowlevel_id | reverse %}
+                <li>
+                  <a class="tocLevel3" id="{{ lowpage_id[1] }}_{{ lowlevel_id.last | remove: "#" | prepend: "toc_" }}" href="{{ site.url }}{{ site.baseurl }}/docs/{{page.lang}}{{ grandchildurl }}">- {{ grandchildtitle }}</a>
+                </li>
+              {% endif %}
+              
+            {% endfor %}
+            </ul>
+          {% endif %}
+          {% if child.children != null %}
+          </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% if nav.children != null %}
+      </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  </ul>
+</nav>

@@ -1,0 +1,64 @@
+.popup_window {
+  max-width: 100%;
+  padding: 1em 2em;
+  background-color: white;
+  border-radius: $img-border-radius;
+  font-size: 1em;
+  
+  h1 {
+    font-size: $type-size-4;
+    color: #134268;
+  }
+  
+  h2 {
+    font-size: $type-size-5;
+    color: #1a5b8f;
+  }
+  
+  h3 {
+    font-size: $type-size-5;
+    color: #2174b6;
+  }
+  
+  ul, ol, div, table {
+    margin: 0 0 0 1em;
+  }
+}
+
+.popup {
+  color: #aa00ff;
+}
+
+.popup2 {
+  color: #aa00ff;
+}
+
+.mfp-bg {
+  opacity: 0.3;
+}
+
+.mfp-ajax-holder .mfp-content {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 80%;
+  vertical-align: top;
+}
+
+.mfp-close {
+  color: black;
+}
+
+.search-result {
+  display: none;
+  position: fixed;
+  margin: 5%;
+  overflow-y: auto;
+  left: 10px;
+  right: 10px;
+  height: 80vh;
+  padding: 1em 3em;
+  background-color: #FFF;
+  border: 3px solid #CCC;
+  font-size: 1em;
+  z-index: 99;
+} 
