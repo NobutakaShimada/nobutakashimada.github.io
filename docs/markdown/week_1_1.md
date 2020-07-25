@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: ritsumeikan1-1
-permalink: /docs/ritsumeikan/week1-1/
+ref: phyexp3_1-1
+permalink: /docs/week1-1/
 sidebar:
-  title: RITSUMEIKAN
-  nav: "ritsumeikan1-1"
+  title: 第１日目
+  nav: "phyexp3_1-1"
 ---
 
 
