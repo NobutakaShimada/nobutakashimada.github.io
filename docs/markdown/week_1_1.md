@@ -318,7 +318,7 @@ turtlebot3_robot.launchファイルを実行すると、turtlebot3_core.launch�
 $ rqt_graph
 ```
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/009.png)
+![](/assets/images/ritsumeikan/009.png)
 
 ### RvizにTurtlebot3をLoad 
 [Remote PC] robot_state_publisherとRVizを実行してください。  
@@ -341,7 +341,7 @@ turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれ�
 {% endcapture %}
 <div class="notice--success">{{ capture04 | markdownify }}</div>
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/010.png)
+![](/assets/images/ritsumeikan/010.png)
 
 新しいターミナルウィンドウを一つ開いて、下記のコマンドを入力してください。 
 ```bash

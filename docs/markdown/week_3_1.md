@@ -100,7 +100,7 @@ Gazebo上にOpenMANIPULATORが結合されたTurtleBot3 Waffle Piモデルがロ
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/tb3_omx_gazebo.png)
+![](/assets/images/ritsumeikan/tb3_omx_gazebo.png)
 
 ## move_groupノードを実行
 
@@ -116,7 +116,7 @@ move_group.launchを実行すると、move_groupノードが実行されます�
 {% endcapture %}
 <div class="notice--success">{{ capture03 | markdownify }}</div>
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/tb3_omx_move_controller.png)
+![](/assets/images/ritsumeikan/tb3_omx_move_controller.png)
 
 ## Rvizを実行
 [Remote PC] MoveIt環境が設定された`moveit.rviz`ファイルを読み込み、RvizでMoveItを使用可能にします。
@@ -132,7 +132,7 @@ MoveItが有効になったRvizが実行されます。Motion Planning pluginが
 {% endcapture %}
 <div class="notice--success">{{ capture04 | markdownify }}</div>
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/tb3_omx_rviz.png)
+![](/assets/images/ritsumeikan/tb3_omx_rviz.png)
 
 **注意**  
 MoveIt!のInteractive Markerを活用してOpenMANIPULATORーXをコントロールする場合、MoveIt! ソフトウェアの気候学解析に限界があり、円滑なコントロールが出来ない可能性があります。
@@ -152,13 +152,13 @@ $ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 {% endcapture %}
 <div class="notice--success">{{ capture05 | markdownify }}</div>
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/tb3_omx_gui_controller.png)
+![](/assets/images/ritsumeikan/tb3_omx_gui_controller.png)
 
 # 実際のOpenMANIPULATORを制御する
 
 MoveItのmove_groupというノードは、以下のように様々な情報をもとに計算された軌跡を、ROSがサポートするaction形式でロボットコントローラーに提供する統合装置(intergrator)としての役割を果たします。ユーザーは、move_groupノードにmoveitが提供する3種のインターフェース(C++、Python、RViz GUI)を通じてアクセスすることができます。ユーザーインターフェースを介してコマンドを受け取ると、move_groupノードはmoveit config情報(ジョイント角度の制限、機構学解析、衝突感知)およびロボットの状態情報に基づいて軌跡を生成し、ロボットコントローラーに提供します。
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/move_group.png)
+![](/assets/images/ritsumeikan/move_group.png)
 
 ## roscoreを実行する
 [Remote PC] roscoreをユーザーのPCで動作させます。

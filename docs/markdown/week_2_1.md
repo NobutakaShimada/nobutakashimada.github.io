@@ -125,7 +125,7 @@ LDS-01センサは、OpenCRまたはArduinoボードで動作させることが�
 LDS-01センサのTX、RXケーブルはembeddedボードのUARTピンと互換性があり、embeddedボードに電源とTX、RXピンを接続して使用することができます。  
 実際のケーブルの色は下の図と異なる場合があるため、必ず製品のデータシートを参照してください。
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/lds_lines.png)
+![](/assets/images/ritsumeikan/lds_lines.png)
 
 #### OpenCRからLDSセンサを読み込む
 OpenCRボードからセンサの値を読み取るには、Arduinoの例題をOpenCRボードにアップロードする必要があります。
@@ -137,7 +137,7 @@ OpenCRボードからセンサの値を読み取るには、Arduinoの例題をO
 
 例題のアップロードが完了すると、OpenCRと接続されたLCDに、以下の画像のようにセンサの値が視覚的に確認できるようになります。
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/011.png)
+![](/assets/images/ritsumeikan/011.png)
 
 # SLAM
 

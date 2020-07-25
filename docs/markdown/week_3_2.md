@@ -137,7 +137,7 @@ $ roslaunch turtlebot3_manipulation_navigation navigation.launch map_file:=~/${m
 {% endcapture %}
 <div class="notice--success">{{ capture07 | markdownify }}</div>
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/tb3_omx_nav.png)
+![](/assets/images/ritsumeikan/tb3_omx_nav.png)
 
 ## OpenMANIPULATORを制御する
 Navigationを実行する際にOpenMANIPULATORを制御するノードを生成すると、Navigationと共にロボットアームの制御が可能になります。

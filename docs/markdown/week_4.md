@@ -184,7 +184,7 @@ Machine Learningフレームワークの一つであるchainerを利用して物
 ### 目標
 ROS環境でYOLOを使用して物体の認識を試みる。YOLO（You Only Look Once）はリアルタイム物体探索システムで、他の物体認識エンジンに比べて高速性を誇る。YOLOはDNN（deep neural network）を学習させて実行するニューラルネットワークフレームワーク（neural network framework）であるdarknetを利用して駆動。
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/week4_02.png)
+![](/assets/images/ritsumeikan/week4_02.png)
 <!--
 ![](https://github.com/NobutakaShimada/ritsumeikan_github/blob/master/assets/images/ritsumeikan/week4_02.png)
 -->
@@ -249,7 +249,7 @@ ROS環境でYOLOを使用して物体の認識を試みる。YOLO（You Only Loo
 
 ### 実行画面
 
-![](/ritsumeikan_github/assets/images/ritsumeikan/week4_03.png)
+![](/assets/images/ritsumeikan/week4_03.png)
 <!--
 ![](https://github.com/NobutakaShimada/ritsumeikan_github/blob/master/assets/images/ritsumeikan/week4_03.png)
 -->

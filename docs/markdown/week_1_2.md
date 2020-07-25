@@ -217,19 +217,19 @@ $ roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
                 $ ifconfig
                 ```
 
-                ![](/ritsumeikan_github/assets/images/ritsumeikan/001.png)
+                ![](/assets/images/ritsumeikan/001.png)
 
         - [User PC] (10.17.1.21の場合)
             1. ネットワークマネージャを開いて以下のように設定
 
-                ![](/ritsumeikan_github/assets/images/ritsumeikan/002.png)
+                ![](/assets/images/ritsumeikan/002.png)
 
             2. ルータに接続した後、IPアドレスを確認
                 ```
                 $ ifconfig
                 ```
 
-                ![](/ritsumeikan_github/assets/images/ritsumeikan/003.png)
+                ![](/assets/images/ritsumeikan/003.png)
 
 ### ネットワーク設定(第2案)
 1. ルータ設定
@@ -265,19 +265,19 @@ $ roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
                 $ ifconfig
                 ```
 
-                ![](/ritsumeikan_github/assets/images/ritsumeikan/004.png)
+                ![](/assets/images/ritsumeikan/004.png)
 
         - [User PC] (10.17.1.101の場合)
             1. ネットワークマネージャを開いて以下のように設定し、保存
 
-                ![](/ritsumeikan_github/assets/images/ritsumeikan/005.png)
+                ![](/assets/images/ritsumeikan/005.png)
 
             2. ルータに接続し、IPアドレスを確認
                 ```
                 $ ifconfig
                 ```
 
-                ![](/ritsumeikan_github/assets/images/ritsumeikan/006.png)
+                ![](/assets/images/ritsumeikan/006.png)
 
 ### ROS ネットワーク設定
 ここでのROSネットワーク設定は前に使用した方法とは違う新しい方法です。この方法を適用するとこれからはRemotePCでTurtlebotのSBCに接続して`roslaunch turtlebot3_bringup turtlebot3_robot.launch`を実行する必要がありません。設定が終わった後からはRemote PCに直接以下のコマンドをTurtleBot3のIP住所と一緒に入力することでネットワークに接続されたTurtleBot3を駆動することが出来ます。
@@ -296,7 +296,7 @@ roslaunch turtlebot3_bringup turtlebot3_robot_machine.launch address:=${IP_ADDRE
         $ ifconfig
         ```
 
-        ![](/ritsumeikan_github/assets/images/ritsumeikan/007.png)
+        ![](/assets/images/ritsumeikan/007.png)
 
     - `~/.bashrc` ファイルを修正：以下のコードがある場合は修正し、ない場合は追加
         ```
@@ -496,7 +496,7 @@ roslaunch turtlebot3_bringup turtlebot3_robot_machine.launch address:=${IP_ADDRE
 
 |      | TurtleBot3  | シミュレーション(Gazebo) |
 |:----:|:----------------|:------------------------|
-| 環境 | 多様な実際の環境 |Gazebo環境<br />- 提供<br />&nbsp;&nbsp;- Empty World<br />&nbsp;&nbsp;- Turtlebot3 World<br />&nbsp;&nbsp;- Turtlebot3 House<br />- ユーザーが制作した環境<br />![](/ritsumeikan_github/assets/images/ritsumeikan/008.png)|
+| 環境 | 多様な実際の環境 |Gazebo環境<br />- 提供<br />&nbsp;&nbsp;- Empty World<br />&nbsp;&nbsp;- Turtlebot3 World<br />&nbsp;&nbsp;- Turtlebot3 House<br />- ユーザーが制作した環境<br />![](/assets/images/ritsumeikan/008.png)|
 |モデル|Burger<br/>Waffle<br/>Waffle Pi|Burger<br/>Waffle<br/>Waffle Pi|
 |センサーおよびトピック名|LIDAR : /scan<br />IMU : /imu<br />CAMERA(Waffle Pi) : /raspicam_node/image/compressed|LIDAR : /scan<br />IMU : /imu<br />CAMERA(Waffle, Waffle Pi) : <br />&nbsp;&nbsp;/camera/rgb/image_raw,<br />&nbsp;&nbsp;/camera/rgb/image_raw/compressed
 |使用機器|Turtlebot3(Burger, Waffle, Waffle Pi)<br />Remote PC(User PC)|Remote PC(User PC)|
