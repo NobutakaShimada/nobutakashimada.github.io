@@ -53,8 +53,8 @@ Turtlebot3には１台に１つBluetoothで接続されたリモコンが付属�
 
 **<注意>**　リモコンの停止ボタンはリモコンから指示した制御信号だけをキャンセルします。後述のROSノード(teleop)やlaunchファイルから指示した制御信号はキャンセルされないので注意してください。
 
+###[課題]
 {% capture staff01 %}
-**[課題]**
 
 リモコン操作でロボットの動きをよく観察しなさい。リモコンからの入力はどういう信号に変換されて送られていると思うか（位置、速度、加速度など）。各キーにバインドされた制御信号を予想してレポートに記載しなさい。
 {% endcapture %}
@@ -109,12 +109,10 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 |rospack|明示されたROSパッケージの情報を確認します。|
 
 
-### ROSノードをPythonで実装してみる
+## ROSノードをPythonで実装してみる
 
-
+### [課題]
 {% capture staff01 %}
-**[課題]**
-
 1. 授業中の解説を参考に、キーボードで入力したテキスト文字を送受信するROSノードをpython(rospy)を使って実装しなさい。python2ではキーボード入力の取得にraw_input()が使える。
 2. そのコード（サーバ：listener2.pyとクライアント：talker2.py）をノートブックに添付しなさい。
 3. テキストの送受信に使用されるトピック名と、送受信メッセージの定義（rosmsgコマンドを使用せよ）をノートブックに添付せよ。
@@ -125,11 +123,12 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
+### [課題]
 {% capture staff01 %}
-**[課題]**
-
 1. talker2.pyとlistener2.pyのpythonコードを参考に、双方向でテキストを送受信できるように改造した.pyを実装せよ。
 2. 改造したコードをノートブックに添付しなさい。
+{% endcapture %}
+<div class="notice--danger">{{ staff01 | markdownify }}</div>
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
