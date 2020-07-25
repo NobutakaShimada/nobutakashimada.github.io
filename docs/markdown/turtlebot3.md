@@ -29,7 +29,7 @@ sidebar:
 
     他のユーザーがTurtleBot3を使用している場合、launchファイル実行時に以下のメッセージが出て終了
         ```bash
-        RLException: remote roslaunch failed to launch: tb3
+        $ RLException: remote roslaunch failed to launch: tb3
         The traceback for the exception was written to the log file
         ```
 
