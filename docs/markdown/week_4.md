@@ -77,9 +77,9 @@ Machine Learningフレームワークの一つであるchainerを利用して物
 
 
 ### 実行画面
-![](/ritsumeikan_github/assets/images/ritsumeikan/week4_01.png)
+![](/assets/images/ritsumeikan/week4_01.png)
 <!--
-![](https://github.com/NobutakaShimada/ritsumeikan_github/blob/master/assets/images/ritsumeikan/week4_01.png)
+![](https://   /assets/images/ritsumeikan/week4_01.png)
 -->
 
 > 画面左：rostopic echo /object_detection_3dによる出力が表示されている。
