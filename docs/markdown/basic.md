@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: phyexp3_basic
+ref: phyexp3\_basic
 permalink: /docs/basic/
 sidebar:
   title: 基本編(Turtlebot3の操作とROSの基礎)
-  nav: "phyexp3_basic"
+  nav: "phyexp3\_basic"
 ---
 
 # [Class 1] 基本編(Turtlebot3の操作とROSの基礎)
@@ -41,6 +41,32 @@ sidebar:
 
 バッテリーの有効時間は待機状態で90分程度、走行させたりアームを稼働させると
 稼働時間が短くなります。長く使わない時はスイッチを切るようにします。
+
+
+
+## 主なROS コマンド
+
+ROSコマンドはターミナル（端末）上のシェルからコマンド入力によって操作することが基本です。Gazebo、RVizのようにアプリとしてウィンドウが起動するものもあります。
+
+参考資料 : [https://w3.cs.jmu.edu/spragunr/CS354_S19/handouts/ROSCheatsheet.pdf](https://w3.cs.jmu.edu/spragunr/CS354_S19/handouts/ROSCheatsheet.pdf)
+
+|コマンド|説明|
+|:---|:---|
+|roscore|単一コマンドとして使用され、ROS MasterとROSの実行に必要な各種サーバーを実行します。|
+|rosrun|明示されたnodeを実行します。|
+|roslaunch|ファイルに明示された複数のnodeをオプションと共に実行します。|
+|rosclean|ROSのlogファイルを確認または削除します。|
+|roscd|明示されたROSパッケージが保存されているディレクトリに移動します。|
+|rostopic|ROSのtopic情報を確認します。|
+|rosservice|ROSのservice情報を確認します。|
+|rosnode|ROSのnode情報を確認します。|
+|rosparam|ROSのパラメータ (parameter) 情報を確認します。|
+|rosbag|ROS内部のメッセージを記録または再生します。|
+|rosmsg|ROSのmessageデータ構造を示します。|
+|rossrv|ROSのserviceデータ構造を示します|
+|catkin\_create\_pkg|自動的にROSパッケージと関連ファイルを生成します。|
+|catkin\_make|Catkinビルドシステムでパッケージをビルドします。|
+|rospack|明示されたROSパッケージの情報を確認します。|
 
 
 
