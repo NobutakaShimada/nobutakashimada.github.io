@@ -4,7 +4,7 @@ lang: en
 ref: phyexp3_2-1
 permalink: /docs/slam/
 sidebar:
-  title: ３コマ目
+  title: 環境地図の自動マッピング(SLAM)
   nav: "phyexp3_2-1"
 ---
 
