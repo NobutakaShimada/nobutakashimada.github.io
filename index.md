@@ -10,12 +10,20 @@ header:
   cta_url:
   caption:
   intro:
-    - excerpt: '十世界情報実験３ロボットテーマ'
+    - excerpt: '実世界情報実験３ロボットテーマ'
 ---
 
-**実世界情報実験３ロボットテーマレジュメ**
-ハイパーリンクのチェック。
-これでリンクが見えるかな。
+# 実世界情報実験３ロボットテーマレジュメ
+
+## 2020年度春学期実験用レジュメ
+- [基本編(Turtlebot3の操作とROSの基礎)](https://nobutakashimada.github.io/docs/basic)
+- [ROSノード間のメッセージ通信](https://nobutakashimada.github.io/docs/ros_messaging)
+- [Gazeboシミュレータでのロボット操作](https://nobutakashimada.github.io/docs/gazebo)
+- [ロボット実機との接続と移動操作](https://nobutakashimada.github.io/turtlebot3)
+- [マッピングとナビゲーション(SLAM)](https://nobutakashimada.github.io/docs/slam)
+- [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
+
+## ROBOTIS製教材レジュメ
 
 - [Week 1-1](https://nobutakashimada.github.io/docs/week1-1)
 - [Week 1-2](https://nobutakashimada.github.io/docs/week1-2)
