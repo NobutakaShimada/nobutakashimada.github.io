@@ -99,7 +99,7 @@ $ roslaunch exp3 rviz.launch
 ```
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_gazebo_rviz.png)
 
-## [課題]
+## 課題
 {% capture staff01 %}
 1. Gazeboシミュレータ(gazebo.launch)とRViz(rviz.launch)、teleop(teleop.launch)を起動してTurtlebotを適当に移動させ、その時のGazeboの画面（視点を自由に移動せよ）、RVizの画面をキャプチャしてノートブックに添付せよ。
 2. rosnode listコマンド、を実行してどのようなノードが起動しているか確認し、結果をノートブックに添付せよ。
