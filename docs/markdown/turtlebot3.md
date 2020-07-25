@@ -27,8 +27,9 @@ sidebar:
     
     ![イメージリンク](http://emanual.robotis.com/assets/images/platform/turtlebot3/bringup/run_rviz.jpg)
 
-    他のユーザーがTurtleBot3を使用している場合、launchファイル実行時に以下のメッセージが出て終了
-        ```bash
+    他のユーザーがTurtleBot3を使用している場合、launchファイル実行時に以下のメッセージが出て終了する。
+
+```bash
         RLException: remote roslaunch failed to launch: tb3
         The traceback for the exception was written to the log file
         ```
