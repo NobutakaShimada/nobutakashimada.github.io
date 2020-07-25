@@ -24,7 +24,6 @@ sidebar:
     ```bash
     $ roslaunch exp3 machine.launch id:=09
     ```  
-    
     ![イメージリンク](http://emanual.robotis.com/assets/images/platform/turtlebot3/bringup/run_rviz.jpg)  
     他のユーザーがTurtleBot3を使用している場合、launchファイル実行時に以下のメッセージが出て終了する。
     ```bash
