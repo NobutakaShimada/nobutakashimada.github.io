@@ -19,12 +19,10 @@ SLAMなどセンサー情報の処理をテストするときは、センサー�
 
 ## Gazeboを使ったTurtlebot３シミュレーション 
 
-### Gazebo用ROSパッケージ 
-
 実験用のUbuntu LinuxにはすでにGazeboの起動環境をインストールしてあります。
 Remote PCでGazeboを初めて実行する場合は普段より起動に時間がかかることがあります（形状モデルや力学モデルをインターネットからダウンロードするため）
 
-#### Empty World
+### Empty World
 [Remote PC] 次のコマンドを使用して、Gazeboのデフォルト設定のWorldで、仮想TurtleBot３をテストする際に使用できます。 
 
 ```bash
@@ -46,7 +44,7 @@ $ roslaunch exp3 empty_world.launch
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_empty_world.png)
 
-#### TurtleBot３ World 
+### TurtleBot３ World 
 [Remote PC] 他にもいくつかのオブジェクトを配置したworldを読み込むことができるので、試してみましょう。
 TurtleBot３ Worldは、TurtleBot３のシンボルの形状を構成するシンプルなオブジェクトで構成されているマップです。
  
@@ -57,7 +55,7 @@ $ roslaunch exp3 gazebo_manipulator_world.launch
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_world_waffle.png)
 
-#### TurtleBot３ House 
+### TurtleBot３ House 
 [Remote PC] TurtleBot３ House は住居の図面で制作されたマップです。
 
 ```bash
@@ -68,7 +66,7 @@ $ roslaunch exp3 gazebo manipulator_house.launch
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_house1.png)
 
-#### TurtleBot3 Stage4
+### TurtleBot3 Stage4
 [Remote PC] TurtleBot３ Stage4 は壁で囲まれた迷路状のコースです。
 
 ```bash
@@ -78,9 +76,9 @@ $ roslaunch exp3 gazebo manipulator_stage_4.launch
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/machine_learning/stage_4.jpg)
 
 
-### Gazebo上のTurtleBot3の動作指令
+## Gazebo上のTurtleBot3の動作指令
 
-#### キー入力による遠隔操作 
+### キー入力による遠隔操作 
 [Remote PC] TurtleBot3 をキーボードでコントロールするために、新しいターミナルで下記のコマンドを使って遠隔操作を実行します。 
 ```bash
 $ roslaunch exp3 teleop.launch
@@ -88,21 +86,21 @@ $ roslaunch exp3 teleop.launch
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
 
-#### 障害物回避による自律走行 
+### 障害物回避による自律走行 
 [Remote PC] センサーの情報を読み取って障害物にぶつからないようにTurtleBot3を自律走行させるノードを実行できます。
 ```bash
 $ roslaunch exp3 automove.launch
 ```
 
-### Rvizによる情報可視化
+## Rvizによる情報可視化
 [Remote PC] Rvizはシミュレーションが実行されている間に発行されたトピックを視覚化します。下記のコマンドを入力し、新しいターミナルウィンドウでRVizをスタートすることができます。 
 ```bash
 $ roslaunch exp3 rviz.launch
 ```
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_gazebo_rviz.png)
 
+## [課題]
 {% capture staff01 %}
-**[課題]**
 1. Gazeboシミュレータ(gazebo.launch)とRViz(rviz.launch)、teleop(teleop.launch)を起動してTurtlebotを適当に移動させ、その時のGazeboの画面（視点を自由に移動せよ）、RVizの画面をキャプチャしてノートブックに添付せよ。
 2. rosnode listコマンド、を実行してどのようなノードが起動しているか確認し、結果をノートブックに添付せよ。
 3. rostopic listコマンドを実行して、どのようなトピックが作られているか確認し、結果をノートブックに添付せよ。
