@@ -18,7 +18,7 @@ header:
 ## 2020年度春学期実験用レジュメ
 - [基本編(Turtlebot3の操作とROSの基礎)](https://nobutakashimada.github.io/docs/basic)
 - [Gazeboシミュレータでのロボット操作](https://nobutakashimada.github.io/docs/gazebo)
-- [ロボット実機との接続と移動操作](https://nobutakashimada.github.io/turtlebot3)
+- [ロボット実機との接続と移動操作](https://nobutakashimada.github.io/docs/turtlebot3)
 - [環境地図の自動マッピング(SLAM)](https://nobutakashimada.github.io/docs/slam)
 - [生成した環境地図に基づくナビゲーション](https://nobutakashimada.github.io/docs/navigation)
 - [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
