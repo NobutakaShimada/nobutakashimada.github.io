@@ -71,9 +71,9 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 
 - **メッセージ** ROSによるロボットへの指令は全てメッセージと呼ばれるデータをネットワーク通信でノードに送信することで実現される。ROSにおけるメッセージ送受信のアーキテクチャはいくつかあるが、この実験では**Publisher/Subscriberモデル**という、一方向通信について学ぶ。このほかにリクエストに対するレスポンスを受け取ることができる**クライアント／サービスモデル**がある。
 
-ROSチュートリアル：ROSノードについて][http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes]
-ROSチュートリアル：ROSトピックについて[http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics]
-ROSチュートリアル：ROSサービスについて[http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams]
+[ROSチュートリアル：ROSノードについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes)
+[ROSチュートリアル：ROSトピックについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)
+[ROSチュートリアル：ROSサービスについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)
 
 - **rosrun** ROSのノードプログラムを起動するためのコマンド。以下の形式で呼び出す
 ```bash
