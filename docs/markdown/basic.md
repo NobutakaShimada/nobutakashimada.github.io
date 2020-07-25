@@ -53,9 +53,13 @@ Turtlebot3には１台に１つBluetoothで接続されたリモコンが付属�
 
 **<注意>**　リモコンの停止ボタンはリモコンから指示した制御信号だけをキャンセルします。後述のROSノード(teleop)やlaunchファイルから指示した制御信号はキャンセルされないので注意してください。
 
+{% capture staff01 %}
 **[課題]**
 
 リモコン操作でロボットの動きをよく観察しなさい。リモコンからの入力はどういう信号に変換されて送られていると思うか（位置、速度、加速度など）。各キーにバインドされた制御信号を予想してレポートに記載しなさい。
+{% endcapture %}
+<div class="notice--danger">{{ staff01 | markdownify }}</div>
+
 
 ## ROSの基礎
 
@@ -67,9 +71,9 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 
 - **メッセージ** ROSによるロボットへの指令は全てメッセージと呼ばれるデータをネットワーク通信でノードに送信することで実現される。ROSにおけるメッセージ送受信のアーキテクチャはいくつかあるが、この実験では**Publisher/Subscriberモデル**という、一方向通信について学ぶ。このほかにリクエストに対するレスポンスを受け取ることができる**クライアント／サービスモデル**がある。
 
-![ROSチュートリアル：ROSノードについて](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes)
-![ROSチュートリアル：ROSトピックについて](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)
-![ROSチュートリアル：ROSサービスについて](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)
+ROSチュートリアル：ROSノードについて][http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes]
+ROSチュートリアル：ROSトピックについて[http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics]
+ROSチュートリアル：ROSサービスについて[http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams]
 
 - **rosrun** ROSのノードプログラムを起動するためのコマンド。以下の形式で呼び出す
 ```bash
