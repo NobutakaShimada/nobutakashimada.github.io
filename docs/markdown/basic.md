@@ -74,11 +74,10 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル：ROSトピックについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)  
 [ROSチュートリアル：ROSサービスについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)  
 
-- **rosrun** ROSのノードプログラムを起動するためのコマンド。以下の形式で呼び出す
+- **rosrun** ROSのノードプログラムを起動するためのコマンド。以下の形式で呼び出す。１つ目の引数はパッケージと呼ばれる一塊りのアプリケーション。２つ目の引数はそのパッケージの中で起動すべきノードプログラムの名前である。
 ```bash
 $ rosrun beginner_tutorial listener.py
 ```
-１つ目の引数はパッケージと呼ばれる一塊りのアプリケーション。２つ目の引数はそのパッケージの中で起動すべきノードプログラムの名前である。
 
 -- **roslaunch** ROSのノードプログラムをrosrunで個別に起動するとノードがたくさんある時（実際のロボットではノードの数は数十にのぼる）いちいちコマンドを呼び出していられない。これをまとめて実行するためのスクリプトが**launchファイル**であり、launchファイルを起動するためのコマンドが**roslaunch**である。
 
@@ -110,7 +109,7 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 
 ## ROSノードをPythonで実装してみる
 
-### [課題]
+### 課題
 {% capture staff01 %}
 1. 授業中の解説を参考に、キーボードで入力したテキスト文字を送受信するROSノードをpython(rospy)を使って実装しなさい。python2ではキーボード入力の取得にraw_input()が使える。
 2. そのコード（サーバ：listener2.pyとクライアント：talker2.py）をノートブックに添付しなさい。
@@ -122,7 +121,7 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
-### [課題]
+### 課題
 {% capture staff01 %}
 1. talker2.pyとlistener2.pyのpythonコードを参考に、双方向でテキストを送受信できるように改造した.pyを実装せよ。
 2. 改造したコードをノートブックに添付しなさい。
