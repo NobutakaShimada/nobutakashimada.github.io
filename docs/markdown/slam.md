@@ -1,11 +1,11 @@
 ---
 layout: splash
 lang: en
-ref: phyexp3_slam
+ref: phyexp3_2-1
 permalink: /docs/slam/
 sidebar:
-  title: 環境地図の自動マッピング(SLAM)
-  nav: "phyexp3_slam"
+  title: ３コマ目
+  nav: "phyexp3_2-1"
 ---
 
 # [Class 3] LRF(LDS)センサ
