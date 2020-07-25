@@ -6,14 +6,14 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-locale                   : "en"
-title                    : "Ritsumeikan TB3"
+locale                   : "ja"
+title                    : "実世界情報実験３ロボットテーマ"
 title_separator          : "-"
-name                     : "Ritsumeikan"
-description              : "Ritsumeikan TB3"
+name                     : "phyexp3"
+description              : "実世界情報実験３ロボットテーマ"
 url                      : "https://nobutakashimada.github.io"
 baseurl                  : 
-repository               : NobutakaShimada/ritsumeikan_github
+repository               : NobutakaShimada/nobutakashimada.github.io
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
