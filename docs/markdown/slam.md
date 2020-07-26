@@ -257,15 +257,15 @@ Gmappingは、さまざまな環境に最適化されたパフォーマンスを
 
 以下のパラメータは、`turtlebot3_slam/launch/turtlebot3_gmapping.launch`ファイルに定義されており、ファイルを実行する際にroscoreのパラメータサーバーにロードされ、gmappingをベースにしたSLAMに適用されます。
 
-#### maxUrange
+**maxUrange**  
 このパラメータはLDSセンサの最大使用可能範囲を設定します。 
  
-#### map_update_interval 
+**map_update_interval**  
 マップをアップデートする期間(秒単位)この値が低いと、マップがもっと頻繁にアップデートされます。しかし、より大きな計算負荷が必要です。環境に基づいてこのパラメータを設定してください。 
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/tuning_map_update_interval.png)
 
-#### minimumScore 
+**minimumScore**  
 センサのscanデータ一致検査の成功および失敗を決定する最小点数値を設定します。広い空間でロボットの予想位置に生じる誤差を減少させることが可能です。適切に設定された場合、以下のような情報を見ることができます。 
 
 ```
@@ -283,10 +283,10 @@ lp:-0.0306155 5.75314e-06 -3.14151
 op:-0.0306156 5.90277e-06 -3.14151
 ```
 
-#### linearUpdate
+**linearUpdate**  
 ロボットがこの値よりも長い距離を並進運動したとき、scanプロセスを実行します。
  
-#### angularUpdate 
+**angularUpdate**  
 ロボットがこの値よりも大きい角度を回転運動したとき、scanプロセスを実行します。
 これをlinearUpdateより小さく設定することがいいです。 
 
