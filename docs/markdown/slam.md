@@ -77,39 +77,37 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   ```bash
   $ roscore
   ```
-<br>
 2. Gazeboを起動します。  
   ```bash
   $ roslaunch exp3 gazebo_manipulator_world.launch
   ```
-<br>
 3. Gazeboのシミュレーションスタートボタン（ウィンドウ左下の三角）を押す。**忘れないこと！忘れるとシミュレーションやSLAMがスタートしません**
 ![](/assets/images/ritsumeikan/gazebo_playbutton2.png)
-
+  
 4. SLAMを実行する。
   ```bash
   $ roslaunch exp3 slam.launch
   ```
   RVizが自動的に開いて地図が一部だけ生成されている様子が見えます。現在のロボット位置から見て物体の影になっている領域はグレーになって地図が生成できていないことがわかります。
-
+  
 5. teleopでロボットを手動で移動させてみる。
-  ```bash
-  $ roslaunch exp3 teleop.launch
-  Control Your TurtleBot3!
-  ---------------------------
-  Moving around:
-           w
-      a    s    d
-           x
-  
-  w/x : increase/decrease linear velocity
-  a/d : increase/decrease angular velocity
-  space key, s : force stop
-  
-  CTRL-C to quit
-  ```
-  キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+```bash
+$ roslaunch exp3 teleop.launch
+Control Your TurtleBot3!
+---------------------------
+Moving around:
+         w
+    a    s    d
+         x
 
+w/x : increase/decrease linear velocity
+a/d : increase/decrease angular velocity
+space key, s : force stop
+
+CTRL-C to quit
+```
+キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+  
 6. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
 ```bash
 $ roslaunch exp3 save_map.launch map_name:=map1
