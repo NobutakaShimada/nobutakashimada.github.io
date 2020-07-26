@@ -25,10 +25,12 @@ header:
 - [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
 
 ## 参考URL
-- [Turtlebot3 e-Manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
+- [Turtlebot3 e-Manual(English)](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
+- [OpenMANIPULATOR-X e-Manual(English)](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
 - [ROS公式ドキュメント](http://wiki.ros.org/ja/ROS)
 - [ROS公式 トピックの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)
 - [ROS公式 サービスとパラメータの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)
+- [Gazebo公式(English)](http://gazebosim.org/)
 
 ## ROBOTIS製教材レジュメ
 
