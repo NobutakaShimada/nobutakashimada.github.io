@@ -77,19 +77,25 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   ```bash
   $ roscore
   ```
+  <br>
+  <br>
 2. Gazeboを起動します。  
   ```bash
   $ roslaunch exp3 gazebo_manipulator_world.launch
   ```
+  <br>
+  <br>
 3. Gazeboのシミュレーションスタートボタン（ウィンドウ左下の三角）を押す。**忘れないこと！忘れるとシミュレーションやSLAMがスタートしません**
 ![](/assets/images/ritsumeikan/gazebo_playbutton2.png)
-  
+  <br>
+  <br>
 4. SLAMを実行する。  
   ```bash
   $ roslaunch exp3 slam.launch
   ```
   RVizが自動的に開いて地図が一部だけ生成されている様子が見えます。現在のロボット位置から見て物体の影になっている領域はグレーになって地図が生成できていないことがわかります。
-  
+  <br>
+  <br>
 5. teleopでロボットを手動で移動させてみる。  
   ```bash
   $ roslaunch exp3 teleop.launch
