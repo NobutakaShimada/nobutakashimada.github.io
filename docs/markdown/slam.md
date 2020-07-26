@@ -27,7 +27,6 @@ LDSセンサはUSBインターフェースであるUSB2LDSボードを通じ、R
 ```bash
 $ roslaunch exp3 machine.launch id:=09
 ```
-
 {% capture capture00 %}
 **roslaunch hls_lfcd_lds_driver hlds_laser.launch**
 machine.launchファイル内部で呼び出され、Turtlebot3内部で起動されるノード。
