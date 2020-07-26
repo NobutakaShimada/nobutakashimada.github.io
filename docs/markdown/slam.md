@@ -115,7 +115,8 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   <br>
 6. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
   ```bash
-  $ roslaunch exp3 save_map.launch map_name:=map1```
+  $ roslaunch exp3 save_map.launch map_name:=map1
+  ```
   引数map_nameに地図の名前を入れるとその名前で地図ファイル（.pgmと.yamlの２つのファイル）が~/exp3_ws/src/exp3/mapディレクトリに保存されます。
 
 {% capture capture06 %}
