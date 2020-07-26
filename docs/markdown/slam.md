@@ -207,7 +207,6 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
   w/x : increase/decrease linear velocity
   a/d : increase/decrease angular velocity
   space key, s : force stop
-  
   CTRL-C to quit
   ```
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
