@@ -93,7 +93,9 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 5. teleopでロボットを手動で移動させてみる。  
   ```bash
   $ roslaunch exp3 teleop.launch
-  ```  
+  Control Your TurtleBot3!
+  ---------------------------
+```  
 
 ```bash
   Control Your TurtleBot3!
