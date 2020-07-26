@@ -104,21 +104,6 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   space key, s : force stop
   CTRL-C to quit
   ```  
-
-```bash
-  Control Your TurtleBot3!
-  ---------------------------
-  Moving around:
-           w
-      a    s    d
-           x
-  
-  w/x : increase/decrease linear velocity
-  a/d : increase/decrease angular velocity
-  space key, s : force stop
-  
-  CTRL-C to quit
-  ```
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
   
 6. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
