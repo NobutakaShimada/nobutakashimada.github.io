@@ -168,6 +168,27 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
   ```bash
   $ roslaunch exp3 slam.launch
   ```
+  
+4. teleopでロボットを手動で移動させてみる。あ
+  ```bash
+  $ roslaunch exp3 teleop.launch
+  Control Your TurtleBot3!
+  ---------------------------
+  Moving around:
+           w
+      a    s    d
+           x
+  w/x : increase/decrease linear velocity
+  a/d : increase/decrease angular velocity
+  space key, s : force stop
+  CTRL-C to quit
+  ```
+  キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+  
+5. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
+  ```bash
+  $ roslaunch exp3 save_map.launch map_name:=map1
+  ```
 {% capture capture02 %}
 **roslaunch exp3 slam.launch
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
@@ -191,27 +212,6 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
     最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。  
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
-  
-4. teleopでロボットを手動で移動させてみる。あ
-  ```bash
-  $ roslaunch exp3 teleop.launch
-  Control Your TurtleBot3!
-  ---------------------------
-  Moving around:
-           w
-      a    s    d
-           x
-  w/x : increase/decrease linear velocity
-  a/d : increase/decrease angular velocity
-  space key, s : force stop
-  CTRL-C to quit
-  ```
-  キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
-  
-5. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
-  ```bash
-  $ roslaunch exp3 save_map.launch map_name:=map1
-  ```
 
 **参考**  
 SLAMに限らずROSのモジュール連携では関係するコンピュータノードの時刻合わせが大変重要です。時刻が100msecほどズレているだけで正常に動作できないことがあります。時刻が合っていない時にはntpdateコマンドなどでNTPサーバに問い合わせて時刻合わせをすることができます。本実験ではNTPサービスをOS起動時に起動しているので意識する必要はないはずです。
