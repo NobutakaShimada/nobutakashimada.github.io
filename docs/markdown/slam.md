@@ -169,7 +169,7 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
   $ roslaunch exp3 slam.launch
   ```
   
-4. teleopでロボットを手動で移動させてみる。あ
+4. teleopでロボットを手動で移動させてみる。
   ```bash
   $ roslaunch exp3 teleop.launch
   Control Your TurtleBot3!
@@ -213,9 +213,11 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
-**参考**  
-SLAMに限らずROSのモジュール連携では関係するコンピュータノードの時刻合わせが大変重要です。時刻が100msecほどズレているだけで正常に動作できないことがあります。時刻が合っていない時にはntpdateコマンドなどでNTPサーバに問い合わせて時刻合わせをすることができます。本実験ではNTPサービスをOS起動時に起動しているので意識する必要はないはずです。  
-**$ sudo ntpdate ntp.ritsumei.ac.jp**
+  **参考**  
+  SLAMに限らずROSのモジュール連携では関係するコンピュータノードの時刻合わせが大変重要です。時刻が100msecほどズレているだけで正常に動作できないことがあります。時刻が合っていない時にはntpdateコマンドなどでNTPサーバに問い合わせて時刻合わせをすることができます。本実験ではNTPサービスをOS起動時に起動しているので意識する必要はないはずです。  
+  ```bash
+  $ sudo ntpdate ntp.ritsumei.ac.jp
+  ```
 {: .notice}
 
 ### 地図
