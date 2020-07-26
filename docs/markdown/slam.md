@@ -84,7 +84,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 3. Gazeboのシミュレーションスタートボタン（ウィンドウ左下の三角）を押す。**忘れないこと！忘れるとシミュレーションやSLAMがスタートしません**
 ![](/assets/images/ritsumeikan/gazebo_playbutton2.png)
   
-4. SLAMを実行する。  
+4. SLAMを実行するあ。  
   ```bash
   $ roslaunch exp3 slam.launch
   ```
