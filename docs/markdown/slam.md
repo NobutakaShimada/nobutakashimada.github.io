@@ -207,11 +207,11 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
   CTRL-C to quit
   ```
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
-
+  
 5. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
-```bash
-$ roslaunch exp3 save_map.launch map_name:=map1
-
+  ```bash
+  $ roslaunch exp3 save_map.launch map_name:=map1
+  ```
 
 **参考**  
 SLAMに限らずROSのモジュール連携では関係するコンピュータノードの時刻合わせが大変重要です。時刻が100msecほどズレているだけで正常に動作できないことがあります。時刻が合っていない時にはntpdateコマンドなどでNTPサーバに問い合わせて時刻合わせをすることができます。本実験ではNTPサービスをOS起動時に起動しているので意識する必要はないはずです。
