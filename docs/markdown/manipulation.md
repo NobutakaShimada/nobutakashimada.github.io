@@ -8,11 +8,9 @@ sidebar:
   nav: "phyexp3_manipulation"
 ---
 
-# [Class 5] OpenMANIPULATOR-Xを使ったマニピュレーション
+# [Class 6] OpenMANIPULATOR-Xを使ったマニピュレーション
 
 実験で用いるTurtlebot3は、上部に５自由度のOpenMANIPULATOR-Xマニピュレータを搭載しています。このアームもTurtlebot3本体同様にROSによって動作させることができます。
-
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/assemble_points.png)
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/assemble.png)
 
