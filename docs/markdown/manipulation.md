@@ -14,7 +14,7 @@ sidebar:
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/assemble.png)
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/open_manipulator_gazebo_1.png)
+![](/assets/images/ritsumeikan/gazebo_manipulator.png)
 
 
 ## GazeboシミュレータでOpenMANIPULATORを制御する
