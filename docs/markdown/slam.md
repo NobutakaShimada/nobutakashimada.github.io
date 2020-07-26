@@ -84,7 +84,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 3. Gazeboのシミュレーションスタートボタン（ウィンドウ左下の三角）を押す。**忘れないこと！忘れるとシミュレーションやSLAMがスタートしません**
 ![](/assets/images/ritsumeikan/gazebo_playbutton2.png)
   
-4. SLAMを実行するあ。  
+4. SLAMを実行する。  
   ```bash
   $ roslaunch exp3 slam.launch
   ```
@@ -93,8 +93,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 5. teleopでロボットを手動で移動させてみる。  
   ```bash
   $ roslaunch exp3 teleop.launch
-  ```
-　以下出力画面の様子。  
+  ```  
   ```bash
   Control Your TurtleBot3!
   ---------------------------
