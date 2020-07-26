@@ -94,6 +94,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   $ roslaunch exp3 slam.launch
   ```
   RVizが自動的に開いて地図が一部だけ生成されている様子が見えます。現在のロボット位置から見て物体の影になっている領域はグレーになって地図が生成できていないことがわかります。
+![](/assets/images/ritsumeikan/gazebo_slam_initial.png)
   <br>
   <br>
 5. teleopでロボットを手動で移動させてみる。  
@@ -137,14 +138,19 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
 {% endcapture %}
 <div class="notice--success">{{ capture06 | markdownify }}</div>
 
+### 地図
+ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します。保存されたmap.pgmイメージファイルを開くと、以下のようにロボットが移動できる白い領域と、障害物として識別されロボットが移動できない黒い領域、ロボットが探索していない灰色の領域に区分されます。このように生成されたマップは、次に紹介するNavigationで使用することができます。
+
+![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/map.png)
+
 ### 課題
 {% capture staff01 %}
-1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(~/exp3_ws/src/exp3/mapディレクトリにある）をノートブックに添付せよ。添付するにはファイルビューアを開いて、ノートブックのmarkdownセルに画像(pgmファイル）のアイコンをドロップすればよい。
+1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。添付するにはファイルビューアを開いて、ノートブックのmarkdownセルに画像(pgmファイル）のアイコンをドロップすればよい。
 2. Gazebo用に他の環境シーンのデータを用意してある。launchファイルを変えると別の環境シーンがGazeboに読み込まれるので次のうちの１つを読み込んで、SLAMを起動して地図を作成しノートブックに添付せよ。
   -- gazebo_manipulator_house.launch
   -- gazebo_manipulator_stage_4.launch
   -- gazebo_manipulator_willowgarage.launch (この環境シーンは非常に広大なので、地図を生成するのは一部でよい)
-3. ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（~/exp3_ws/src/exp3/launch/gazeboディレクトリに置いてある）。
+3. ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（`~/exp3_ws/src/exp3/launch/gazebo`ディレクトリに置いてある）。
   ```bash
   $ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.0 
   ```
@@ -220,15 +226,12 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
   ```
 {: .notice}
 
-### 地図
-ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します。保存されたmap.pgmイメージファイルを開くと、以下のようにロボットが移動できる白い領域と、障害物として識別されロボットが移動できない黒い領域、ロボットが探索していない灰色の領域に区分されます。このように生成されたマップは、次に紹介するNavigationで使用することができます。
-
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/map.png)
-
-下のイメージは、cartographerを利用して広い領域の地図を作成した例です。以下のようなマップの生成は、約1時間程度の間に計350mの距離をロボットを操縦して作成したものです。
-
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/large_map.png)
-
+### 課題
+{% capture staff01 %}
+1. 教室内にスチロールブロックを使って作ったコースがいくつか設置してある。周りと相談して適宜変更して良いので、自分独自のコースアレンジをしてみよう。
+2. アレンジしたコースにTurtlebot実機を置いて、上の要領でSLAMを実行しコースの環境地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。添付するにはファイルビューアを開いて、ノートブックのmarkdownセルに画像(pgmファイル）のアイコンをドロップすればよい。
+{% endcapture %}
+<div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 ### （参考）アーム（OpenManipulator-X）搭載時の制限
 
