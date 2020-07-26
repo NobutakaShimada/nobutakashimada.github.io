@@ -14,7 +14,7 @@ sidebar:
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/assemble.png)
 
-![](/assets/images/ritsumeikan/gazebo_manipulator.png)
+![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/open_manipulator_gazebo_1.png)
 
 
 ## GazeboシミュレータでOpenMANIPULATORを制御する
@@ -33,7 +33,7 @@ Gazebo上にOpenMANIPULATORが結合されたTurtleBot3 Waffle Piモデルがロ
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
-![](/assets/images/ritsumeikan/tb3_omx_gazebo.png)
+![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/assemble.png)
 
 ### move_groupノードの実行
 
