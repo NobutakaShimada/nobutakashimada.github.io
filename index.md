@@ -24,6 +24,12 @@ header:
 - [OpenMANIPULATOR-Xを使ったマニピュレーション](https://nobutakashimada.github.io/docs/manipulation)
 - [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
 
+## 参考URL
+- [Turtlebot3 e-Manual](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
+- [ROS公式ドキュメント](http://wiki.ros.org/ja/ROS)
+- [ROS公式 トピックの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)
+- [ROS公式 サービスとパラメータの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)
+
 ## ROBOTIS製教材レジュメ
 
 - [Week 1-1](https://nobutakashimada.github.io/docs/week1-1)
