@@ -93,9 +93,6 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 5. teleopでロボットを手動で移動させてみる。  
   ```bash
   $ roslaunch exp3 teleop.launch
-```  
-  
-  ```bash
   Control Your TurtleBot3!
   ---------------------------
   Moving around:
@@ -108,7 +105,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   space key, s : force stop
   
   CTRL-C to quit
-  ```
+```
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
   
 6. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
