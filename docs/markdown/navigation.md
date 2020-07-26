@@ -156,7 +156,7 @@ $ gnome-screenshot --area -f initial.png
 3. ゴールを指定してナビゲーションを開始すると、移動経路がRViz上に示されること、移動している間に次第に自己位置推定が確からしくなる様子を確かめよ。このときの途中経過を画面キャプチャあるいは動画にして保存し、ノートブックに添付せよ。動画を保存するのはsimplescreenrecoderを使うとできる（デスクトップ左端のアイコンにもある）。
 4. Gazeboではシミュレーション空間中に新規のオブジェクトを置くことができる。図にあるボタンを操作して空間に配置し障害物としてみよ。地図には存在しない障害物をどのようにして避けるか確認しなさい。障害物をおいたGazeboの環境シーンを撮影しノートブックに添付せよ。またそれを避ける移動経路を生成して移動していく様子のRViz画面を保存しノートブックに添付せよ。
 
-![](/assets/images/ritsumeikann/gazebo_object_insert.png)
+![](/assets/images/ritsumeikan/gazebo_object_insert.png)
 
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
