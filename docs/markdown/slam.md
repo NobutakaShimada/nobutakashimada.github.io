@@ -102,7 +102,6 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   w/x : increase/decrease linear velocity
   a/d : increase/decrease angular velocity
   space key, s : force stop
-  
   CTRL-C to quit
   ```  
 
