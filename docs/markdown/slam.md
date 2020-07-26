@@ -195,8 +195,6 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
 4. teleopでロボットを手動で移動させてみる。あ
   ```bash
   $ roslaunch exp3 teleop.launch
-  ```
-  ```bash
   Control Your TurtleBot3!
   ---------------------------
   Moving around:
