@@ -120,8 +120,8 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   ```
 引数map_nameに地図の名前を入れるとその名前(上の実行例では"map1")で地図ファイル（.pgmと.yamlの２つのファイル）が`~/exp3_ws/src/exp3/map`ディレクトリに保存されます。roscdコマンドを使うと簡単にアクセスができます。roscdコマンドは指定したROSパッケージのディレクトリに直接移動することができます。
   ```bash
-  $roscd exp3
-  $ls
+  $ roscd exp3
+  $ ls
   CMakeLists.txt  README  include  launch  map  package.xml  rviz  src  world
   $ cd map
   $ ls
