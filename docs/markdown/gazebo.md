@@ -23,7 +23,7 @@ SLAMなどセンサー情報の処理をテストするときは、センサー�
 Remote PCでGazeboを初めて実行する場合は普段より起動に時間がかかることがあります（形状モデルや力学モデルをインターネットからダウンロードするため）
 
 ### Empty World
-[Remote PC] 次のコマンドを使用して、Gazeboのデフォルト設定のWorldで、仮想TurtleBot３をテストする際に使用できます。 
+次のコマンドを使用して、Gazeboのデフォルト設定のWorldで、仮想TurtleBot３をテストする際に使用できます。 
 
 ```bash
 $ roslaunch exp3 empty_world.launch
@@ -36,7 +36,7 @@ $ roslaunch exp3 empty_world.launch
 
 1. empty_world.launchを実行すると、設定ファイルに従ってGazeboシミュレータが実行され、設定されたTurtleBot3モデルがGazeboシミュレータに生成されます。この時読み込まれる設定ファイル（xacroとURDFファイル）に従って距離センサ（scan）、オドメトリー（odom）、関節モーターの状態（joint_states）、ロボット本体と関節部やセンサー系への座標変換（tf:transform）のトピックをpublishし、移動速度指示（平行移動速度、旋回角速度）(cmd_vel)をsubscribeします。
 
-2. Gazeboが起動しウィンドウが表示されたら、**物理シミュレーションをスタートさせる必要**があります。**画面の左下のプレイボタンを押して時間をスタートさせる**ことを忘れないようにしましょう。
+2. Gazeboが起動しウィンドウが表示されたら、**物理シミュレーションをスタートさせる必要**があります。**画面の左下のプレイボタン[▶] を押して時間をスタートさせる**ことを忘れないようにしましょう。
 3. 次にteleop.launchを実行して画面の指示に従ってキーボードのキーを押すと、Gazeboシミュレータがteleopノードが生成した速度指令値を読み取り、シミュレータに生成されたロボットが動くことを確認できます（次節で詳述する）。
 {% endcapture %}
 <div class="notice--success">{{ capture03 | markdownify }}</div>
@@ -45,7 +45,7 @@ $ roslaunch exp3 empty_world.launch
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_empty_world.png)
 
 ### TurtleBot３ World 
-[Remote PC] 他にもいくつかのオブジェクトを配置したworldを読み込むことができるので、試してみましょう。
+他にもいくつかのオブジェクトを配置したworldを読み込むことができるので、試してみましょう。
 TurtleBot３ Worldは、TurtleBot３のシンボルの形状を構成するシンプルなオブジェクトで構成されているマップです。
  
 ```bash
@@ -56,7 +56,7 @@ $ roslaunch exp3 gazebo_manipulator_world.launch
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_world_waffle.png)
 
 ### TurtleBot３ House 
-[Remote PC] TurtleBot３ House は住居の図面で制作されたマップです。
+TurtleBot３ House は住居の図面で制作されたマップです。
 
 ```bash
 $ roslaunch exp3 gazebo manipulator_house.launch
@@ -67,7 +67,7 @@ $ roslaunch exp3 gazebo manipulator_house.launch
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_house1.png)
 
 ### TurtleBot3 Stage4
-[Remote PC] TurtleBot３ Stage4 は壁で囲まれた迷路状のコースです。
+TurtleBot３ Stage4 は壁で囲まれた迷路状のコースです。
 
 ```bash
 $ roslaunch exp3 gazebo manipulator_stage_4.launch
@@ -79,7 +79,7 @@ $ roslaunch exp3 gazebo manipulator_stage_4.launch
 ## Gazebo上のTurtleBot3の動作指令
 
 ### キー入力による遠隔操作 
-[Remote PC] TurtleBot3 をキーボードでコントロールするために、新しいターミナルで下記のコマンドを使って遠隔操作を実行します。 
+TurtleBot3 をキーボードでコントロールするために、新しいターミナルで下記のコマンドを使って遠隔操作を実行します。 
 ```bash
 $ roslaunch exp3 teleop.launch
 ```
@@ -87,13 +87,13 @@ $ roslaunch exp3 teleop.launch
 
 
 ### 障害物回避による自律走行 
-[Remote PC] センサーの情報を読み取って障害物にぶつからないようにTurtleBot3を自律走行させるノードを実行できます。
+センサーの情報を読み取って障害物にぶつからないようにTurtleBot3を自律走行させるノードを実行できます。
 ```bash
 $ roslaunch exp3 automove.launch
 ```
 
 ## Rvizによる情報可視化
-[Remote PC] Rvizはシミュレーションが実行されている間に発行されたトピックを視覚化します。下記のコマンドを入力し、新しいターミナルウィンドウでRVizをスタートすることができます。 
+Rvizはシミュレーションが実行されている間に発行されたトピックを視覚化します。下記のコマンドを入力し、新しいターミナルウィンドウでRVizをスタートすることができます。 
 ```bash
 $ roslaunch exp3 rviz.launch
 ```
