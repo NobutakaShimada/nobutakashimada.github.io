@@ -192,7 +192,7 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
   
-4. teleopでロボットを手動で移動させてみる。
+4. teleopでロボットを手動で移動させてみる。あ
   ```bash
   $ roslaunch exp3 teleop.launch
   ```
@@ -203,7 +203,6 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
            w
       a    s    d
            x
-  
   w/x : increase/decrease linear velocity
   a/d : increase/decrease angular velocity
   space key, s : force stop
