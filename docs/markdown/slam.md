@@ -42,6 +42,7 @@ hlds_laser.launchを実行するとTurtlebot3内部でhlds_laser_publisherノー
 ```bash
 $ roslaunch exp3 rviz.launch
 ```
+{% capture capture00 %}
 **roslaunch exp3 rviz.launch**
 2. rviz
     - subscribe : scan
