@@ -106,6 +106,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   ```  
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
   <br>
+  <br>
 6. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
   ```bash
   $ roslaunch exp3 save_map.launch map_name:=map1
