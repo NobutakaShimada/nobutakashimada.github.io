@@ -108,14 +108,14 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   space key, s : force stop
   
   CTRL-C to quit
-```
+  ```
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
   
 6. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
-```bash
-$ roslaunch exp3 save_map.launch map_name:=map1
-```
-引数map_nameに地図の名前を入れるとその名前で地図ファイル（.pgmと.yamlの２つのファイル）が~/exp3_ws/src/exp3/mapディレクトリに保存されます。
+  ```bash
+  $ roslaunch exp3 save_map.launch map_name:=map1
+  ```
+  引数map_nameに地図の名前を入れるとその名前で地図ファイル（.pgmと.yamlの２つのファイル）が~/exp3_ws/src/exp3/mapディレクトリに保存されます。
 
 {% capture capture06 %}
 **roslaunch exp3 slam.launch**
@@ -144,9 +144,9 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
   -- gazebo_manipulator_stage_4.launch
   -- gazebo_manipulator_willowgarage.launch (この環境シーンは非常に広大なので、地図を生成するのは一部でよい)
 3. ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（~/exp3_ws/src/exp3/launch/gazeboディレクトリに置いてある）。
-```bash
-$ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.0 
-```
+  ```bash
+  $ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.0 
+  ```
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
@@ -190,7 +190,7 @@ $ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.
     最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。  
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
-
+  
 4. teleopでロボットを手動で移動させてみる。
   ```bash
   $ roslaunch exp3 teleop.launch
