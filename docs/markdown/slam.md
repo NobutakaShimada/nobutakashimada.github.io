@@ -95,7 +95,11 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   $ roslaunch exp3 teleop.launch
   Control Your TurtleBot3!
   ---------------------------
-```  
+  Moving around:
+           w
+      a    s    d
+           x
+  ```  
 
 ```bash
   Control Your TurtleBot3!
