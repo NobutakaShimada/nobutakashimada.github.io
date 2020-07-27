@@ -75,10 +75,11 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル：ROSノードについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes)  
 [ROSチュートリアル：ROSトピックについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)  
 [ROSチュートリアル：ROSサービスについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)  
+[ROSチュートリアル：シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
 ### 課題1-2
 {% capture staff01 %}
-1. 上の[「ROSトピックについて」チュートリアル](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
+1. 上の[「シンプルな配信者(Publisher)と購読者(Subscriber)を書く」チュートリアル](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
 2. 保存した２つのプログラムを指示に従って動かして、どういう動作をするか確かめなさい(ターミナルを開いてrosrunコマンドを使う)。
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
