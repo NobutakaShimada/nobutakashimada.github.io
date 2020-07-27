@@ -20,8 +20,7 @@ SLAMなどセンサー情報の処理をテストするときは、センサー�
 ## Gazeboを使ったTurtlebot３シミュレーション 
 
 実験用のUbuntu LinuxにはすでにGazeboの起動環境をインストールしてあります。
-Remote PCでGazeboを初めて実行する場合は普段より起動に時間がかかることがあります（形状モデルや力学モデルをインターネットからダウンロードするため）
-
+Remote PCでGazeboを初めて実行する場合は普段より起動に時間がかかることがあります（形状モデルや力学モデルをインターネットからダウンロードするため）。
 ### Empty World
 次のコマンドを使用して、Gazeboのデフォルト設定のWorldで、仮想TurtleBot３をテストする際に使用できます。 
 
@@ -41,8 +40,7 @@ $ roslaunch exp3 empty_world.launch
 {% endcapture %}
 <div class="notice--success">{{ capture03 | markdownify }}</div>
 
-
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_empty_world.png)
+![](/assets/images/ritsumeikan/empty_world_turtlebot.png)
 
 ### TurtleBot３ World 
 他にもいくつかのオブジェクトを配置したworldを読み込むことができるので、試してみましょう。
