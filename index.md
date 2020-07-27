@@ -25,7 +25,7 @@ header:
 - [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
 
 ## レポートファイル（ipynbファイル）
-- [レポートipynbファイル](/docs/2020exp3report.ipynb)
+- [レポートipynbファイル](/2020exp3report.ipynb)
 
 ## 参考URL
 - [Turtlebot3 e-Manual(English)](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
