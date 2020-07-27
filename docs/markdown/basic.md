@@ -53,7 +53,7 @@ Turtlebot3には１台に１つBluetoothで接続されたリモコンが付属�
 
 **注意**　リモコンの停止ボタンはリモコンから指示した制御信号だけをキャンセルします。後述のROSノード(teleop)やlaunchファイルから指示した制御信号はキャンセルされないので注意してください。
 
-### [課題]
+### [課題1-1]
 {% capture staff01 %}
 リモコン操作でロボットの動きをよく観察しなさい。リモコンからの入力はどういう信号に変換されて送られていると思うか（位置、速度、加速度など）。各キーにバインドされた制御信号を予想してノートブックに記載しなさい。
 {% endcapture %}
@@ -74,7 +74,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル：ROSトピックについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)  
 [ROSチュートリアル：ROSサービスについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)  
 
-### 課題
+### 課題1-2
 {% capture staff01 %}
 1. 上の[「ROSトピックについて」チュートリアル](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
 2. 保存した２つのプログラムを指示に従って動かして、どういう動作をするか確かめなさい(ターミナルを開いてrosrunコマンドを使う)。
@@ -116,7 +116,7 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 
 ## ROSノードをPythonで実装してみる
 
-### 課題
+### 課題1-3
 {% capture staff01 %}
 1. 授業中の解説を参考に、キーボードで入力したテキスト文字を送受信するROSノードをpython(rospy)を使って実装しなさい。python2ではキーボード入力の取得にraw_input()が使える。
 2. そのコード（サーバ：listener2.pyとクライアント：talker2.py）をノートブックに添付しなさい。
@@ -128,7 +128,7 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
-### 課題
+### 課題1-4
 {% capture staff01 %}
 1. talker2.pyとlistener2.pyのpythonコードを参考に、双方向でテキストを送受信できるように改造した.pyを実装せよ。
 2. 改造したコードをノートブックに添付しなさい。

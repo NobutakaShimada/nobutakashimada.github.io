@@ -151,14 +151,15 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/map.png)
 
-### 課題
+### 課題4-1
 {% capture staff01 %}
 1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。添付するにはファイルビューアを開いて、ノートブックのmarkdownセルに画像(pgmファイル）のアイコンをドロップすればよい。
 2. Gazebo用に他の環境シーンのデータを用意してある。launchファイルを変えると別の環境シーンがGazeboに読み込まれるので次のうちの１つを読み込んで、SLAMを起動して地図を作成しノートブックに添付せよ。
   -- gazebo_manipulator_house.launch
   -- gazebo_manipulator_stage_4.launch
   -- gazebo_manipulator_willowgarage.launch (この環境シーンは非常に広大なので、地図を生成するのは一部でよい)
-3. ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（`~/exp3_ws/src/exp3/launch/gazebo`ディレクトリに置いてある）。
+
+(参考) ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（`~/exp3_ws/src/exp3/launch/gazebo`ディレクトリに置いてある）。
   ```bash
   $ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.0 
   ```
@@ -234,7 +235,7 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
   ```
 {: .notice}
 
-### 課題
+### 課題4-2
 {% capture staff01 %}
 1. 教室内にスチロールブロックを使って作ったコースがいくつか設置してある。周りと相談して適宜変更して良いので、自分独自のコースアレンジをしてみよう。アレンジしたコースの写真を撮ってノートブックに添付せよ。
 2. アレンジしたコースにTurtlebot実機を置いて、上の要領でSLAMを実行しコースの環境地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。添付するにはファイルビューアを開いて、ノートブックのmarkdownセルに画像(pgmファイル）のアイコンをドロップすればよい。

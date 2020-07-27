@@ -99,13 +99,16 @@ $ roslaunch exp3 rviz.launch
 ```
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_gazebo_rviz.png)
 
-## 課題
+## 課題2
 {% capture staff01 %}
 1. Gazeboシミュレータ(gazebo.launch)とRViz(rviz.launch)、teleop(teleop.launch)を起動してTurtlebotを適当に移動させ、その時のGazeboの画面（視点を自由に移動せよ）、RVizの画面をキャプチャしてノートブックに添付せよ。
 2. rosnode listコマンド、を実行してどのようなノードが起動しているか確認し、結果をノートブックに添付せよ。
 3. rostopic listコマンドを実行して、どのようなトピックが作られているか確認し、結果をノートブックに添付せよ。
 4. rostopic echoコマンドを実行して、いくつかのトピックメッセージが流れている様子を観察せよ。観察したトピック名とその内容（大量にあるので１０行程度で良い）をノートブックに添付せよ。
 5. teleop.launchや各種コマンドを駆使して、Turtlebot3への行動命令が流れているトピックを特定せよ。そのトピック名と、メッセージの型名、メッセージの定義(rosmsg showコマンドを用いよ）をノートブックに添付せよ。
-5. rqt_graphコマンドを実行して、ノード・トピックの関係図を表示し、画像としてノートブックに添付しなさい。
+6. rqt_graphコマンドを実行して、ノード・トピックの関係図を表示し、画像としてノートブックに添付しなさい。画面キャプチャには`gnome-screenshot`コマンドを使うことができる。
+```bash
+$ gnome-screenshot --area -f graph.png 
+```
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
