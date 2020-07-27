@@ -24,6 +24,9 @@ header:
 - [OpenMANIPULATOR-Xを使ったマニピュレーション](https://nobutakashimada.github.io/docs/manipulation)
 - [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
 
+## レポートファイル（ipynbファイル）
+- [レポートipynbファイル](/docs/2020exp3report.ipynb)
+
 ## 参考URL
 - [Turtlebot3 e-Manual(English)](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
 - [OpenMANIPULATOR-X e-Manual(English)](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
