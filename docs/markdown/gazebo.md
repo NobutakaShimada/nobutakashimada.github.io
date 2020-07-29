@@ -57,7 +57,7 @@ $ roslaunch exp3 gazebo_manipulator_world.launch
 TurtleBot３ House は住居の図面で制作されたマップです。
 
 ```bash
-$ roslaunch exp3 gazebo manipulator_house.launch
+$ roslaunch exp3 gazebo_manipulator_house.launch
 ```
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_house.png)
@@ -68,7 +68,7 @@ $ roslaunch exp3 gazebo manipulator_house.launch
 TurtleBot３ Stage4 は壁で囲まれた迷路状のコースです。
 
 ```bash
-$ roslaunch exp3 gazebo manipulator_stage_4.launch
+$ roslaunch exp3 gazebo_manipulator_stage_4.launch
 ```
 
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/machine_learning/stage_4.jpg)
