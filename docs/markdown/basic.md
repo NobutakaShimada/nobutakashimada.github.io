@@ -8,7 +8,7 @@ sidebar:
   nav: "phyexp3\_basic"
 ---
 
-# [Class 1] 基本編(Turtlebot3の操作とROSの基礎)
+#1 [Class 1] 基本編(Turtlebot3の操作とROSの基礎)
 
 この実験はTurtlebot3+OpenManipulator-Xというロボットプラットフォームを用いて、
 広くロボットの制御に用いられるROS(Robot Operating System)の分散ノード
