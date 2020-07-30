@@ -4,7 +4,7 @@ lang: en
 ref: phyexp3\_remarks
 permalink: /docs/remarks/
 sidebar:
-  title: レポートの提出について
+  title: 受講上の注意
   nav: "phyexp3\_remarks"
 ---
 
