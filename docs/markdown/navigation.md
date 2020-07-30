@@ -73,11 +73,11 @@ Turtlebot3の中では、turtlebot3_core.launchとturtlebot3_lidar.launchファ�
 
 ### navigation.launchの実行（Gazebo/実機の場合共通）
   ```bash
-  $ roslaunch exp3 navigation.launch map_file:=map1
+  $ roslaunch exp3 navigation.launch map_name:=map1
   ```
   上の例はSLAMで生成し保存した地図の名前（拡張子を除く）が"map1"の場合。
 {% capture capture02 %}
-**roslaunch exp3 navigation.launch map_file:=map1**
+**roslaunch exp3 navigation.launch map_name:=map1**
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
