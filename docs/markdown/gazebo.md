@@ -91,7 +91,16 @@ $ roslaunch exp3 teleop.launch
   space key, s : force stop
 CTRL-C to quit
 ```  
-  キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+{% capture capture06 %}
+**roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch**
+- publish : cmd_vel
+
+turtlebot3_teleop_key.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取ってlinearとangular値を更新し、linearとangularが含まれたtwist形式のtopicであるcmd_velをpublishします。  
+その後、Turtlebot3のSBCで実行されたturtlebot3_robot.launchに含まれたturtlebot3_core.launchでcmd_velを受信します。  
+cmd_velトピックは、rosserialを介してOpenCRに伝達され、OpenCRにアップロードされたファームウェアでDYNAMIXELを制御するためのコマンドとして出力されます。  
+受信されたコマンドに従って車輪と接続されたDYNAMIXELが駆動し、ロボットを動かします。
+{% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
 
