@@ -89,10 +89,9 @@ $ roslaunch exp3 teleop.launch
   w/x : increase/decrease linear velocity
   a/d : increase/decrease angular velocity
   space key, s : force stop
-  CTRL-C to quit
-  ```  
+CTRL-C to quit
+```  
   キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
-```
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
 
