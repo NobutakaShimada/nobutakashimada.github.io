@@ -92,7 +92,7 @@ $ roslaunch exp3 teleop.launch
 CTRL-C to quit
 ```  
 キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
-{% capture capture06 %}
+{% capture capture02 %}
 **roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch**
 - publish : cmd_vel
 
