@@ -80,6 +80,18 @@ $ roslaunch exp3 gazebo_manipulator_stage_4.launch
 TurtleBot3 をキーボードでコントロールするために、新しいターミナルで下記のコマンドを使って遠隔操作を実行します。 
 ```bash
 $ roslaunch exp3 teleop.launch
+  Control Your TurtleBot3!
+  ---------------------------
+  Moving around:
+           w
+      a    s    d
+           x
+  w/x : increase/decrease linear velocity
+  a/d : increase/decrease angular velocity
+  space key, s : force stop
+  CTRL-C to quit
+  ```  
+  キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
 ```
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
