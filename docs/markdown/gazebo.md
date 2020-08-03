@@ -94,10 +94,8 @@ CTRL-C to quit
 キーボードのキーで自由にGazebo内のロボットを動かしてみる。
 {% capture capture02 %}
 **roslaunch exp3 teleop.launch**
-- publish : cmd_vel
 
-teleop.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取ってlinearとangular値を更新し、linearとangularが含まれたtwist形式のtopicであるcmd_velをpublishします。cmd_velトピックは最終的にロボット内のファームウェアに伝達されDYNAMIXELを制御するためのコマンドとして出力されます。  
-受信されたコマンドに従って車輪と接続されたDYNAMIXELが駆動し、ロボットを動かします。
+teleop.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取って「あるトピック」に並進速度と旋回速度の各成分をpublishする。publishされたメッセージは最終的にロボット内のファームウェアに伝達されDYNAMIXELを制御するためのコマンドとして出力される。受信されたコマンドに従って車輪と接続されたDYNAMIXELが駆動し、ロボットを動かす。
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
@@ -107,6 +105,13 @@ teleop.launchファイルを実行して生成されたturtlebot3_teleop_keyboar
 ```bash
 $ roslaunch exp3 automove.launch
 ```
+{% capture capture02 %}
+**roslaunch exp3 automove.launch**
+automove.launchファイルを実行すると、turtlebot3_gazeboパッケージのturtlebot3_driveノードを起動する。turtlebot3_driveノードはC++で書かれた自動走行指示をpublishするノードで、ソースコードはturtlebot3_gazebo/src/turtlebot3_drive.cppである。このソースファイルの中の閾値（どのくらいの距離で障害物と判定するか）や回避ロジックを変更すれば、独自の自動走行をさせることができるようになる。
+
+ソースファイルを変更した時は、`~/catkin_ws`フォルダに移動して、`catkin_make`コマンドを実行する必要がある。
+{% endcapture %}
+<div class="notice--success">{{ capture02 | markdownify }}</div>
 
 ## Rvizによる情報可視化
 Rvizはシミュレーションが実行されている間に発行されたトピックを視覚化します。下記のコマンドを入力し、新しいターミナルウィンドウでRVizをスタートすることができます。 
