@@ -49,7 +49,7 @@ $ roslaunch exp3 rviz.launch
 rviz.launchを実行すると、rvizノードが起動し、Turtlebot3の現在の位置・姿勢や距離センサーの情報が可視化されたウィンドウ画面がディスプレイ上に開きます。  
 RVizノードでは、rvizの設定ファイルを読み込み（カスタマイズして別ファイルに保存することもできる）、scanデータをsubscribeし3次元グラフィックスで描画します（画面上の赤い四角）。
 {% endcapture %}
-<div class="notice--success">{{ capture01 | markdownify }}</div>
+<div class="notice--success">{{ capture00| markdownify }}</div>
 
 
 
