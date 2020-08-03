@@ -91,7 +91,7 @@ $ roslaunch exp3 teleop.launch
   space key, s : force stop
 CTRL-C to quit
 ```  
-キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+キーボードのキーで自由にGazebo内のロボットを動かしてみる。
 {% capture capture02 %}
 **roslaunch exp3 teleop.launch**
 - publish : cmd_vel
