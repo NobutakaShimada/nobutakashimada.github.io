@@ -1,12 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.2.1)
+    activesupport (6.0.3.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 2.2)
+      zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     colorator (1.1.0)
@@ -22,7 +22,7 @@ GEM
     gemoji (3.0.0)
     html-pipeline (2.12.3)
       activesupport (>= 2)
-      nokogiri (>= 1.4)
+      nokogiri (>= 1.11.0)
     http_parser.rb (0.6.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
@@ -57,7 +57,7 @@ GEM
       gemoji (~> 3.0)
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
-    kramdown (1.17.0)
+    kramdown (>=2.3.1)
     liquid (4.0.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -73,9 +73,9 @@ GEM
       jekyll-paginate (~> 1.1)
       jekyll-sitemap (~> 1.1)
       jemoji (~> 0.8)
-    minitest (5.14.0)
+    minitest (5.14.1)
     multipart-post (2.0.0)
-    nokogiri (1.10.8)
+    nokogiri (>= 1.11.0)
       mini_portile2 (~> 2.4.0)
     octokit (4.14.0)
       sawyer (~> 0.8.0, >= 0.5.3)
@@ -97,9 +97,9 @@ GEM
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
     thread_safe (0.3.6)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    zeitwerk (2.2.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
