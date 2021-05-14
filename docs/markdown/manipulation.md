@@ -21,15 +21,15 @@ sidebar:
 
 ### Gazeboシミュレータの実行
 
-roscoreを起動した後で、Gazeboを起動します。
+roscoreを起動した後で、以下のlaunchファイルをつかってGazeboを起動します。
 ```bash
 $ roslaunch exp3 gazebo_manipulator_handle.launch
 ```
 {% capture capture02 %}
 **roslaunch exp3 gazebo_manipulator_handle.launch**
 
-Gazebo上にOpenMANIPULATORが結合されたTurtleBot3 Waffle Piモデルがロードされ、ロボットと通信する2つのロボットコントローラであるarm_controller、gripper_controllerが実行されます。これらはそれぞれ、ロボットアームの関節とグリッパーを制御するコントローラーです。
-方式は、実際のロボットを使用する場合と同じです。以下のコードを実行し、move_groupと通信してロボットを制御します。
+Gazebo上にOpenMANIPULATORを搭載したTurtleBot3 Waffle Piのモデルがロードされ、ロボットと通信するコントローラarm_controller、gripper_controllerがそれぞれ実行されます。これらはそれぞれ、ロボットアームの関節とグリッパーを制御するコントローラーです。
+次節に説明するmove_groupノードがこれらのコントローラと通信してロボットを制御します。
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
@@ -46,15 +46,15 @@ $ roslaunch exp3 move_group.launch
 {% capture capture03 %}
 **roslaunch exp3 move_group.launch**
 
-move_group.launchを実行すると、move_groupノードが実行されます。 move_groupノードは、ユーザーインタフェースを介してコマンドを受けとり、ロボットコントローラーにaction形式で伝達します。
+move_group.launchを実行すると、move_groupノードが起動されます。 move_groupノードは、RViZなどのグラフィカルユーザーインタフェースなどを介してコマンドを受けとり、ロボットコントローラーにaction形式で伝達します。
 {% endcapture %}
 <div class="notice--success">{{ capture03 | markdownify }}</div>
 
 ![](/assets/images/ritsumeikan/tb3_omx_move_controller.png)
 
 ### Rvizを実行
-[Remote PC] MoveIt環境が設定された`moveit.rviz`ファイルを読み込み、RvizでMoveItを使用可能にします。
-GUIでInteractive Markerを活用したロボットアームを制御でき、目標位置への動作をシミュレートすることができるため、衝突などに備えることが可能です。
+[Remote PC] RViZの起動時にMoveIt環境が設定された`moveit.rviz`ファイルを読み込ませ、Rviz上でMoveItを使用可能にします。
+GUIでInteractive Markerを活用したロボットアームを制御でき、目標位置への動作をシミュレートしてあらかじめ動きを確認してからロボット本体（Gazeboの場合はシミュレータ上のロボット）を実際に動かすことができます。
 
 ```bash
 $ roslaunch exp3 moveit_rviz.launch
@@ -62,27 +62,27 @@ $ roslaunch exp3 moveit_rviz.launch
 {% capture capture04 %}
 **roslaunch exp3 moveit_rviz.launch**
 
-MoveItが有効になったRvizが実行されます。Motion Planning pluginが実行され、それまでにmoveit_setup_assistantを介して既に保存されているモーションやinteractive markerを介して設定したモーションを、move_groupに伝達することができます。目標位置を設定した後、Plan and Executeボタンを押すと、ロボットが動きはじめます。
+このコマンドでMoveItが有効になったRvizが実行されます。Motion Planning pluginが起動し、moveit_setup_assistantを介して既に保存されているモーションやinteractive markerを介して設定したモーションを、move_groupに伝達することができます。目標姿勢を設定した後、Plan and Executeボタンを押すと、ロボットが動きはじめます。
 {% endcapture %}
 <div class="notice--success">{{ capture04 | markdownify }}</div>
 
 ![](/assets/images/ritsumeikan/tb3_omx_rviz.png)
 
 **注意**  
-MoveIt!のInteractive Markerを活用してOpenMANIPULATORーXをコントロールする場合、MoveIt! ソフトウェアの機構学解析アルゴリズムに限界があり、円滑なコントロールができない可能性があります。
+MoveIt!のInteractive Marker（上図のグリッパ部分に赤青緑などで表示されているマーカー）をマウスでつまんでアームを動かし、目標姿勢をつくることができます。この場合、MoveIt! ソフトウェアの機構学解析アルゴリズムに限界があり、円滑なコントロールができない可能性があります。
 {: .notice--warning}
 
 ### ROBOTIS GUIコントローラーの実行
-Rvizを使用せずにGazeboと接続し、ロボットアームを制御する場合は、ROBOTIS GUIはOpenMANIPULATORの1番目のDYNAMIXELを基準にグリッパーの有効な把持位置(グリッパー間の赤い六面体)をリファレンスとするTask Space Controlや各ジョイント関節の角度を基準とするJoint Space Controlをサポートします。
+Rvizを使用せずにGazebo上のロボットと接続し、ロボットアームを制御する方法もあります。ROBOTIS GUIはOpenMANIPULATORの1番目のDYNAMIXEL（関節モーター）を基準にグリッパーの有効な把持位置(グリッパーの指間の赤い六面体)をリファレンスとするTask Space Controlや各ジョイント関節の角度を指定するJoint Space Controlをサポートします。
 必要に応じて便利な制御方法を使用できます。
 
 ```bash
-$ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
+$ roslaunch exp3 gui_manipulation.launch
 ```
 {% capture capture05 %}
-**roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch**
+**roslaunch exp3 gui_manipulation.launch**
 
-ユーザーインターフェースでC++ move_group_interfaceを使用したqt guiが実行されます。インタフェースを介して受けとった現在のジョイント位置およびend-effector位置がgui上に表示されます。Sendボタンをクリックすると、設定された位置値についてインターフェースを介してmove_groupに伝え、コントローラーに伝達しロボットを動かします。
+ユーザーインターフェースでC++ move_group_interfaceを使用したqt guiが実行されます。インタフェースを介して受けとった現在のジョイント角度およびグリッパ位置がGUI上に表示されます。Sendボタンをクリックすると、設定された位置についてインターフェースを介してmove_groupに伝え、コントローラーに伝達しロボットを動かします。
 {% endcapture %}
 <div class="notice--success">{{ capture05 | markdownify }}</div>
 
@@ -91,6 +91,7 @@ $ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 ## 実機でのOpenMANIPULATORの制御
 
 MoveItのmove_groupノードは、以下のように様々な情報をもとに計算されたアーム・グリッパの軌跡を、ROSがサポートするaction形式でロボットコントローラーに提供する統合装置(intergrator)としての役割を持ちます。ユーザーは、move_groupノードにmoveitが提供する3種のインターフェース(C++、Python、RViz GUI)を通じてアクセスすることができます。ユーザーインターフェースを介してコマンドを受け取ると、move_groupノードはmoveit config情報(ジョイント角度の制限、機構学解析、衝突感知)およびロボットの状態情報に基づいて軌跡を生成し、ロボットコントローラーに渡します。
+この実験ではそこまで詳細な内部構造には踏み込みませんので安心してください:-) 。
 
 ![](/assets/images/ritsumeikan/move_group.png)
 
@@ -129,6 +130,6 @@ $ roslaunch exp3 moveit_rviz.launch
 ### ROBOTIS GUI を実行する
 RVizとは別に、必要に応じてROBOTIS GUIを介し、OpenMANIPULATORを制御することもできます。
 ```bash
-$ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
+$ roslaunch exp3 gui_manipulation.launch
 ```
 <div class="notice--success">{{ capture05 | markdownify }}</div>
