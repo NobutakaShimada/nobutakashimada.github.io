@@ -15,7 +15,7 @@ header:
 
 # 実世界情報実験３ロボットテーマレジュメ
 
-## 2020年度春学期実験用レジュメ
+## 2021年度春学期実験用レジュメ
 - [受講上の注意（最初に目を通すこと）](/docs/remarks)
 - [基本編(Turtlebot3の操作とROSの基礎)](https://nobutakashimada.github.io/docs/basic)
 - [Gazeboシミュレータでのロボット操作](https://nobutakashimada.github.io/docs/gazebo)
