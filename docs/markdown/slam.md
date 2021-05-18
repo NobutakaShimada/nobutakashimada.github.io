@@ -153,7 +153,7 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 
 ### 課題4-1
 {% capture staff01 %}
-1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。ターミナルからconvertコマンドを使って「convert a.pgm a.jpg」ようにjpg画像に変換してから、ファイルビューアを用いて変換したファイルのアイコンをノートブックのmarkdownセルにドロップすればよい。
+1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。ターミナルからconvertコマンドを使って `convert a.pgm a.jpg`のようにjpg画像に変換してから、ファイルビューアを用いて変換したファイルのアイコンをノートブックのmarkdownセルにドロップすればよい。
 2. Gazebo用に他の環境シーンのデータを用意してある。launchファイルを変えると別の環境シーンがGazeboに読み込まれるので次のうちの１つを読み込んで、SLAMを起動して地図を作成しノートブックに添付せよ。
   -- gazebo_manipulator_house.launch
   -- gazebo_manipulator_stage_4.launch
@@ -238,7 +238,7 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 ### 課題4-2
 {% capture staff01 %}
 1. 教室内にスチロールブロックを使って作ったコースがいくつか設置してある。周りと相談して適宜変更して良いので、自分独自のコースアレンジをしてみよう。アレンジしたコースの写真を撮ってノートブックに添付せよ。
-2. アレンジしたコースにTurtlebot実機を置いて、上の要領でSLAMを実行しコースの環境地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。ターミナルからconvertコマンドを使って「convert a.pgm a.jpg」ようにjpg画像に変換してから、ファイルビューアを用いて変換したファイルのアイコンをノートブックのmarkdownセルにドロップすればよい。
+2. アレンジしたコースにTurtlebot実機を置いて、上の要領でSLAMを実行しコースの環境地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。ターミナルからconvertコマンドを使って`convert a.pgm a.jpg`のようにjpg画像に変換してから、ファイルビューアを用いて変換したファイルのアイコンをノートブックのmarkdownセルにドロップすればよい。
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
