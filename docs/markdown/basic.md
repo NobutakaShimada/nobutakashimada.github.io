@@ -77,6 +77,8 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル：ROSサービスについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)  
 [ROSチュートリアル：シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
+[ROS公式にアクセスできないときのarchive.orgによるキャッシュデータ](http://web.archive.org/web/20200920235105/https://wiki.ros.org/ja/ROS/Tutorials)
+
 ### 課題1-2
 {% capture staff01 %}
 1. 上の[「シンプルな配信者(Publisher)と購読者(Subscriber)を書く」チュートリアル](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
