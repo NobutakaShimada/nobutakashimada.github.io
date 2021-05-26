@@ -20,7 +20,7 @@ SLAMなどセンサー情報の処理をテストするときは、センサー�
 ## Gazeboを使ったTurtlebot３シミュレーション 
 
 実験用のUbuntu LinuxにはすでにGazeboの起動環境をインストールしてあります。
-Remote PCでGazeboを初めて実行する場合は普段より起動に時間がかかることがあります（形状モデルや力学モデルをインターネットからダウンロードするため）。
+自分でセットアップしたPCでGazeboを初めて実行する場合は普段より起動に時間がかかることがあります（形状モデルや力学モデルをインターネットからダウンロードするため）。
 ### Empty World
 次のコマンドを使用して、Gazeboのデフォルト設定のWorldで、仮想TurtleBot３をテストする際に使用できます。 
 
@@ -124,7 +124,7 @@ $ roslaunch exp3 rviz.launch
 {% capture staff01 %}
 1. Gazeboシミュレータ(gazebo.launch)とRViz(rviz.launch)、teleop(teleop.launch)を起動してTurtlebotを適当に移動させ、その時のGazeboの画面（視点を自由に移動せよ）、RVizの画面をキャプチャしてノートブックに添付せよ。画面キャプチャには`gnome-screenshot`コマンドを使うことができる。
 ```bash
-$ gnome-screenshot --area -f graph.png 
+$ gnome-screenshot --area -f graph.jpg
 ```
 2. rosnode listコマンド、を実行してどのようなノードが起動しているか確認し、結果をノートブックに添付せよ。
 3. rostopic listコマンドを実行して、どのようなトピックが作られているか確認し、結果をノートブックに添付せよ。
