@@ -78,6 +78,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル：シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
 ※　ROS公式にアクセスできないときがあるので、その時は以下のarchive.orgによるキャッシュデータへのリンクを参照（すこし重い）。
+
 [シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](http://web.archive.org/web/20200929183646/https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 [ROSチュートリアル全体](http://web.archive.org/web/20200920235105/https://wiki.ros.org/ja/ROS/Tutorials)
 
