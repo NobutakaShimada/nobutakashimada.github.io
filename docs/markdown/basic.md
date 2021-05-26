@@ -155,6 +155,18 @@ $ gnome-screenshot --area -f graph.png
 {% capture staff01 %}
 1. talker2.pyとlistener2.pyのpythonコードを参考に、双方向でテキストを送受信できるように改造した.pyを実装せよ。
 2. 改造したコードをノートブックに添付しなさい。
+
+課題1-4のヒント：
+双方向に送受信できるということは、一つのノードがpublisherの機能とsubscriberの機能の両方を兼ね備える必要がある。
+さらに、双方向で送受信できるのだから、talkerとlistenerの区別はもはやないことになる。
+つまりpublisherとsubscriberの２つとも一つのノード(python script)に実装すればよい。
+
+ただし、単純にtalker.pyとlistener.pyを合体すればよいというわけではない。
+talker.pyは明示的にwhileループが書かれていて一度このループに入るとノードを終了するまで抜け出してこない。
+またlistener.pyにはループがないように見えるが、実は"rospy.spin()"の部分が内部でループになっている（この関数の中でcallback関数が呼び出されるのである）。
+よってループはどちらか一つにしないといけない。talker.pyの明示的なwhileループを残すほうがわかりやすいだろう。
+
+
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
