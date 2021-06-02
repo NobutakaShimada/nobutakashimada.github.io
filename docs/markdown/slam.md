@@ -161,9 +161,9 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 {% capture staff01 %}
 1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をノートブックに添付せよ。ターミナルからconvertコマンドを使って `convert a.pgm a.jpg`のようにjpg画像に変換してから、ファイルビューアを用いて変換したファイルのアイコンをノートブックのmarkdownセルにドロップすればよい。
 2. Gazebo用に他の環境シーンのデータを用意してある。launchファイルを変えると別の環境シーンがGazeboに読み込まれるので次のうちの１つを読み込んで、SLAMを起動して地図を作成しノートブックに添付せよ。
-  -- gazebo_manipulator_house.launch
-  -- gazebo_manipulator_stage_4.launch
-  -- gazebo_manipulator_willowgarage.launch (この環境シーンは非常に広大なので、地図を生成するのは一部でよい)
+  - gazebo_manipulator_house.launch
+  - gazebo_manipulator_stage_4.launch
+  - gazebo_manipulator_willowgarage.launch (この環境シーンは非常に広大なので、地図を生成するのは一部でよい)
 
 (参考) ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（`~/exp3_ws/src/exp3/launch/gazebo`ディレクトリに置いてある）。
   ```bash
@@ -175,7 +175,6 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 
 ### SLAMを実行する(Turtlebot3実機)
 
-全てRemote PCで実行します。
 1. roscoreを実行します。  
   ```bash
   $ roscore
@@ -211,7 +210,7 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
   $ roslaunch exp3 save_map.launch map_name:=map1
   ```
 {% capture capture02 %}
-**roslaunch exp3 slam.launch
+**roslaunch exp3 slam.launch**
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
