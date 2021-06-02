@@ -127,7 +127,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   a.pgm  a.yaml
   ```
 作成した地図が格納されたpgmファイルは画像ファイルです。しかしこのファイルを直接jupyter notebookに貼り付けても閲覧することができません。そこで以下のように`convert`コマンドを使ってJPEGフォーマットに変換してから貼り付けるとよいです。
-  ```
+  ```bash
   $ convert a.pgm a.jpg
   $ ls
   a.jpg a.pgm a.yaml 
