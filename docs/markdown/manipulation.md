@@ -133,3 +133,13 @@ RVizとは別に、必要に応じてROBOTIS GUIを介し、OpenMANIPULATORを�
 $ roslaunch exp3 gui_manipulation.launch
 ```
 <div class="notice--success">{{ capture05 | markdownify }}</div>
+
+## 課題（実機編）
+
+{% capture staff01 %}
+1. GazeboシミュレータとRViZを起動して、RViZ上のMotion Planningタブ上でアームとグリッパそれぞれに目標姿勢を指定し、軌道生成を行ってアームとグリッパを動作させてみよ。２通りくらいの例を実行し、初期姿勢の状態と動作後のゴール状態についてRViZ上のロボット表示とGazebo上のロボットの様子を画面キャプチャしてノートに貼り付けよ。
+2. 1.と同様の内容を実機ロボットと接続して実行せよ。Gazebo上のロボットの代わりに実機の姿勢をスマフォ等で撮影して貼り付けよ。
+3. 実機を操作して適当な物体を把持してみよ。レンジセンサの出力をRViZ上で確認すると目標位置の参考になるかもしれない。
+{% endcapture %}
+<div class="notice--danger">{{ staff01 | markdownify }}</div>
+
