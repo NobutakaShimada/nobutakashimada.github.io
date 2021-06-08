@@ -143,3 +143,30 @@ $ roslaunch exp3 gui_manipulation.launch
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
+## 発展テーマ（解説未完成）
+
+この節はROSパワーユーザ用の発展課題用メモです。以下の説明では実行することが困難なので、あくまで参考のための資料です。
+
+### MoveIt!
+MoveIt!はロボットの動作軌道を自動生成するためのツールで、RViZに組み込まれたGUIからも操作できますが、pythonスクリプトから実行することもできます。
+詳細は次のページに記載されています。ロボットとシーンを定義し、ロボットに対してエンドエフェクタ（手先）の三次元位置と向きのゴール姿勢を指定すると、現在姿勢からゴール姿勢までの動作軌道を計画して動作命令を発行することができます。
+
+[https://ros-planning.github.io/moveit_tutorials/doc/move_group_python_interface/move_group_python_interface_tutorial.html]
+
+### Obstacle Detector
+Obstacle Detectorは、LRF(レーザーレンジセンサー)の計測データ（/scanトピックにpublishされている）をsubscribeして、線上のオブジェクトと円形状のオブジェクトを検出し、obstacle_detector/Obstacles型のメッセージとして/obstaclesトピックに検出された座標を出力するROSノードモジュールです。
+[日本語解説記事 https://qiita.com/srs/items/d3b9425cedf57ab269ff]
+[Github https://github.com/tysik/obstacle_detector]
+
+これらを組み合わせると、ペットボトルのような円筒形の物体を検出してグリッパをその位置に移動しつかむ動作を生成することができます。
+
+ただし、Obstacle Detectorは配布したLinuxシステムにインストールされていないので、Githubからダウンロードしてインストールする必要があります。
+```bash
+$ cd ~/exp3_ws/src
+$ git clone https://github.com/tysik/obstacle_detector.git
+$ cd ~/exp3_ws
+$ catkin_make
+```
+<div class="notice--success">{{ capture06 | markdownify }}</div>
+
+上記の操作はかならず教員に相談してから実行してください。ROSの環境を壊してしまう可能性があります。
