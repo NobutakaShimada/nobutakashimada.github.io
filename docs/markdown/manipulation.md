@@ -150,7 +150,7 @@ $ roslaunch exp3 gui_manipulation.launch
 ### MoveIt!
 MoveIt!はロボットの動作軌道を自動生成するためのツールで、RViZに組み込まれたGUIからも操作できますが、pythonスクリプトから実行することもできます。
 詳細は次のページに記載されています。ロボットとシーンを定義し、ロボットに対してエンドエフェクタ（手先）の三次元位置と向きのゴール姿勢を指定すると、現在姿勢からゴール姿勢までの動作軌道を計画して動作命令を発行することができます。
-[MoveIt!] (https://ros-planning.github.io/moveit_tutorials/doc/move_group_python_interface/move_group_python_interface_tutorial.html)
+[MoveIt!](https://ros-planning.github.io/moveit_tutorials/doc/move_group_python_interface/move_group_python_interface_tutorial.html)
 
 ### Obstacle Detector
 Obstacle Detectorは、LRF(レーザーレンジセンサー)の計測データ（/scanトピックにpublishされている）をsubscribeして、線上のオブジェクトと円形状のオブジェクトを検出し、obstacle_detector/Obstacles型のメッセージとして/obstaclesトピックに検出された座標を出力するROSノードモジュールです。
