@@ -109,9 +109,23 @@ $ roslaunch exp3 machine.launch id:=09
 {% capture capture02 %}
 **roslaunch exp3 machine.launch id:=09**
 
-machine.launchを実行すると、以前と同じくSSH経由でTurtlebot3内で必要なノードを自動起動します。その中でアーム・グリッパに関連するノードとして、arm_controllerとgripper_controllerのコントローラーノードが実行されます。move_groupと通信するaction serverコントローラーの役割として、それぞれmove_groupを介してアームとグリッパー関節の目標軌跡を読み込み、順にpublishします。publishされたトピックは、ロボットの関節に組み込まれたモータに伝達され、OpenMANIPULATORを動かします。
+machine.launchを実行すると、以前と同じくSSH経由でTurtlebot3内で必要なノードを自動起動します。その中でLRFや車輪の回転制御、アーム・グリッパーなどのモーターコントローラーノードなどが起動します。
+
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
+
+### Arm/Gripper Controllerを起動する。
+以下のコマンドによってTurtlebot3のアームとグリッパを制御するノードを実行します。
+```bash
+$ roslaunch exp3 robot_manipulation.launch
+```
+{% capture capture07 %}
+**roslaunch exp3 robot_manipulation.launch**
+
+robot_manipulation.launchを実行すると、アーム・グリッパに関連するノードとして、arm_controllerとgripper_controllerのコントローラーノードが実行されます（これらはturtlebot3の中ではなくリモートPC側で実行されます）。またロボットの姿勢状態を表す座標変換(tf:transform)情報をpublishするrobot_state_publisherノードを起動します。move_groupと通信するaction serverコントローラーの役割として、それぞれmove_groupを介してアームとグリッパー関節の目標軌跡を読み込み、順にpublishします。publishされたトピックは、ロボットの関節に組み込まれたモータに伝達され、OpenMANIPULATORを動かします。
+
+{% endcapture %}
+<div class="notice--success">{{ capture07 | markdownify }}</div>
 
 ### move_groupを実行する
 MoveItと連動しているユーザーインターフェースであるmove_groupノードを実行します。
@@ -134,7 +148,7 @@ $ roslaunch exp3 gui_manipulation.launch
 ```
 <div class="notice--success">{{ capture05 | markdownify }}</div>
 
-## 課題（実機編）
+## 課題（Gazebo/実機編）
 
 {% capture staff01 %}
 1. GazeboシミュレータとRViZを起動して、RViZ上のMotion Planningタブ上でアームとグリッパそれぞれに目標姿勢を指定し、軌道生成を行ってアームとグリッパを動作させてみよ。２通りくらいの例を実行し、初期姿勢の状態と動作後のゴール状態についてRViZ上のロボット表示とGazebo上のロボットの様子を画面キャプチャしてノートに貼り付けよ。
