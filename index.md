@@ -48,3 +48,7 @@ header:
 - [Week 3-1](https://nobutakashimada.github.io/docs/week3-1)
 - [Week 3-2](https://nobutakashimada.github.io/docs/week3-2)
 - [Week 4](https://nobutakashimada.github.io/docs/week4)
+
+## メンテナンス用
+- [backup script] (backup.sh)
+
