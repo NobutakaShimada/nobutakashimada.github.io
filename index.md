@@ -50,5 +50,5 @@ header:
 - [Week 4](https://nobutakashimada.github.io/docs/week4)
 
 ## メンテナンス用
-- [backup script] (backup.sh)
+- [backup script](backup.sh)
 
