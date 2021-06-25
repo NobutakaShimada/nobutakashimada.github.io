@@ -51,6 +51,6 @@ header:
 
 ## メンテナンス用
 - [backup script](backup.sh)
-- [launch file updates](launch.aaa)
-- [test](bbb.sh)
+- [launch file updates](launch.tar.gz)
+
 
