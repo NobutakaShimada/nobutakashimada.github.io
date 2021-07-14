@@ -37,9 +37,24 @@ sidebar:
         $ roslaunch exp3 rviz.launch
         ```
 
+2. TurtleBot3をキーボードでコントロールするために、teleop.launchを起動する。
+```bash
+$ roslaunch exp3 teleop.launch
+  Control Your TurtleBot3!
+  ---------------------------
+  Moving around:
+           w
+      a    s    d
+           x
+  w/x : increase/decrease linear velocity
+  a/d : increase/decrease angular velocity
+  space key, s : force stop
+CTRL-C to quit
+```
+キーボードのキーで自由に実機のturtlebot3ロボットを動かしてみる。
 
 
-2. 使用切り替え
+3. 使用切り替え
     - 切り替え方法
         - roscoreを含むすべてのnodeを終了(実行したターミナルで`CTRL` + `C`キーを入力)
         - 上記の実行方法に従って切り替え
