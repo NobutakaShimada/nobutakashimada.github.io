@@ -185,11 +185,11 @@ $ catkin_make
 上記の操作はかならず教員に相談してから実行してください。ROSの環境を壊してしまう可能性があります。
 
 ### Turtlebot3用のlaunchファイルのダウンロードと起動
-obstacle_detection.launchを[ここ](/launch.tar.gz)からダウンロードして起動するとturtlebot3のLRFセンサで検知された物体がRViZに表示されます。
+obstacle_detection.launchを[ここ](/launch-rviz.tar.gz)からダウンロードして起動するとturtlebot3のLRFセンサで検知された物体がRViZに表示されます。
 障害物の情報は/Obstaclesトピックに出力されます。これをsubscribeしてmoveitの逆運動学のモジュールをつかってアームの関節位置を動かすことができます（詳細はまだ記載できていません）。
 ```
 $ cd ~/Downloads
-$ tar zxvf launch.tar.gz
+$ tar zxvf launch-rviz.tar.gz
 $ cp launch/manipulation/obstacle_detection.launch ~/exp3_ws/src/exp3/launch
 -----
 （turtlebot3実機操作のためのlaunchを起動）
