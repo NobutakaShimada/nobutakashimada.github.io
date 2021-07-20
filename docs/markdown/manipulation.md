@@ -190,8 +190,8 @@ obstacle_detection.launchを[ここ](/launch-rviz.tar.gz)からダウンロー�
 ```
 $ roscd exp3
 $ cp ~/Downloads/launch-rviz.tar.gz .
-$ mkdir tmpdir
-$ cp -r launch rviz tmpdir
+$ mkdir ../tmpdir
+$ cp -r launch rviz ../tmpdir
 $ tar zxvf launch-rviz.tar.gz
 -----
 （turtlebot3実機操作のためのlaunchを起動）
