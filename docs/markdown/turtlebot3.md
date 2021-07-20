@@ -37,7 +37,7 @@ sidebar:
         $ roslaunch exp3 rviz.launch
         ```
 
-    - teleop
+    - teleop 
     TurtleBot3をキーボードでコントロールするために、teleop.launchを起動する。
         ```bash
         $ roslaunch exp3 teleop.launch
