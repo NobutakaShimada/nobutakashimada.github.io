@@ -202,7 +202,7 @@ $ roslaunch exp3 obstacle_detection.launch
 ```
 
 {% capture capture09 %}
-roslaunch exp3 obstacle_detection.launch
+**roslaunch exp3 obstacle_detection.launch**
 
 LRFセンサーの情報をもとに平面もしくは円筒状の障害物を検知して、RViZ上に表示することができます。
 {% endcapture %}
