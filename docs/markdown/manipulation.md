@@ -106,13 +106,13 @@ $ roscore
 ```bash
 $ roslaunch exp3 machine.launch id:=09
 ```
-{% capture capture02 %}
+{% capture capture06 %}
 **roslaunch exp3 machine.launch id:=09**
 
 machine.launchを実行すると、以前と同じくSSH経由でTurtlebot3内で必要なノードを自動起動します。その中でLRFや車輪の回転制御、アーム・グリッパーなどのモーターコントローラーノードなどが起動します。
 
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+<div class="notice--success">{{ capture06 | markdownify }}</div>
 
 ### Arm/Gripper Controllerを起動する。
 以下のコマンドによってTurtlebot3のアームとグリッパを制御するノードを実行します。
@@ -180,9 +180,11 @@ $ git clone https://github.com/tysik/obstacle_detector.git
 $ cd ~/exp3_ws
 $ catkin_make
 ```
-<div class="notice--success">{{ capture06 | markdownify }}</div>
-
+{% capture capture08 %}
 上記の操作はかならず教員に相談してから実行してください。ROSの環境を壊してしまう可能性があります。
+{% endcapture %}
+<div class="notice--success">{{ capture08 | markdownify }}</div>
+
 
 ### Turtlebot3用のlaunchファイルのダウンロードと起動
 obstacle_detection.launchを[ここ](/launch-rviz.tar.gz)からダウンロードして起動するとturtlebot3のLRFセンサで検知された物体がRViZに表示されます。
@@ -198,5 +200,11 @@ $ tar zxvf launch-rviz.tar.gz
 -----
 $ roslaunch exp3 obstacle_detection.launch
 ```
-<div class="notice--success">{{ capture07 | markdownify }}</div>
+
+{% capture capture09 %}
+roslaunch exp3 obstacle_detection.launch
+
+LRFセンサーの情報をもとに平面もしくは円筒状の障害物を検知して、RViZ上に表示することができます。
+{% endcapture %}
+<div class="notice--success">{{ capture09 | markdownify }}</div>
 
