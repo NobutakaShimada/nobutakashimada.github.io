@@ -84,7 +84,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル全体](http://web.archive.org/web/20200920235105/https://wiki.ros.org/ja/ROS/Tutorials)
 
 ### 課題1-2
-{% capture staff99 %}
+{% capture staff01 %}
 1. 上の[「ROSトピックの理解」](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics) を開いて、教員の説明を聞きながら順を追ってROS環境操作の各手順を実行し、内容を理解しなさい。
 その後、rostopic pubコマンドを使ってturtlesimのタートルを一定の並進速度・回転速度で動かす命令（ただしチュートリアルサイトの数字とは違う速度の指示値を与えよ）を実行して、そのときのrostopicコマンドの文字列と実行後のタートル表示ウインドウをキャプチャしてレポートファイルに貼りなさい。
 画面キャプチャには`gnome-screenshot`を使うことができる。
@@ -92,6 +92,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 $ gnome-screenshot --area -f turtle.png 
 ```
 {% endcapture %}
+<div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 ### 課題1-3
 {% capture staff01 %}
