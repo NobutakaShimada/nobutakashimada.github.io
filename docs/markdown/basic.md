@@ -73,7 +73,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 - **メッセージ** ROSによるロボットへの指令は全てメッセージと呼ばれるデータをネットワーク通信でノードに送信することで実現される。ROSにおけるメッセージ送受信のアーキテクチャはいくつかあるが、この実験では**Publisher/Subscriberモデル**という、一方向通信について学ぶ。このほかにリクエストに対するレスポンスを受け取ることができる**クライアント／サービスモデル**がある。
 
 [ROSチュートリアル：ROSノードについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes)  
-[ROSチュートリアル：ROSトピックについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)  
+[ROSチュートリアル：ROSトピックの理解 http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)  
 [ROSチュートリアル：ROSサービスについて http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)  
 [ROSチュートリアル：シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)
 
@@ -84,6 +84,16 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [ROSチュートリアル全体](http://web.archive.org/web/20200920235105/https://wiki.ros.org/ja/ROS/Tutorials)
 
 ### 課題1-2
+{% capture staff99 %}
+1. 上の[「ROSトピックの理解」](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics) を開いて、教員の説明を聞きながら順を追ってROS環境操作の各手順を実行し、内容を理解しなさい。
+その後、rostopic pubコマンドを使ってturtlesimのタートルを一定の並進速度・回転速度で動かす命令（ただしチュートリアルサイトの数字とは違う速度の指示値を与えよ）を実行して、そのときのrostopicコマンドの文字列と実行後のタートル表示ウインドウをキャプチャしてレポートファイルに貼りなさい。
+画面キャプチャには`gnome-screenshot`を使うことができる。
+```bash
+$ gnome-screenshot --area -f turtle.png 
+```
+{% endcapture %}
+
+### 課題1-3
 {% capture staff01 %}
 1. 上の[「シンプルな配信者(Publisher)と購読者(Subscriber)を書く」チュートリアル](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
 2. 保存した２つのプログラムを指示に従って動かして、どういう動作をするか確かめなさい(ターミナルを開いてrosrunコマンドを使う)。
@@ -138,7 +148,7 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 
 ## ROSノードをPythonで実装してみる
 
-### 課題1-3
+### 課題1-4
 {% capture staff01 %}
 1. 授業中の解説を参考に、キーボードで入力したテキスト文字を送受信するROSノードをpython(rospy)を使って実装しなさい。python2ではキーボード入力の取得にraw_input()が使える。
 2. そのコード（サーバ：listener2.pyとクライアント：talker2.py）をノートブックに添付しなさい。
@@ -153,12 +163,12 @@ $ gnome-screenshot --area -f graph.png
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
-### 課題1-4
+### 課題1-5
 {% capture staff01 %}
 1. talker2.pyとlistener2.pyのpythonコードを参考に、双方向でテキストを送受信できるように改造した.pyを実装せよ。
 2. 改造したコードをノートブックに添付しなさい。
 
-課題1-4のヒント：
+課題1-5のヒント：
 双方向に送受信できるということは、一つのノードがpublisherの機能とsubscriberの機能の両方を兼ね備える必要がある。
 さらに、双方向で送受信できるのだから、talkerとlistenerの区別はもはやないことになる。
 つまりpublisherとsubscriberの２つとも一つのノード(python script)に実装すればよい。
