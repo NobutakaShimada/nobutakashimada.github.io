@@ -22,7 +22,8 @@ header:
 - [ロボット実機との接続と移動操作](https://nobutakashimada.github.io/docs/turtlebot3)
 - [環境地図の自動マッピング(SLAM)](https://nobutakashimada.github.io/docs/slam)
 - [生成した環境地図に基づくナビゲーション](https://nobutakashimada.github.io/docs/navigation)
-- [OpenMANIPULATOR-Xを使ったマニピュレーション](https://nobutakashimada.github.io/docs/manipulation)
+- [（後日追加）Pythonプログラミングによる移動指示とマニピュレータ操作実験]
+- [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](https://nobutakashimada.github.io/docs/manipulation)
 - [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
 
 ## レポートファイル（ipynbファイル）
