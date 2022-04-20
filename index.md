@@ -35,7 +35,8 @@ header:
 - [gedit Text Editor (English)](https://help.gnome.org/users/gedit/stable/)
 - [Turtlebot3 e-Manual(English)](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
 - [OpenMANIPULATOR-X e-Manual(English)](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
-- [ROS公式ドキュメント](http://wiki.ros.org/ja/ROS) [ミラー１](https://ghostarchive.org/ros/wiki.ros.org/ja.html)[ミラー２](http://mirror.umd.edu/roswiki/ja.html)
+- [ROS公式ドキュメント](http://wiki.ros.org/ja/ROS) 
+（[ミラー１](https://ghostarchive.org/ros/wiki.ros.org/ja.html)）（[ミラー２](http://mirror.umd.edu/roswiki/ja.html)）
 - [ROS公式 トピックの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)
 - [ROS公式 サービスとパラメータの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)
 - [ROS公式ページヘのアクセスができないときのarchive.orgによるキャッシュ版ROSチュートリアル](http://web.archive.org/web/20200920235105/https://wiki.ros.org/ja/ROS/Tutorials)
