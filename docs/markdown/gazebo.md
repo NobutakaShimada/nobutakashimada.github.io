@@ -8,6 +8,7 @@ sidebar:
   nav: "phyexp3\_basic"
 ---
 
+{: .startsec2}
 # [Class 2] GazeboシミュレーションによるTurtlebot3の操作
 
 ROSサポートの市販ロボットではよくあることですが、TurtleBot3には仮想ロボットでプログラミングや開発可能な環境が用意されています。

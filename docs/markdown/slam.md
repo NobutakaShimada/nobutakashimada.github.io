@@ -8,6 +8,7 @@ sidebar:
   nav: "phyexp3_2-1"
 ---
 
+{: .startsec4}
 # [Class 4] 環境地図の自動マッピング(SLAM)
 
 ## LRFセンサ(LDS)

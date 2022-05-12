@@ -5,3 +5,22 @@
 @charset "utf-8";
 
 @import "minimal-mistakes";
+
+.startsec2{
+  counter-set: h1 1;
+}
+.startsec3{
+  counter-set: h1 2;
+}
+.startsec4{
+  counter-set: h1 3;
+}
+.startsec5{
+  counter-set: h1 4;
+}
+.startsec6{
+  counter-set: h1 5;
+}
+.startsec7{
+  counter-set: h1 6;
+}

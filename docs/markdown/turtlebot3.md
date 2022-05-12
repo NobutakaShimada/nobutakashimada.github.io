@@ -8,6 +8,7 @@ sidebar:
   nav: "phyexp3\_turtlebot3"
 ---
 
+{: .startsec3}
 # [Class 3] 実機Turtlebotへの接続と移動操作
 
 ## TurtleBot3(実ロボット), シミュレーションの切り替え方法  
