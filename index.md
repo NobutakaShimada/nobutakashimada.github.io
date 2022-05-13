@@ -17,14 +17,14 @@ header:
 
 ## 2022年度春学期実験用レジュメ
 - [受講上の注意（最初に目を通すこと）](/docs/remarks)
-- [基本編(Turtlebot3の操作とROSの基礎)](https://nobutakashimada.github.io/docs/basic)
-- [Gazeboシミュレータでのロボット操作](https://nobutakashimada.github.io/docs/gazebo)
-- [ロボット実機との接続と移動操作](https://nobutakashimada.github.io/docs/turtlebot3)
-- [環境地図の自動マッピング(SLAM)](https://nobutakashimada.github.io/docs/slam)
-- [生成した環境地図に基づくナビゲーション](https://nobutakashimada.github.io/docs/navigation)
+- [基本編(Turtlebot3の操作とROSの基礎)](/docs/basic)
+- [Gazeboシミュレータでのロボット操作](/docs/gazebo)
+- [ロボット実機との接続と移動操作](/docs/turtlebot3)
+- [環境地図の自動マッピング(SLAM)](/docs/slam)
+- [生成した環境地図に基づくナビゲーション](/docs/navigation)
 - [（後日追加）Pythonプログラミングによる移動指示とマニピュレータ操作実験]
-- [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](https://nobutakashimada.github.io/docs/manipulation)
-- [レポート(Jupyter notebook)](https://nobutakashimada.github.io/docs/report)
+- [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](/docs/manipulation)
+- [レポート(Jupyter notebook)](/docs/report)
 
 ## レポートファイル（ipynbファイル）
 - [レポートipynbファイル１](2022exp3report1-3.ipynb)
@@ -45,13 +45,13 @@ header:
 
 ## ROBOTIS製教材レジュメ
 
-- [Week 1-1](https://nobutakashimada.github.io/docs/week1-1)
-- [Week 1-2](https://nobutakashimada.github.io/docs/week1-2)
-- [Week 2-1](https://nobutakashimada.github.io/docs/week2-1)
-- [Week 2-2](https://nobutakashimada.github.io/docs/week2-2)
-- [Week 3-1](https://nobutakashimada.github.io/docs/week3-1)
-- [Week 3-2](https://nobutakashimada.github.io/docs/week3-2)
-- [Week 4](https://nobutakashimada.github.io/docs/week4)
+- [Week 1-1](/docs/week1-1)
+- [Week 1-2](/docs/week1-2)
+- [Week 2-1](/docs/week2-1)
+- [Week 2-2](/docs/week2-2)
+- [Week 3-1](/docs/week3-1)
+- [Week 3-2](/docs/week3-2)
+- [Week 4](/docs/week4)
 
 ## メンテナンス用
 - [backup script](backup.sh)
