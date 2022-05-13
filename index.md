@@ -13,25 +13,31 @@ header:
     - excerpt: '実世界情報実験３ロボットテーマ'
 ---
 
+{: .nonumber}
 # 実世界情報実験３ロボットテーマレジュメ
 
-## 2022年度春学期実験用レジュメ
+{: .counter-style-upper-alpha}
+# 2022年度春学期実験用レジュメ
 - [受講上の注意（最初に目を通すこと）](/docs/remarks)
-- [基本編(Turtlebot3の操作とROSの基礎)](/docs/basic)
-- [Gazeboシミュレータでのロボット操作](/docs/gazebo)
-- [ロボット実機との接続と移動操作](/docs/turtlebot3)
-- [環境地図の自動マッピング(SLAM)](/docs/slam)
-- [生成した環境地図に基づくナビゲーション](/docs/navigation)
-- [（後日追加）Pythonプログラミングによる移動指示とマニピュレータ操作実験]
-- [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](/docs/manipulation)
-- [レポート(Jupyter notebook)](/docs/report)
 
-## レポートファイル（ipynbファイル）
+1. [基本編(Turtlebot3の操作とROSの基礎)](/docs/basic)
+1. [Gazeboシミュレータでのロボット操作](/docs/gazebo)
+1. [ロボット実機との接続と移動操作](/docs/turtlebot3)
+1. [環境地図の自動マッピング(SLAM)](/docs/slam)
+1. [生成した環境地図に基づくナビゲーション](/docs/navigation)
+1. [（後日追加）Pythonプログラミングによる移動指示とマニピュレータ操作実験]
+1. [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](/docs/manipulation)
+
+- [レポートについて](/docs/report)
+
+{: .counter-style-upper-alpha}
+# レポートファイル（ipynbファイル）
 - [レポートipynbファイル１](2022exp3report1-3.ipynb)
 - [レポートipynbファイル２](2022exp3report4-5.ipynb)
 - [~~レポートipynbファイル ３（後日アップロード）~~](2022exp3report6.ipynb)
 
-## 参考URL
+{: .counter-style-upper-alpha}
+# 参考URL
 - [gedit Text Editor (English)](https://help.gnome.org/users/gedit/stable/)
 - [Turtlebot3 e-Manual(English)](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
 - [OpenMANIPULATOR-X e-Manual(English)](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
@@ -43,7 +49,8 @@ header:
 - [Gazebo公式(English)](http://gazebosim.org/)
 - [MoveIt公式(English)](http://docs.ros.org/melodic/api/moveit_tutorials/html/doc/getting_started/getting_started.html)
 
-## ROBOTIS製教材レジュメ
+{: .counter-style-upper-alpha}
+# ROBOTIS製教材レジュメ
 
 - [Week 1-1](/docs/week1-1)
 - [Week 1-2](/docs/week1-2)
@@ -53,7 +60,8 @@ header:
 - [Week 3-2](/docs/week3-2)
 - [Week 4](/docs/week4)
 
-## メンテナンス用
+{: .counter-style-upper-alpha}
+# メンテナンス用
 - [backup script](backup.sh)
 - [launch file updates](launch.tar.gz)
 
