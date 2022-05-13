@@ -6,6 +6,14 @@
 
 @import "minimal-mistakes";
 
+.nonumber.class-h1:before{
+  counter-increment: none;
+  content: "";
+}
+.counter-style-upper-alpha.class-h1:before{
+  content: counter(h1, upper-alpha) ". ";
+}
+
 .startsec2{
   counter-set: h1 1;
 }
