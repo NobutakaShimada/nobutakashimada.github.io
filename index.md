@@ -25,7 +25,7 @@ header:
 1. [ロボット実機との接続と移動操作](/docs/turtlebot3)
 1. [環境地図の自動マッピング(SLAM)](/docs/slam)
 1. [生成した環境地図に基づくナビゲーション](/docs/navigation)
-1. [Pythonプログラミングによる移動指示とマニピュレータ操作実験](/docs/patrol)
+1. [Pythonプログラミングによる移動指示とマニピュレータ操作](/docs/patrol)
 1. [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](/docs/manipulation)
 
 - [レポートについて](/docs/report)
