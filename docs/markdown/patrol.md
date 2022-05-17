@@ -299,7 +299,7 @@ if __name__ == '__main__':
 アイデアや作戦をレポートに記載してください。
 
 シミュレーション用に細い棒を設置した環境を用意してあります。
-Gazebo起動時に `gazebo_manipulator_stage_4_obstacles.launch` の
+Gazebo起動時に `gazebo_manipulator_stage_1_obstacles.launch` の
 launchファイルを指定することでその環境を利用できます。
 
 プログラムの雛形として `go_to_clicked_point_and_move_arm.py` という
