@@ -6,12 +6,26 @@
 
 @import "minimal-mistakes";
 
+/*
+ The bottom padding is defined as '0.5em' in both
+ 'div.highlighter-route' and 'div.highlighter-route.hightlight' .
+ The following definition cancels the double definition.
+*/
+div.highlighter-rouge .highlight {
+ padding-bottom:0em;
+}
+
 .nonumber.class-h1:before{
   counter-increment: none;
   content: "";
 }
 .counter-style-upper-alpha.class-h1:before{
   content: counter(h1, upper-alpha) ". ";
+}
+
+.nonumber.class-h2:before{
+  counter-increment: none;
+  content: "";
 }
 
 .startsec2{
