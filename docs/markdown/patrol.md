@@ -9,9 +9,20 @@ sidebar:
 
 {: .startsec6}
 # [Class 6] Pythonプログラムを用いた移動指示とマニピュレータ操作
+[課題6-1](#exercise6-1)
+[課題6-2](#exercise6-2)
+[課題6-3](#exercise6-3)
+[課題6-4](#exercise6-4)
+[課題6-5](#exercise6-5)
+[課題6-6](#exercise6-6)
+
+[発展課題6-EX1](#exercise6-ex1)
+[発展課題6-EX2](#exercise6-ex2)
+
+
 
 ## Pythonプログラムでの地図上座標の取得
-RVizの _Publish Point_ ボタンを押した後、地図上の点をクリックする
+RVizの **Publish Point** ボタンを押した後、地図上の点をクリックする
 ことで、その位置の座標が `/clicked_point` というtopicに出力されます。
 まずはこれを確認しましょう。
 
@@ -25,8 +36,10 @@ RVizの _Publish Point_ ボタンを押した後、地図上の点をクリッ�
 
 複数の点について座標を確認し、RViz上でのX軸、Y軸、Z軸の向きを確認してください。
 
-### 課題6-1 Pythonプログラムを用いた座標の取得
-{% capture staff01 %}
+
+### Pythonプログラムを用いた座標の取得
+{:id="exercise6-1"}
+{% capture exercise6-1 %}
 `rostopic echo` コマンドを用いてtopicの情報を表示する代わりに
 Pythonプログラム中でtopicの情報を取得することもできます。
 プログラム内で利用できるデータとして取得できるので、それに応じて
@@ -39,7 +52,8 @@ $ rosrun exp3 print_clicked_point.py
 を実行し、topicの情報が表示されることを確認してください。
 これを複数の位置について行い、指定した位置と座標値を報告してください。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise6-1 title="課題6-1" %}
+
 
 ### ファイルの内容確認
 先程実行したPython scriptは `~/exp3_ws/src/exp3/scripts/` という
@@ -47,24 +61,28 @@ $ rosrun exp3 print_clicked_point.py
 記述されています。
 ファイルの内容を確認するには以下のような方法があります。
 - `cat` コマンドで端末上に表示する。
-```bash
-$ cat ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
-```
-このコマンドは端末上に内容が出力された後に終了し、検索したり遡って
-見ることはできません(端末自身のスクロールバーである程度は遡れます)。
+  ```bash
+  $ cat ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
+  ```
+  このコマンドは端末上に内容が出力された後に終了し、検索したり遡って
+  見ることはできません(端末自身のスクロールバーである程度は遡れます)。
 - `less` コマンドで表示する。
-```bash
-$ less ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
-```
-`cat` と異なり矢印キーや`j`, `k`キーの
-入力で表示位置を移動できます。`q`を入力するとコマンドを終了します。
-(参考: [manpage of less](http://manpages.ubuntu.com/manpages/bionic/ja/man1/less.1.html) )
-- エディタで開く。
-```bash
-$ gedit ~/exp3_ws/src/exp3/scripts/print_clicked_point.py &
-```
-端末とは別にウィンドウが開いて表示、編集できます。
-- GUIを利用した方法を使い、エディタで開く。
+  ```bash
+  $ less ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
+  ```
+  `cat` と異なり矢印キーや`j`, `k`キーの
+  入力で表示位置を移動できます。`q`を入力するとコマンドを終了します。
+  (参考: [manpage of less](http://manpages.ubuntu.com/manpages/bionic/ja/man1/less.1.html) )
+- エディタ(gedit)で開く。
+  ```bash
+  $ gedit ~/exp3_ws/src/exp3/scripts/print_clicked_point.py &
+  ```
+  端末とは別にウィンドウが開いて表示、編集できます。
+
+  {: .notice--info}
+  実験室のLinux環境には **gedit** の他にも **vi** や **VSCode** などの
+  エディタも導入されています。好みのものを使ってください。
+- GUIを利用した方法を使い、エディタ(gedit)で開く。
   まず下記の方法などでディレクトリを表示するウィンドウを開きます。
 
   {: type="a"}
@@ -104,6 +122,7 @@ if __name__ == '__main__':
 この関数については
 [rospy.clientのマニュアルの `wait_for_message` の項](https://docs.ros.org/en/melodic/api/rospy/html/rospy.client-module.html#wait_for_message)
 を参照してください。
+
 
 
 ## プログラム内に記述された座標への移動
@@ -148,17 +167,15 @@ if __name__ == '__main__':
 この変数はXY平面内の向きを度([degree])単位で表現した数値で、
 X軸の正の方向が0度となっています。
 
-
-{% capture staff01 %}
-**課題6-2**
-
+{:id="exercise6-2"}
+{% capture exercise6-2 %} 
 地図上の適当な位置の座標を確認して `point_xyz` に設定した上で
 ```bash
 $ rosrun exp3 go_to_fixed_point.py
 ```
 を実行し、ロボットが指定した位置に移動することを確認してください。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise6-2 title="課題6-2" %}
 
 {: .notice--info}
 `go_to_fixed_point.py` で使われている `Turtlebot3` というクラスや
@@ -169,7 +186,8 @@ $ rosrun exp3 go_to_fixed_point.py
 いて、これを参考にすればより細かい制御を行うことも可能です。
 
 
-## 課題6-3 RViz上で指定した位置への移動
+
+## RViz上で指定した位置への移動
 `go_to_fixed_point.py` では移動先の位置はプログラム内に
 直接書かれていました。
 このように、何らかの情報をプログラム上に直接書いておくことは
@@ -182,18 +200,21 @@ $ rosrun exp3 go_to_fixed_point.py
 作ってみましょう
 ( RViz上の **2D Nav Goal** の機能を自分で作ることに相当します)。
 
-{: .nonumber}
-## 課題6-3
-
-{: .notice--danger}
+{:id="exercise6-3"}
+{% capture exercise6-3 %}
 実験室のLinux環境の `~/exp3_ws/src/exp3/scripts/` のディレクトリに
 あらかじめ `go_to_clicked_point.py` という名前でプログラムの雛形を
 用意してあります。
 これを修正してRVizの **Publish Point** ボタンの機能で位置を指定すると
 ロボットがその位置に移動するプログラムを作成してください。
+指定する位置を複数種類変えながらプログラムを実行し、その結果を
+報告してください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-3 title="課題6-3" %}
 
 
-## 課題6-4 アームの操作
+
+## アームの操作
 実験室のLinux環境の `~/exp3_ws/src/exp3/scripts/` のディレクトリに
 `move_arm.py` という名前のプログラムを用意してあります。
 このプログラムでは3つの関数が定義されていて、それぞれの機能は以下の
@@ -207,27 +228,72 @@ $ rosrun exp3 go_to_fixed_point.py
 ```bash
 $ rosrun exp3 move_arm.py
 ```
-まずは、上記の関数を使ってアームを動かすようプログラムを修正して
+プログラムの内容は以下の通りです。
+~~~ python
+#!/usr/bin/env python
+import rospy
+
+import geometry_msgs.msg
+import exp3_turtlebot3
+
+def rotate_arm(robot):
+    # Each entry means a pair of joint angles[rad] and time[sec].
+    joint_waypoints = [
+        [{'joint1': 0.0}, 0.0],
+        [{'joint1': -0.85*math.pi}, 3.0],
+        [{'joint1': 0.85*math.pi}, 6.0],
+        [{'joint1': 0.0}, 9.0]
+    ]
+    robot.follow_joint_trajectory(joint_waypoints)
+
+def extend_arm(robot):
+    joint_waypoints = [
+        [{'joint2': 0.4*math.pi, 'joint3': -0.3*math.pi}, 3.0]
+    ]
+    robot.follow_joint_trajectory(joint_waypoints)
+
+def initialize_arm_joint(robot):
+    joint_waypoints = [
+        [{'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0}, 3.0]
+    ]
+    robot.follow_joint_trajectory(joint_waypoints)
+
+
+if __name__ == '__main__':
+    rospy.init_node('move_arm', anonymous=False)
+    robot = exp3_turtlebot3.Turtlebot3(robot_origin_frame_id='base_link')
+    robot.admissible_distance = -1.0
+
+    ########################################################
+    # Move arm
+    #
+
+    # WRITE CODE HERE
+
+    ########################################################
+
+
+~~~
+まずは上記の3つの関数を使ってアームを動かすようプログラムを修正して
 どのような動作が行われるか確認してください。
 
-{: .nonumber}
-## 課題6-4
-
-{: .notice--danger}
-`move_arm.py` で定義されている関数を参考にして、アームをある軌道で
+{:id="exercise6-4"}
+{% capture exercise6-4 %}
+`move_arm.py` で定義されている関数を参考にしてアームをある軌道で
 動かし最後には初期状態に戻すような関数を作成し、動作させてその結果を
 報告してください。
 但し、アームの軌道は少なくとも3つの中継点を通るようなもので、
 `rotate_arm()` とは異なるものにしてください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-4 title="課題6-4" %}
 
 
-## 課題6-5 RVizで指定された点にある棒を倒すプログラム
+## RVizで指定された点にある棒を倒すプログラム
 これまでに作成したロボットを移動させるプログラムとアームを動かす
 プログラムを組み合わせて、地図領域内に立てた棒をアームで倒す
 プログラムを作ってみましょう。
 
-なるべく、ロボット本体の接触ではなくアームの動作で倒せるよう
-考えてみてください。
+ロボット本体の接触ではなくアームの動作で倒せるよう考えてみてください。
 棒の近くまでの移動は直線的に行えるものと仮定しても構いません。
 見通せない場所にある棒にも接近できる工夫があれば加点対象となります。
 アイデアや作戦をレポートに記載してください。
@@ -239,23 +305,73 @@ launchファイルを指定することでその環境を利用できます。
 プログラムの雛形として `go_to_clicked_point_and_move_arm.py` という
 ファイルを用意してありますのでこれも活用してください。
 
-{: .nonumber}
-## 課題6-5
-
-{: .notice--danger}
+{:id="exercise6-5"}
+{% capture exercise6-5 %}
 RVizで棒の立っている位置を指定するとその棒の近くに移動し、
 アームを伸ばしてから回転させ、棒を倒すプログラムを作成、実行してください。
 レポートにはプログラム作成時のアイデアや作戦についての説明、
 動作させたときの様子、及び実行結果についての考察を含めてください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-5 title="課題6-5" %}
 
 
-## 課題 円形障害物を検知しそこに移動するプログラム(押し倒し可)
+
+## RVizで指定された点にある棒を倒すプログラム(連続動作版)
+{:id="exercise6-6"}
+{% capture exercise6-6 %}
+課題6-5で作成したプログラムをもとに、
+「RVizで位置を指定するとその位置の棒を倒す」という一連の動作を
+繰り返し行えるプログラムを作成し、実行してください。
+レポートにはプログラム作成時のアイデアや作戦についての説明、
+動作させたときの様子、及び実行結果についての考察を含めてください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-6 title="課題6-6" %}
+
+{: .notice--info}
+1回の動作後、アームを伸ばしたまま移動しようとすると障害物に接触する
+可能性があります。
+
+
+## 発展課題(執筆中) 円形障害物を検知しその近くに移動するプログラム
+上記の課題では倒すべき棒の位置は人がRVizで指定していましたが、
+ロボットのセンサにも棒は写るのでセンサで得られた情報から棒を
+発見することも原理的には可能です。
+実験室のLinux環境には、センサ情報から円筒状の障害物を検出するための
+ROSプログラムを導入してあります。
+これを使って、ロボット自身が棒を発見してその近くに移動する
+動作を行うプログラムを作ってみましょう。
+
+円筒状の障害物を検知するためのROSプログラムは下記のコマンドで実行できます。
 ```bash
 $ rosrun exp3 obstacle_detector.launch
 ```
-go_to_obstacle.py
+これを実行すると、検出された円筒状障害物の情報が
+`/tracked_obstacles` というトピックに出力されるようになります。
+これは[obstacle_detector](https://github.com/tysik/obstacle_detector)という
+ROSパッケージの機能です。
+`go_to_obstacle.py` にプログラムの雛形が用意してあり、
+このトピックから情報を取得する例を載せてあります。
+詳細は https://github.com/tysik/obstacle_detector を参照してください。
 
-## 課題 円形障害物を検知しそこに近付いて止まるプログラム(押し倒し不可)
-go_to_obstacle_and_move_arm.py
+{:id="exercise6-ex1"}
+{% capture exercise6-ex1 %}
+センサ情報から円筒状の物体を検知しその近くに移動する
+プログラムを作成し、実行してください。
+レポートにはプログラム作成時のアイデアや作戦についての説明、
+動作させたときの様子、及び実行結果についての考察を含めてください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-ex1 title="発展課題6-EX1" %}
 
 
+## 発展課題(執筆中) 円形障害物を検知しそれを倒すプログラム
+{:id="exercise6-ex2"}
+{% capture exercise6-ex2 %}
+センサ情報から棒(円筒状の物体)を検知しその近くに移動した後に
+アームを動作させて棒を倒すプログラムを作成し、実行してください。
+レポートにはプログラム作成時のアイデアや作戦についての説明、
+動作させたときの様子、及び実行結果についての考察を含めてください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-ex2 title="発展課題6-EX2" %}
+
+{: .notice--info}
+プログラムの雛形を`go_to_obstacle_and_move_arm.py`として用意してあります。
