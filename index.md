@@ -47,9 +47,9 @@ header:
 - [ROS公式 サービスとパラメータの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams)
 - [ROS公式ページヘのアクセスができないときのarchive.orgによるキャッシュ版ROSチュートリアル](http://web.archive.org/web/20200920235105/https://wiki.ros.org/ja/ROS/Tutorials)
 - [Gazebo公式(English)](http://gazebosim.org/)
-- [ROS Navigationスタックのわかりやすいかつ詳しい解説記事] (https://qiita.com/MoriKen/items/0b75ab291ab0d95c37c2)
-  - [AMCLによる自己位置推定の原理説明] (https://qiita.com/MoriKen/items/dfb6eb168649873589f0)
-  - [gmappingによる地図生成の原理説明] (https://qiita.com/MoriKen/items/0f2550a2adbdcd3da04e)
+- [ROS Navigationスタックのわかりやすいかつ詳しい解説記事](https://qiita.com/MoriKen/items/0b75ab291ab0d95c37c2)
+  - [AMCLによる自己位置推定の原理説明](https://qiita.com/MoriKen/items/dfb6eb168649873589f0)
+  - [gmappingによる地図生成の原理説明](https://qiita.com/MoriKen/items/0f2550a2adbdcd3da04e)
 - [MoveIt公式(English)](http://docs.ros.org/melodic/api/moveit_tutorials/html/doc/getting_started/getting_started.html)
 
 {: .counter-style-upper-alpha}
