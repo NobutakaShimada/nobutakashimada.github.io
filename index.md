@@ -12,6 +12,10 @@ header:
   intro:
     - excerpt: '実世界情報実験３ロボットテーマ'
 ---
+{% assign GITHUB_PAGES_BRANCH = "2022test" %}
+{% assign COLAB_PREFIX = "https://colab.research.google.com/github/"
+   | append: site.repository | append: "/blob/"
+   | append: GITHUB_PAGES_BRANCH %}
 
 {: .nonumber}
 # 実世界情報実験３ロボットテーマレジュメ
@@ -28,13 +32,16 @@ header:
 1. [Pythonプログラミングによる移動指示とマニピュレータ操作](/docs/patrol)
 1. [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](/docs/manipulation)
 
-- [レポートについて](/docs/report)
 
 {: .counter-style-upper-alpha}
 # レポートファイル（ipynbファイル）
-- [レポートipynbファイル１](2022exp3report1-3.ipynb)
-- [レポートipynbファイル２](2022exp3report4-5.ipynb)
-- [~~レポートipynbファイル ３（後日アップロード）~~](2022exp3report6.ipynb)
+- [レポートについて](/docs/report)
+- [レポートipynbファイル１ (Google Colaboratoryで開く)]({{ "2022exp3report1-3.ipynb" | relative_url | prepend: COLAB_PREFIX}})
+  ([ダウンロード](2022exp3report1-3.ipynb))
+- [レポートipynbファイル２ (Google Colaboratoryで開く)]({{ "2022exp3report4-5.ipynb" | relative_url | prepend: COLAB_PREFIX}})
+  ([ダウンロード](2022exp3report4-5.ipynb))
+- [レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2022exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})
+  ([ダウンロード](2022exp3report6.ipynb))
 
 {: .counter-style-upper-alpha}
 # 参考URL
