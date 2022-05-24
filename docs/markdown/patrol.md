@@ -76,13 +76,41 @@ Pythonプログラム中でtopicの情報を取得することもできます。
 先程実行したPython scriptは `~/exp3_ws/src/exp3/scripts/` という
 ディレクトリ(フォルダ)にある `print_clicked_point.py` というファイルに
 記述されています。
-ファイルの内容を確認するには以下のような方法があります。
-- `cat` コマンドで端末上に表示する。
-  ```bash
-  $ cat ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
-  ```
-  このコマンドは端末上に内容が出力された後に終了し、検索したり遡って
-  見ることはできません(端末自身のスクロールバーである程度は遡れます)。
+
+ファイルの内容を確認する最も単純なコマンドとして `cat` コマンドが
+あります。
+下記のようなコマンドで `print_clicked_point.py` の内容を確認する
+ことができます。
+```bash
+$ cat ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
+```
+このコマンドは端末上に内容が出力された後に終了し、検索したり遡って
+見ることはできません(端末自身のスクロールバーである程度は遡れます)。
+
+上記のコマンドでは `print_clicked_point.py` の場所を
+[絶対パス(absolute path)](https://e-words.jp/w/%E7%B5%B6%E5%AF%BE%E3%83%91%E3%82%B9.html) で指定しています(フルパス, full pathとも呼ばれる)。
+絶対パスは非常に長いので、
+**ディレクトリを移動して現在のディレクトリからの[相対パス](https://e-words.jp/w/%E7%9B%B8%E5%AF%BE%E3%83%91%E3%82%B9.html)で指定**
+する方法もあります。
+以下の例では `~/exp3_ws/src/exp3/scripts` というディレクトリに
+移動してから相対パスで `cat` コマンドを起動しています。
+```bash
+$ cd ~/exp3_ws/src/exp3/scripts
+$ cat print_clicked_point.py
+```
+
+上記では `cd` コマンドでディレクトリを移動しています。
+実験室のLinux環境ではあらかじめ `exp3` というROSパッケージを
+登録してありますので `roscd` で移動することもできます。
+例えば下記のように `roscd` コマンドを使うと上記と同じようなことが
+できます。
+```bash
+$ roscd exp3/scripts
+$ cat print_clicked_point.py
+```
+
+ファイルの内容を確認するには `cat` コマンドの他にも色々な方法があります。
+以下にその例を示します。
 - `less` コマンドで表示する。
   ```bash
   $ less ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
@@ -90,11 +118,26 @@ Pythonプログラム中でtopicの情報を取得することもできます。
   `cat` と異なり矢印キーや`j`, `k`キーの
   入力で表示位置を移動できます。`q`を入力するとコマンドを終了します。
   (参考: [manpage of less](http://manpages.ubuntu.com/manpages/bionic/ja/man1/less.1.html) )
+
+  相対パスを使う場合は以下のようになります。
+  ```bash
+  $ roscd exp3/scripts
+  $ less print_clicked_point.py
+  ```
+
 - エディタ(gedit)で開く。
   ```bash
   $ gedit ~/exp3_ws/src/exp3/scripts/print_clicked_point.py &
   ```
   端末とは別にウィンドウが開いて表示、編集できます。
+  行末の「&」はバックグラウンド実行(端末とは別に同時平行的に実行される)を
+  意味します。
+
+  相対パスを使う場合は以下のようになります。
+  ```bash
+  $ roscd exp3/scripts
+  $ gedit print_clicked_point.py &
+  ```
 
   {: .notice--info}
   実験室のLinux環境には **gedit** の他にも **vi** や **VSCode** などの
@@ -140,6 +183,40 @@ if __name__ == '__main__':
 この関数については
 [rospy.clientのマニュアルの `wait_for_message` の項](https://docs.ros.org/en/melodic/api/rospy/html/rospy.client-module.html#wait_for_message)
 を参照してください。
+
+### Pythonプログラムのインタラクティブな実行
+Pythonは [インタプリタ](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF) なので、
+**プログラムをその場で入力しながら実行** することができます。
+
+`print_clicked_point.py` をインタラクティブ(interactive)実行して
+`point` という変数にどういう情報がどのように入っているか確認して
+みましょう。
+`~/exp3_ws/src/exp3/scripts/` のディレクトリに移動してから
+`python -i` コマンドでプログラムを実行してみてください。
+```bash
+$ roscd exp3/scripts
+$ python -i print_clicked_point.py
+```
+実行後、 `Waiting for a point to be clicked...` のメッセージが
+表示されてからRVizの **Publish Point** の機能で適当な位置を指定
+してください。
+そうすると `/clicked_point` というROS topicに送られた情報が
+`point` 変数に代入された状態でPythonプログラムの入力を待ち受ける
+状態になります。
+下記の行のそれぞれを実行して、 `point` 変数内の情報にアクセスする
+方法を確認してみてください。
+~~~ python
+print(point)
+
+print(point.header)
+
+print(point.point)
+
+print(point.point.x)
+~~~
+プログラムの動作確認やデバッグ、改良の際にインタラクティブ実行は
+大変便利です。
+以下の課題に取り組む際も是非活用してください。
 
 
 
@@ -307,7 +384,7 @@ $ rosrun exp3 go_to_fixed_point.py
 通りです。
 -  `rotate_arm()` : アームを回転させる
 -  `extend_arm()` : アームを伸ばす
--  `initialize_arm_joint()` : アームを初期姿勢に戻す
+-  `initialize_arm()` : アームを初期姿勢に戻す
 
 `move_arm.py` は以下のようにして実行できますが、そのままでは
 何もしないプログラムとなっています。
@@ -316,11 +393,18 @@ $ rosrun exp3 move_arm.py
 ```
 まずは上記の3つの関数を使ってアームを動かすようプログラムを修正して
 どのような動作が行われるか確認してください。
+インタラクティブ実行を用いて `rotate_arm(robot)` などを実行させて
+動作を確認することもできます。
+```bash
+$ roscd exp3/scripts
+$ python -i move_arm.py
+```
 
 `move_arm.py` の内容は以下の通りです。
 ~~~ python
 #!/usr/bin/env python
 import rospy
+import math
 
 import geometry_msgs.msg
 import exp3_turtlebot3
@@ -337,11 +421,11 @@ def rotate_arm(robot):
 
 def extend_arm(robot):
     joint_waypoints = [
-        [{'joint2': 0.4*math.pi, 'joint3': -0.3*math.pi}, 3.0]
+        [{'joint2': 0.25*math.pi, 'joint3': -0.25*math.pi}, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
 
-def initialize_arm_joint(robot):
+def initialize_arm(robot):
     joint_waypoints = [
         [{'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0}, 3.0]
     ]
@@ -419,6 +503,8 @@ launchファイルを指定することでその環境を利用できます。
 1. プログラム作成時のアイデアや目標(棒の近くに移動する、
    アーム動作で棒を倒す)を達成するための作戦、アルゴリズムについての
    説明をレポートで報告してください。
+   アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
+   までは一直線で移動できる、など)があればそれを明示すること。
 
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートのノートブックには適宜セルを追加して図などの説明資料を
@@ -457,7 +543,9 @@ launchファイルを指定することでその環境を利用できます。
    繰り返し行えるプログラムを作成し、レポートに貼り付けてください。
 1. プログラム作成時のアイデアや目標(棒の近くに移動する、
    アーム動作で棒を倒す、これらの動作を繰り返す)を達成するための
-   作戦についての説明をレポートで報告してください。
+   作戦、アルゴリズムについての説明をレポートで報告してください。
+   アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
+   までは一直線で移動できる、など)があればそれを明示すること。
 
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートのノートブックには適宜セルを追加して図などの説明資料を
@@ -513,7 +601,10 @@ ROSパッケージの機能です。
 1. センサ情報から円筒状の物体を検知しその近くに移動する
    プログラムを作成し、レポートに貼り付けてください。
 1. プログラム作成時のアイデアや目標(棒を検知する、棒の近くに移動する)を
-   達成するための作戦についての説明をレポートで報告してください。
+   達成するための作戦、アルゴリズムについての説明をレポートで報告して
+   ください。
+   アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
+   までは一直線で移動できる、など)があればそれを明示すること。
 
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートのノートブックには適宜セルを追加して図などの説明資料を
@@ -547,7 +638,10 @@ ROSパッケージの機能です。
    プログラムを作成し、レポートに貼り付けてください。
 1. プログラム作成時のアイデアや目標(棒を検知する、棒を倒せる位置に
    移動する、棒を倒すなど)を
-   達成するための作戦についての説明をレポートで報告してください。
+   達成するための作戦、アルゴリズムについての説明をレポートで報告
+   してください。
+   アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
+   までは一直線で移動できる、など)があればそれを明示すること。
 
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートのノートブックには適宜セルを追加して図などの説明資料を
