@@ -393,12 +393,24 @@ $ rosrun exp3 move_arm.py
 ```
 まずは上記の3つの関数を使ってアームを動かすようプログラムを修正して
 どのような動作が行われるか確認してください。
+ロボット実機でアームを動作させる際には事前に
+`robot_manipulation.launch` を起動しておく必要があります。
+```bash
+$ roslaunch exp3 robot_manipulation.launch
+```
+
 インタラクティブ実行を用いて `rotate_arm(robot)` などを実行させて
 動作を確認することもできます。
 ```bash
 $ roscd exp3/scripts
 $ python -i move_arm.py
 ```
+現在のアームの姿勢の情報は `robot` オブジェクトの
+`get_current_joint_positions()` メソッドで取得する
+こともできます。
+~~~ python
+print(robot.get_current_joint_positions())
+~~~
 
 `move_arm.py` の内容は以下の通りです。
 ~~~ python
@@ -412,10 +424,17 @@ import exp3_turtlebot3
 def rotate_arm(robot):
     # Each entry means a pair of joint angles[rad] and time[sec].
     joint_waypoints = [
-        [{'joint1': 0.0}, 0.0],
-        [{'joint1': -0.85*math.pi}, 3.0],
-        [{'joint1': 0.85*math.pi}, 6.0],
-        [{'joint1': 0.0}, 9.0]
+        [{'joint1': -0.85*math.pi}, 3.0]
+    ]
+    robot.follow_joint_trajectory(joint_waypoints)
+    rospy.sleep(3)
+    joint_waypoints = [
+        [{'joint1': 0.85*math.pi}, 6.0]
+    ]
+    robot.follow_joint_trajectory(joint_waypoints)
+    rospy.sleep(3)
+    joint_waypoints = [
+        [{'joint1': 0.0}, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
 
@@ -444,8 +463,6 @@ if __name__ == '__main__':
     # WRITE CODE HERE
 
     ########################################################
-
-
 ~~~
 
 {:id="exercise6-4"}
