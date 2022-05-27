@@ -262,13 +262,80 @@ if __name__ == '__main__':
 この変数はXY平面内の向きを度([degree])単位で表現した数値で、
 X軸の正の方向が0度となっています。
 
-地図上の適当な位置の座標を確認して `point_xyz` に設定した上で
+`teleop.launch` を実行しているとモータの挙動が干渉してしまうので、
+まずは `teleop.launch` が動いていない状態にしてください。
+地図上の適当な位置の座標を確認し、 `go_to_fixed_point.py` を編集して
+その座標を `point_xyz` に設定してください。
+その状態で
 ```bash
 $ rosrun exp3 go_to_fixed_point.py
 ```
 を実行し、ロボットが指定した位置に移動することを確認してください。
 また、目標位置の座標を変更して複数回実験を行い、座標に応じた位置に
 移動していることを確認してください。
+
+### 目標位置付近で回転し続ける問題
+上記のプログラムでロボットに移動指示を出すと、目標位置付近まで
+移動した後に停止せず小さい半径で回転し続ける場合があります。
+目標位置付記での行われる細かい位置合わせにおいて、
+経路計画上の想定動作と実際のロボットの挙動が一致していないために
+起こる現象のようです。
+
+目標位置付近で停止せず回転し続ける現象が起きた場合は下記の
+コマンドを実行してください。
+```bash
+$ rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}
+```
+現在の目標を取り消してロボットを停止させることができます。
+
+### 経路計画のパラメータ変更
+目標位置付近で回転し続ける現象が起こらないよう、
+経路計画のパラメータを変更することができます。
+但し、ロボット実機の挙動とGazeboによるシミュレーション環境での
+ロボットの挙動は一部異なるため、それぞれの環境で適切な
+パラメータが異なる点に注意してください。
+
+デフォルトではGazebo環境に合うようパラメータを設定してあります。
+両環境で変更するべきパラメータは以下の通りです。
+
+| パラメータ名 | Gazebo環境用 | 実機環境用 | 参考情報 |
+||(デフォルト)|||
+|:-:|:-:|:-:|:-:|
+| /move_base/DWAPlannerROS/max_vel_theta | 1.2 | 6.4 | [解説](http://wiki.ros.org/dwa_local_planner#line-463) (旧称 max_rot_vel として記載)|
+| /move_base/DWAPlannerROS/min_vel_theta | 1.0 | 4.6 | [解説](http://wiki.ros.org/dwa_local_planner#line-468) (旧称 min_rot_vel として記載)|
+
+これらのパラメータは `rqt_reconfigure` や `rosparam` コマンドを
+使って変更できます。
+但し `navigation.launch` を起動するとパラメータはリセット
+されますので、 `navigation.launch` を起動した後で変更する
+必要があります。
+
+#### `rqt_reconfigure` でのパラメータ変更
+1. 下記のコマンドで `rqt_reconfigure` を起動してください。
+   ```bash
+   $ rosrun rqt_reconfigure rqt_reconfigure &
+   ```
+1. 左のペインで `move_base` を展開し、
+   その下にある `DWAPlannerROS` を選択してください。
+1. 右のペインにパラメータ一覧が表示されるので
+   その中の `max_vel_theta`, `min_vel_theta` の値を
+   それぞれ設定してください。
+
+#### `rosparam` コマンドでのパラメータ変更
+下記のようなコマンドでパラメータを設定してください
+(実機環境用の値を設定する例)。
+```bash
+$ rosparam set /move_base/DWAPlannerROS/max_vel_theta 6.4
+$ rosparam set /move_base/DWAPlannerROS/min_vel_theta 4.6
+```
+現在のパラメータの値は下記のコマンドで確認できます。
+```bash
+$ rosparam get /move_base/DWAPlannerROS/max_vel_theta
+$ rosparam get /move_base/DWAPlannerROS/min_vel_theta
+```
+
+
+### 課題
 
 {:id="exercise6-2"}
 {% capture exercise6-2 %}
@@ -282,6 +349,11 @@ $ rosrun exp3 go_to_fixed_point.py
    加えて、作成したプログラム実行中のノード間の情報のやりとりに
    ついて貼り付けた画像を参照しながら説明する文章を作成しレポートで
    報告してください。
+
+   ROSのaction機構による情報の送受信が `rqt_graph` の画面上でどの
+   ように表示されるかについては
+   [`rqt_graph`とactionについてのヒント](#exercise6-2-hint)を
+   参照してください。
 1. 移動前の状況として、RViz上の表示を以下のように調整した後の状態で
    RVizのウィンドウをキャプチャしレポートに貼り付けてください。
    - `map` frame における原点(X,Y) = (0,0)が
@@ -309,7 +381,27 @@ $ rosrun exp3 go_to_fixed_point.py
 {% endcapture %}
 {% include phyexp3-exercise.html content=exercise6-2 title="課題6-2" %}
 
+{: .notice--info id="exercise6-2-hint"} 
+**`rqt_graph`とactionについてのヒント:**\\
+`go_to_fixed_point.py` がロボットを移動させる際にはROSの
+[actionという機能](http://wiki.ros.org/actionlib#Overview)を
+使っています。
+これは他のROS node(プログラム)に何らかの指示(リクエスト)を送り、
+その指示の実行状態(実行中である、完了した、失敗した、など)を
+監視できるようにするための機能です。
+この機能に関するリクエストやステータス(状態)の送受信にはROS topicが
+使われていて、具体的なtopic名やその機能は
+[ROS Wikiのactionlib/DetailedDescriptionのページ](http://wiki.ros.org/actionlib/DetailedDescription#Action_Interface_.26_Transport_Layer)
+に説明があります。
+例えばロボットを移動させるための `/move_base` という action の場合
+`/move_base/goal`, `/move_base/status` などのtopicが使われます。
+\\
+但し、これらのactionに関連するtopicは `rqt_graph` 上では
+**個別には表示されず**、
+**/move_base/action_topicsのようにまとめて表示される**ので注意してください。
+
 {: .notice--info}
+**プログラム中で使用しているクラスやメソッドについて:**\\
 `go_to_fixed_point.py` で使われている `Turtlebot3` というクラスや
 このクラスの `make_goal()` , `go_to_goal()` などのメソッドは
 `exp3_turtlebot3.py` というファイルで定義されています。
@@ -349,6 +441,11 @@ $ rosrun exp3 go_to_fixed_point.py
    加えて、作成したプログラム実行中のノード間の情報のやりとりに
    ついて貼り付けた画像を参照しながら説明する文章を作成しレポートで
    報告してください。
+
+   ROSのaction機構による情報の送受信が `rqt_graph` の画面上でどの
+   ように表示されるかについては
+   [`rqt_graph`とactionについてのヒント](#exercise6-2-hint)を
+   参照してください。
 1. 下記の条件で移動前のRVizの画面をキャプチャし
    レポートに貼り付けてください([課題6-2](#exercise6-2) と同様)。
    - `map` frame における原点(X,Y) = (0,0)が
@@ -376,15 +473,80 @@ $ rosrun exp3 go_to_fixed_point.py
 {% include phyexp3-exercise.html content=exercise6-3 title="課題6-3" %}
 
 
-
 ## アームの操作
+### アーム動作の前準備
+以下に紹介するプログラムでロボットのアームを動かす場合は事前に
+`navigation.launch` を地図情報付きで起動しておく必要があります。
+これはロボット本体は移動させない場合でも必要で、Gazebo環境と実機環境の
+どちらでも必要です。
+
+また、実機環境でアームを動かすには `robot_manipulation.launch` も
+起動しておく必要もあります。
+以下に必要な手順とコマンド例をまとめます。
+
+#### Gazeboの場合
+1. `roscore`を起動する。
+1. Gazeboを起動する。
+
+   起動コマンドの例:
+   ```bash
+   $ roslaunch exp3 gazebo_manipulator_stage_4.launch
+   ```
+
+1. Gazeboのシミュレーション環境の時間を開始させる。
+
+   GazeboのPlayボタンをクリックするか、下記のコマンドを実行する。
+   ```bash
+   $ rosservice call gazebo/unpause_physics
+   ```
+
+1. `navigation.launch` を起動する。
+
+   起動コマンドの例:
+   ```bash
+   $ roslaunch exp3 navigation.launch map_name:=stage4
+   ```
+
+#### 実機の場合
+1. `roscore`を起動する。
+1. `machine.launch` を起動する。
+
+   起動コマンドの例:
+   ```bash
+   $ roslaunch exp3 machine.launch id:=25
+   ```
+
+1. `navigation.launch` を起動する。
+
+   起動コマンドの例:
+   ```bash
+   $ roslaunch exp3 navigation.launch map_name:=stage4
+   ```
+
+1. `robot_manipulation.launch` を起動する。
+
+   起動コマンドの例:
+   ```bash
+   $ roslaunch exp3 robot_manipulation.launch
+   ```
+
+### `move_arm.py`
 実験室のLinux環境の `~/exp3_ws/src/exp3/scripts/` のディレクトリに
 `move_arm.py` という名前のプログラムを用意してあります。
 このプログラムでは3つの関数が定義されていて、それぞれの機能は以下の
 通りです。
--  `rotate_arm()` : アームを回転させる
--  `extend_arm()` : アームを伸ばす
--  `initialize_arm()` : アームを初期姿勢に戻す
+-  `rotate_arm()` : アームを回転させる。
+-  `extend_arm()` : アームを伸ばす。
+-  `initialize_arm()` : アームを初期姿勢に戻す。
+
+これらの関数は `robot` オブジェクトのメソッドを使って実装されています。
+`robot` オブジェクトのメソッドのいくつかの機能を以下に示します。
+これらのメソッドは `exp3_turtlebot.py` で定義されています。
+- `robot.follow_joint_trajectory(joint_waypoints)` : 引数で与えられた
+  関節角度列の通りにアームの関節を動かす。
+- `robot.get_current_joint_positions()` : 現在の関節角度を返す。
+  返り値は4つの値を持つリストで、それぞれ `joint1` から `joint4` の
+  関節角度(radian単位)に対応しています。
 
 `move_arm.py` は以下のようにして実行できますが、そのままでは
 何もしないプログラムとなっています。
@@ -479,6 +641,11 @@ if __name__ == '__main__':
    加えて、作成したプログラム実行中のノード間の情報のやりとりに
    ついて貼り付けた画像を参照しながら説明する文章を作成しレポートで
    報告してください。
+
+   ROSのaction機構による情報の送受信が `rqt_graph` の画面上でどの
+   ように表示されるかについては
+   [`rqt_graph`とactionについてのヒント](#exercise6-2-hint)を
+   参照してください。
 1. 実際に実機で動作させてその様子を撮影し、写真をレポートに
    貼り付けてください。
    アーム動作の流れが分かりやすいよう特徴的なタイミングを
@@ -511,6 +678,35 @@ launchファイルを指定することでその環境を利用できます。
 
 プログラムの雛形として `go_to_clicked_point_and_move_arm.py` という
 ファイルを用意してありますのでこれも活用してください。
+
+{: .notice--info}
+**ヒント1:** \\
+指定された物体位置の手前で停止するにはいくつかの方法があります。
+その方法のひとつとして現在位置と物体位置の
+関係を見て、その間の点に移動目標位置を設定するというものがあります。
+ロボットの現在位置は `robot.get_current_point()` で
+取得することができます。
+このメソッドの返り値の型は `geometry_msgs.msg.PointStamped` で
+`/clicked_point` のtopicで取得できるものと同じ型です。
+この返り値から現在位置の座標を取り出して物体位置を結ぶ直線を求め、
+その直線上で物体位置に十分近い点の座標を計算し、その座標を移動の
+目標位置とすれば物体の手前で停止させられます。
+
+{: .notice--info}
+**ヒント2:** \\
+物体位置の手前に目標位置を設定する他にも
+「物体に十分近付いたら停止する」という方法もあります。
+`robot.admissible_distance` はこのような動作を実現するための変数です。
+例えばこの変数に 0.2 という値を設定しておくと目標位置との距離が 0.2[m]
+以下になったときに `robot.go_to_goal()` の処理が終了して次の
+処理を行うことができます。
+但し、目標位置は有効なままなので移動し続ける状態となります。
+そこで `robot.go_to_goal()` の次の命令として目標位置を取り消して
+停止させるメソッド `robot.stop_move_base_and_cancel_goals()` を
+呼び出すことで、当初設定した目標位置の手前で停止させることができます。
+これを用いれば物体位置を目標位置として移動させて、十分近付いたら
+停止させるという動作が実現できます。
+
 
 {:id="exercise6-5"}
 {% capture exercise6-5 %}
