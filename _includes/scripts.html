@@ -2,3 +2,32 @@
 
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}
+
+<!--
+2022-05-30, Tadashi MATSUO
+The below line disables the smooth scroll function for <a> elements.
+The smooth scroll function in './assets/js/main.min.js' works
+well for a link to an ID consisting of ASCII characters.
+The web browser will scroll to the linked anchor and the URL will be
+kept.
+However, it does not work well if an ID includes non-ASCII characters.
+In this case, the web browser simply jumps to the link and the URL
+will be updated to the URL including the anchor.
+In short, a URL will be kept in a case but it will be updated in
+another case.
+
+Since the difference of IDs is invisible to viewers, the different
+behaviors are confusing.
+The smooth scroll function also disables viewers to return to the link
+by the 'back' function after reading the linked contents.
+
+For the following reasons, I think that the function should be better
+to be disabled.
+- The function is implemented in './assets/js/main.min.js', which
+  is difficult to be debugged.
+- It is also difficult to replace the smooth scroll function in
+  './assets/js/main.min.js' with a more recent implementation such as
+  https://github.com/kswedberg/jquery-smooth-scroll .
+-->
+<script>$.fn.smoothScroll.defaults.exclude = ['a'];</script>
+
