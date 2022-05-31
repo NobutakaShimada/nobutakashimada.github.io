@@ -673,7 +673,8 @@ if __name__ == '__main__':
 アイデアや作戦をレポートに記載してください。
 
 シミュレーション用に細い棒を設置した環境を用意してあります。
-Gazebo起動時に `gazebo_manipulator_stage_1_obstacles.launch` の
+Gazebo起動時に `gazebo_manipulator_stage_1_obstacles.launch` や
+`gazebo_manipulator_stage_4_obstacles.launch` の
 launchファイルを指定することでその環境を利用できます。
 
 プログラムの雛形として `go_to_clicked_point_and_move_arm.py` という
@@ -707,6 +708,28 @@ launchファイルを指定することでその環境を利用できます。
 これを用いれば物体位置を目標位置として移動させて、十分近付いたら
 停止させるという動作が実現できます。
 
+### Gazebo環境の物体配置初期化
+Gazeboによるシミュレーション環境で棒を倒した後、棒を再度立てるのは
+操作が難しいので、続けて実験する際には物体配置の初期化を行って
+ください。
+
+Gazeboのウィンドウの `Edit` メニューの中に `Reset Model Poses`
+という項目があります。
+これを選択するとシミュレーション環境内の全ての物体(ロボット含む)が
+初期配置に戻り、続けて実験することができます。
+この項目と同じ効果を持つ下記のコマンドを実行することでも物体配置を
+初期化できます。
+```bash
+$ rosservice call /gazebo/reset_world
+```
+
+`Edit` メニューの中には `Reset World` という項目もありますが
+こちらはシミュレーション環境の **時計も初期化してしまいます** 。
+その影響でRViz上でロボットとアームが外れた状態になるなど
+ロボット情報を管理するROSノードなどの動作がおかしくなります。
+**メニューの `Reset World` は選択しないように注意してください**。
+
+### 課題
 
 {:id="exercise6-5"}
 {% capture exercise6-5 %}
