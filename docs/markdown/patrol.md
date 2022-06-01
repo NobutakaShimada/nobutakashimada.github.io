@@ -822,7 +822,7 @@ ROSプログラムを導入してあります。
 
 円筒状の障害物を検知するためのROSプログラムは下記のコマンドで実行できます。
 ```bash
-$ rosrun exp3 obstacle_detector.launch
+$ roslaunch exp3 obstacle_detector.launch
 ```
 これを実行すると、検出された円筒状障害物の情報が
 `/tracked_obstacles` というトピックに出力されるようになります。
