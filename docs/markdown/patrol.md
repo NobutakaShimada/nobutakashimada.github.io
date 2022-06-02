@@ -607,11 +607,22 @@ def extend_arm(robot):
     robot.follow_joint_trajectory(joint_waypoints)
 
 def initialize_arm(robot):
+    # Initial joint angles of the robot on the Gazebo environment.
     joint_waypoints = [
         [{'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0}, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
 
+def initialize_arm_real(robot):
+    # Initial joint angles of the real robot
+    joint_waypoints = [
+        [{'joint1': -0.0015339808305725455,
+          'joint2': -1.575398325920105,
+          'joint3': 1.2317866086959839,
+          'joint4': 0.6089903712272644
+         }, 3.0]
+    ]
+    robot.follow_joint_trajectory(joint_waypoints)
 
 if __name__ == '__main__':
     rospy.init_node('move_arm', anonymous=False)
@@ -705,8 +716,23 @@ launchファイルを指定することでその環境を利用できます。
 そこで `robot.go_to_goal()` の次の命令として目標位置を取り消して
 停止させるメソッド `robot.stop_move_base_and_cancel_goals()` を
 呼び出すことで、当初設定した目標位置の手前で停止させることができます。
-これを用いれば物体位置を目標位置として移動させて、十分近付いたら
+これを用いれば物体位置の近くを目標位置として移動させて、十分近付いたら
 停止させるという動作が実現できます。
+\\
+**!!注意!!** \\
+物体位置をそのまま `robot.go_to_goal()` での移動目標位置に
+設定すると経路計画を立てられず、移動できない場合があります。
+ロボットのセンサが物体を捉えるとその物体の位置に障害物が
+存在すると認識されるので
+「移動目標位置に障害物が存在する状態」となります。
+これにより「障害物に接触せずに移動目標位置に到達することが不可能」
+となってそれ以降の経路計画が立てられなくなるため、
+移動できなくなってしまいます。
+\\
+物体位置そのものを移動目標とするのではなく、そこから少し
+ずれた位置を目標とするなどの工夫が必要です。
+例えば棒からの距離0.3[m]の範囲は障害物がないことを前提として
+その範囲の適当な点を移動目標とする、などです。
 
 ### Gazebo環境の物体配置初期化
 Gazeboによるシミュレーション環境で棒を倒した後、棒を再度立てるのは
