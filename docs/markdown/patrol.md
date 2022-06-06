@@ -237,7 +237,7 @@ import rospy
 import exp3_turtlebot3
 
 if __name__ == '__main__':
-    rospy.init_node('patrol')
+    rospy.init_node('go_to_fixed_point')
     robot = exp3_turtlebot3.Turtlebot3(robot_origin_frame_id='base_link')
     robot.admissible_distance = -1.0
 
