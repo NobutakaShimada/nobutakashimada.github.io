@@ -18,7 +18,7 @@ header:
    | append: GITHUB_PAGES_BRANCH %}
 
 {: .nonumber}
-# 実世界情報実験３ロボットテーマレジュメ
+# 立命館大学情報理工学部 実世界情報実験３ロボットテーマレジュメ
 
 {: .counter-style-upper-alpha}
 # 2022年度春学期実験用レジュメ
