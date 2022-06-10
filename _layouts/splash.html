@@ -15,10 +15,6 @@ layout: default
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
     {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date: "%B %d, %Y" }}">{% endif %}
 
-    {% unless page.without_content_table %}
-        <h1 class="nonumber class-1">Contents of {{ page.sidebar.title }}</h1>
-        {% include toc.html html=content h_min=2 ordered=true %}
-    {% endunless %}
     <section class="page__content" itemprop="text">
       {{ content }}
     </section>
