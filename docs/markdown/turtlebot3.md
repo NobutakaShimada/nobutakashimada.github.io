@@ -1,15 +1,14 @@
 ---
-layout: splash
+layout: phyexp3-lesson
 lang: en
 ref: phyexp3\_turtlebot3
 permalink: /docs/turtlebot3/
+section_number: 3
+section_title: 実機Turtlebotへの接続と移動操作
 sidebar:
   title: 実機Turtlebotへの接続と移動操作
   nav: "phyexp3\_turtlebot3"
 ---
-
-{: .startsec3}
-# [Class 3] 実機Turtlebotへの接続と移動操作
 
 ## TurtleBot3(実ロボット), シミュレーションの切り替え方法  
 すべてHost PC端末(Remote PC)で実行する。

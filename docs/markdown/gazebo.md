@@ -1,15 +1,14 @@
 ---
-layout: splash
+layout: phyexp3-lesson
 lang: en
 ref: phyexp3\_gazebo
 permalink: /docs/gazebo/
+section_number: 2
+section_title: GazeboシミュレーションによるTurtlebot3の操作
 sidebar:
   title: GazeboシミュレーションによるTurtlebot3の操作
   nav: "phyexp3\_basic"
 ---
-
-{: .startsec2}
-# [Class 2] GazeboシミュレーションによるTurtlebot3の操作
 
 ROSサポートの市販ロボットではよくあることですが、TurtleBot3には仮想ロボットでプログラミングや開発可能な環境が用意されています。
 １つの方法はフェイクノードと３D視覚化ツールであるRVizを使う方法、もう一つの方法は、3-DロボットシミュレーターのGazeboを使用することです。 

@@ -1,14 +1,14 @@
 ---
-layout: splash
+layout: phyexp3-lesson
 lang: en
 permalink: /docs/patrol/
+section_number: 6
+section_title: Pythonプログラムを用いた移動指示とマニピュレータ操作
 sidebar:
   title: Pythonプログラミングによる移動指示とマニピュレータ操作
   nav: "phyexp3_patrol"
 ---
 
-{: .startsec6}
-# [Class 6] Pythonプログラムを用いた移動指示とマニピュレータ操作
 [課題6-1](#exercise6-1)
 [課題6-2](#exercise6-2)
 [課題6-3](#exercise6-3)

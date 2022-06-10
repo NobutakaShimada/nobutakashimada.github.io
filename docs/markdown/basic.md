@@ -1,14 +1,14 @@
 ---
-layout: splash
+layout: phyexp3-lesson
 lang: en
 ref: phyexp3\_basic
 permalink: /docs/basic/
+section_number: 1
+section_title: 基本編(Turtlebot3の操作とROSの基礎)
 sidebar:
   title: 基本編(Turtlebot3の操作とROSの基礎)
   nav: "phyexp3\_basic"
 ---
-
-# [Class 1] 基本編(Turtlebot3の操作とROSの基礎)
 
 この実験はTurtlebot3+OpenManipulator-Xというロボットプラットフォームを用いて、
 広くロボットの制御に用いられるROS(Robot Operating System)の分散ノード

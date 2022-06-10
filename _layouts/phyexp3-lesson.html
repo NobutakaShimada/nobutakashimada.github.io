@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero_notitle.html %}
+{% elsif page.header.video.id and page.header.video.provider %}
+  {% include page__hero_video.html %}
+{% endif %}
+
+<div id="main" role="main">
+  <article class="splash" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
+    {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date: "%B %d, %Y" }}">{% endif %}
+
+    <section class="page__content" itemprop="text">
+      <h1 class="class-h1 startsec{{ page.section_number }}">{{page.section_title}}</h1>
+    {% unless page.without_content_table %}
+        <div class="notice--info">
+        <h2 class="nonumber contents-table-label">Contents</h2>
+        {% include toc.html html=content h_min=2 ordered=true %}
+        </div>
+    {% endunless %}
+      {{ content }}
+    </section>
+  </article>
+</div>
