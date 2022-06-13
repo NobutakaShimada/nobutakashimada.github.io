@@ -37,7 +37,7 @@ RVizの **Publish Point** ボタンを押した後、地図上の点をクリッ
 複数の点について座標を確認し、RViz上でのX軸、Y軸、Z軸の向きを確認してください。
 
 
-### Pythonプログラムを用いた座標の取得
+### **課題6-1 Pythonプログラムを用いた座標の取得**
 `rostopic echo` コマンドを用いてtopicの情報を表示する代わりに
 Pythonプログラム中でtopicの情報を取得することもできます。
 プログラム内で利用できるデータとして取得できるので、それに応じて
@@ -140,6 +140,7 @@ $ cat print_clicked_point.py
   ```
 
   {: .notice--info}
+  **ヒント:**
   実験室のLinux環境には **gedit** の他にも **vi** や **VSCode** などの
   エディタも導入されています。好みのものを使ってください。
 - GUIを利用してファイルを指定しエディタ(gedit)で開く。
@@ -335,7 +336,7 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 ```
 
 
-### 課題
+### **課題6-2 Pythonプログラム内の変数で指定した位置への移動**
 
 {:id="exercise6-2"}
 {% capture exercise6-2 %}
@@ -413,7 +414,7 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 
 
 
-## RViz上で指定した位置への移動
+## **課題6-3 RViz上で指定した位置への移動**
 `go_to_fixed_point.py` では移動先の位置はプログラム内に
 直接書かれていました。
 このように、何らかの情報をプログラム上に直接書いておくことは
@@ -537,7 +538,8 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 通りです。
 -  `rotate_arm()` : アームを回転させる。
 -  `extend_arm()` : アームを伸ばす。
--  `initialize_arm()` : アームを初期姿勢に戻す。
+-  `initialize_arm()` : アームをGazebo上の初期姿勢に戻す。
+-  `initialize_arm_real()` : アームを実機起動時の姿勢に戻す。
 
 これらの関数は `robot` オブジェクトのメソッドを使って実装されています。
 `robot` オブジェクトのメソッドのいくつかの機能を以下に示します。
@@ -637,6 +639,8 @@ if __name__ == '__main__':
 
     ########################################################
 ~~~
+
+### **課題6-4 アーム動作の作成**
 
 {:id="exercise6-4"}
 {% capture exercise6-4 %}
@@ -755,7 +759,7 @@ $ rosservice call /gazebo/reset_world
 ロボット情報を管理するROSノードなどの動作がおかしくなります。
 **メニューの `Reset World` は選択しないように注意してください**。
 
-### 課題
+### **課題6-5 RVizで指定した位置にある棒を倒すプログラム**
 
 {:id="exercise6-5"}
 {% capture exercise6-5 %}
@@ -797,7 +801,8 @@ $ rosservice call /gazebo/reset_world
 
 
 
-## RVizで指定された点にある棒を倒すプログラム(連続動作版)
+## **課題6-6 RVizで指定された点にある棒を倒すプログラム(連続動作版)**
+
 {:id="exercise6-6"}
 {% capture exercise6-6 %}
 1. [課題6-5](#exercise5-6) で作成したプログラムをもとに、
@@ -832,12 +837,13 @@ $ rosservice call /gazebo/reset_world
 {% include phyexp3-exercise.html content=exercise6-6 title="課題6-6" %}
 
 {: .notice--info}
+**ヒント:**
 1回の動作後、アームを伸ばしたまま移動しようとすると障害物に接触する
 可能性があります。
 
 
 
-## 発展課題 円形障害物を検知しその近くに移動するプログラム
+## **発展課題6-EX1 円形障害物を検知しその近くに移動するプログラム**
 上記の課題では倒すべき棒の位置は人がRVizで指定していましたが、
 ロボットのセンサにも棒は写るのでセンサで得られた情報から棒を
 発見することも原理的には可能です。
@@ -892,7 +898,8 @@ ROSパッケージの機能です。
 
 
 
-## 発展課題 円形障害物を検知しそれを倒すプログラム
+## **発展課題6-EX2 円形障害物を検知しそれを倒すプログラム**
+
 {:id="exercise6-ex2"}
 {% capture exercise6-ex2 %}
 1. センサ情報から棒(円筒状の物体)を検知しその近くに移動した後に
@@ -928,4 +935,5 @@ ROSパッケージの機能です。
 {% include phyexp3-exercise.html content=exercise6-ex2 title="発展課題6-EX2" %}
 
 {: .notice--info}
+**ヒント:**
 プログラムの雛形を`go_to_obstacle_and_move_arm.py`として用意してあります。
