@@ -1,6 +1,4 @@
 <div class="notice--danger exercise">
-<strong class="exercise-title">{{ include.title | markdownify }}</strong>
-<p>
+<strong class="exercise-title">{{ include.title | markdownify | strip_html }}</strong>
 {{ include.content | markdownify }}
-</p>
 </div>
