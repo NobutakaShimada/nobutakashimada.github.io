@@ -9,6 +9,7 @@ sidebar:
   title: 生成した環境地図に基づくナビゲーション
   nav: "phyexp3_navigation"
 ---
+{% assign wayback_prefix = "http://web.archive.org/web/20200929183646/" %}
 
 ナビゲーション（誘導）は、特定の環境で指定された位置にロボットを移動させることです。そのために与えられた環境にある障害物や壁などの幾何的な情報が含まれた地図が必要です。SLAMを実行することによって、
 センサが獲得した距離情報やロボットの移動量情報から未知環境の地図を自動的に生成することができました。
@@ -25,7 +26,7 @@ sidebar:
 
 ![](http://wiki.ros.org/costmap_2d?action=AttachFile&do=get&target=costmapspec.png)
 
-> [http://wiki.ros.org/costmap_2d#Inflation](http://wiki.ros.org/costmap_2d#Inflation)
+> [http://wiki.ros.org/costmap_2d#Inflation](http://wiki.ros.org/costmap_2d#Inflation)([URL on Wayback Machine]({{wayback_prefix}}http://wiki.ros.org/costmap_2d#Inflation))
 
 DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使用される代表的な方法です。DWAは速度空間内で並進速度(v)と回転速度(ω)を使用し、ロボットが移動できる経路を予測・計算し、ハードウェアが出しうるロボットの最大速度が限界値として定められます。dwa_local_plannerでは、ロボットが目的地に到着できるよう進む経路であるglobal planと、障害物の回避に使われるglobal costmapによってロボットに移動可能な速度コマンドを計算し、local planを作成します。DWAは以下の順序で動作します。
 
@@ -176,7 +177,7 @@ $ gnome-screenshot --area -f initial.jpg
 
 ## （発展）チューニングガイド 
 Navigation stackには複数のパラメータがあり、これらのパラメータの設定によって、それぞれ異なる形態のロボットに最適化されたナビゲーションを適用が可能となります。
-ここでは重要な、または頻繁に使用されるパラメータの説明を行います。様々なロボットや環境に応じた、より詳細なNavigationチューニングに関しては[Basic Navigation Tuning Guide](http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)を参照してください。
+ここでは重要な、または頻繁に使用されるパラメータの説明を行います。様々なロボットや環境に応じた、より詳細なNavigationチューニングに関しては[Basic Navigation Tuning Guide](http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide))を参照してください。
 以下のパラメータは、costmapの計算に使用されるパラメータで、`turtlebot3_navigation/param/costmap_common_param_$(model).yaml`ファイルに保存され、プログラムを実行する際にロードされます。
 
 ### Costmap関連の主なパラメータ

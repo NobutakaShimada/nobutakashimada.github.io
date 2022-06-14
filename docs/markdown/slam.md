@@ -9,6 +9,7 @@ sidebar:
   title: 環境地図の自動マッピング(SLAM)
   nav: "phyexp3_2-1"
 ---
+{% assign wayback_prefix = "http://web.archive.org/web/20200929183646/" %}
 
 ## LRFセンサ(LDS)
 ![](/assets/images/ritsumeikan/011.png)
@@ -270,7 +271,7 @@ scan_filter_chain:
 
 ### (発展)Gmappingのチューニングガイド
 
-Gmappingは、さまざまな環境に最適化されたパフォーマンスを実現するために、複数のパラメータの設定が可能です。Gmappingは一般的に別途設定なしに使用が可能であり、デフォルト設定で使用する場合が多いものです。設定可能なパラメータのリストは、[ROS wikiのGmappingパラメータ](http://wiki.ros.org/gmapping#Parameters)ページを参照してください。
+Gmappingは、さまざまな環境に最適化されたパフォーマンスを実現するために、複数のパラメータの設定が可能です。Gmappingは一般的に別途設定なしに使用が可能であり、デフォルト設定で使用する場合が多いものです。設定可能なパラメータのリストは、[ROS wikiのGmappingパラメータ](http://wiki.ros.org/gmapping#Parameters)([URL on Wayback Machine]({{wayback_prefix}}http://wiki.ros.org/gmapping#Parameters))ページを参照してください。
 
 以下のパラメータは、`turtlebot3_slam/launch/turtlebot3_gmapping.launch`ファイルに定義されており、ファイルを実行する際にroscoreのパラメータサーバーにロードされ、gmappingをベースにしたSLAMに適用されます。
 
