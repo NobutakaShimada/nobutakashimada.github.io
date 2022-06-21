@@ -24,7 +24,12 @@ sidebar:
   - 253 ~ 254 : 衝突領域
   - 255 : ロボットが移動できない領域
 
-![](http://wiki.ros.org/costmap_2d?action=AttachFile&do=get&target=costmapspec.png)
+{::comment}
+The below image 'costmapspec.png' is retrieved from
+http://wiki.ros.org/costmap_2d#Inflation by the following command;
+curl --remote-name --remote-time --remote-header-name 'http://wiki.ros.org/costmap_2d?action=AttachFile&do=get&target=costmapspec.png'
+{:/comment}
+![](/assets/images/ritsumeikan/costmapspec.png)
 
 > [http://wiki.ros.org/costmap_2d#Inflation](http://wiki.ros.org/costmap_2d#Inflation)([URL on Wayback Machine]({{wayback_prefix}}http://wiki.ros.org/costmap_2d#Inflation))
 
