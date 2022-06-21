@@ -44,6 +44,17 @@ without_content_table: true
 - [レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2022exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})
   ([課題6](/docs/patrol))
 
+{: .notice--info}
+上記のipynbファイルへのリンクを開くと
+Google Colaboratory上にノートブックが表示されますが
+**そのまま保存することはできません**。
+「画面上部の `ドライブにコピー` を指示する」か
+「メニューの `ファイル` から `保存` を選択して
+`ドライブにコピーを保存` を指示する」
+のいずれかを行い、 **Google ドライブに保存する必要があります** 。
+その際にGoogleアカウントにログインしていない状態であれば
+ログインを求められますので **自分のGoogleアカウントでログイン** してください。
+
 {: .counter-style-upper-alpha}
 # 参考URL
 - [gedit Text Editor (English)](https://help.gnome.org/users/gedit/stable/)
