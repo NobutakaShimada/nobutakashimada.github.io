@@ -8,7 +8,7 @@ sidebar:
   title: Pythonプログラミングによる移動指示とマニピュレータ操作
   nav: "phyexp3_patrol"
 ---
-{% assign wayback_prefix = "http://web.archive.org/web/20200929183646/" %}
+{% assign wayback_prefix = "https://web.archive.org/web/20200929183646/" %}
 
 [課題6-1](#exercise6-1)
 [課題6-2](#exercise6-2)
@@ -118,7 +118,7 @@ $ cat print_clicked_point.py
   ```
   `cat` と異なり矢印キーや`j`, `k`キーの
   入力で表示位置を移動できます。`q`を入力するとコマンドを終了します。
-  (参考: [manpage of less](http://manpages.ubuntu.com/manpages/bionic/ja/man1/less.1.html) )
+  (参考: [manpage of less](https://manpages.ubuntu.com/manpages/bionic/ja/man1/less.1.html) )
 
   相対パスを使う場合は以下のようになります。
   ```bash
@@ -303,8 +303,8 @@ $ rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}
 | パラメータ名 | Gazebo環境用 | 実機環境用 | 参考情報 |
 ||(デフォルト)|||
 |:-:|:-:|:-:|:-:|
-| /move_base/DWAPlannerROS/max_vel_theta | 1.2 | 6.4 | [解説](http://wiki.ros.org/dwa_local_planner#line-463)([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/dwa_local_planner#line-463)) (旧称 max_rot_vel として記載)|
-| /move_base/DWAPlannerROS/min_vel_theta | 1.0 | 4.6 | [解説](http://wiki.ros.org/dwa_local_planner#line-468)([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/dwa_local_planner#line-468)) (旧称 min_rot_vel として記載)|
+| /move_base/DWAPlannerROS/max_vel_theta | 1.2 | 6.4 | [解説](https://wiki.ros.org/dwa_local_planner#line-463)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-463)) (旧称 max_rot_vel として記載)|
+| /move_base/DWAPlannerROS/min_vel_theta | 1.0 | 4.6 | [解説](https://wiki.ros.org/dwa_local_planner#line-468)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-468)) (旧称 min_rot_vel として記載)|
 
 これらのパラメータは `rqt_reconfigure` や `rosparam` コマンドを
 使って変更できます。
@@ -386,16 +386,16 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 {: .notice--info id="exercise6-2-hint"} 
 **`rqt_graph`とactionについてのヒント:**\\
 `go_to_fixed_point.py` がロボットを移動させる際にはROSの
-[actionという機能](http://wiki.ros.org/actionlib#Overview)
-([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/actionlib#Overview))を
+[actionという機能](https://wiki.ros.org/actionlib#Overview)
+([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/actionlib#Overview))を
 使っています。
 これは他のROS node(プログラム)に何らかの指示(リクエスト)を送り、
 その指示の実行状態(実行中である、完了した、失敗した、など)を
 監視できるようにするための機能です。
 この機能に関するリクエストやステータス(状態)の送受信にはROS topicが
 使われていて、具体的なtopic名やその機能は
-[ROS Wikiのactionlib/DetailedDescriptionのページ](http://wiki.ros.org/actionlib/DetailedDescription#Action_Interface_.26_Transport_Layer)
-([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/actionlib/DetailedDescription#Action_Interface_.26_Transport_Layer))
+[ROS Wikiのactionlib/DetailedDescriptionのページ](https://wiki.ros.org/actionlib/DetailedDescription#Action_Interface_.26_Transport_Layer)
+([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/actionlib/DetailedDescription#Action_Interface_.26_Transport_Layer))
 に説明があります。
 例えばロボットを移動させるための `/move_base` という action の場合
 `/move_base/goal`, `/move_base/status` などのtopicが使われます。
@@ -412,8 +412,8 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 それほど長くないプログラムなので、より細かい動作を確認したい方は
 是非 `exp3_turtlebot3.py` の中身もチェックしてみてください。
 指定した位置へ移動するようロボットに指示する方法として
-[ROSのactionという機構](http://wiki.ros.org/ja/actionlib)
-([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/ja/actionlib))
+[ROSのactionという機構](https://wiki.ros.org/ja/actionlib)
+([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/ja/actionlib))
 を利用して
 いて、これを参考にすればより細かい制御を行うことも可能です。
 

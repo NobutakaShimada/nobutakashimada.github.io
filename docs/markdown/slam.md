@@ -9,7 +9,7 @@ sidebar:
   title: 環境地図の自動マッピング(SLAM)
   nav: "phyexp3_2-1"
 ---
-{% assign wayback_prefix = "http://web.archive.org/web/20200929183646/" %}
+{% assign wayback_prefix = "https://web.archive.org/web/20200929183646/" %}
 
 ## LRFセンサ(LDS)
 ![](/assets/images/ritsumeikan/011.png)
@@ -156,7 +156,7 @@ slam.launchファイルを実行すると、ロボットの情報(urdfファイ�
 ### 地図
 ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します。保存されたmap.pgmイメージファイルを開くと、以下のようにロボットが移動できる白い領域と、障害物として識別されロボットが移動できない黒い領域、ロボットが探索していない灰色の領域に区分されます。このように生成されたマップは、次に紹介するNavigationで使用することができます。
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/map.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/slam/map.png)
 
 ### 課題4-1
 {% capture staff01 %}
@@ -264,14 +264,14 @@ scan_filter_chain:
     upper_angle: 4.18879
 ```
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/open_manipulator_slam.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/open_manipulator_slam.png)
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/slam_running_for_mapping.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/slam/slam_running_for_mapping.png)
 
 
 ### (発展)Gmappingのチューニングガイド
 
-Gmappingは、さまざまな環境に最適化されたパフォーマンスを実現するために、複数のパラメータの設定が可能です。Gmappingは一般的に別途設定なしに使用が可能であり、デフォルト設定で使用する場合が多いものです。設定可能なパラメータのリストは、[ROS wikiのGmappingパラメータ](http://wiki.ros.org/gmapping#Parameters)([URL on Wayback Machine]({{wayback_prefix}}http://wiki.ros.org/gmapping#Parameters))ページを参照してください。
+Gmappingは、さまざまな環境に最適化されたパフォーマンスを実現するために、複数のパラメータの設定が可能です。Gmappingは一般的に別途設定なしに使用が可能であり、デフォルト設定で使用する場合が多いものです。設定可能なパラメータのリストは、[ROS wikiのGmappingパラメータ](https://wiki.ros.org/gmapping#Parameters)([URL on Wayback Machine]({{wayback_prefix}}https://wiki.ros.org/gmapping#Parameters))ページを参照してください。
 
 以下のパラメータは、`turtlebot3_slam/launch/turtlebot3_gmapping.launch`ファイルに定義されており、ファイルを実行する際にroscoreのパラメータサーバーにロードされ、gmappingをベースにしたSLAMに適用されます。
 
@@ -281,7 +281,7 @@ Gmappingは、さまざまな環境に最適化されたパフォーマンスを
 **map_update_interval**  
 マップをアップデートする期間(秒単位)この値が低いと、マップがもっと頻繁にアップデートされます。しかし、より大きな計算負荷が必要です。環境に基づいてこのパラメータを設定してください。 
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/slam/tuning_map_update_interval.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/slam/tuning_map_update_interval.png)
 
 **minimumScore**  
 センサのscanデータ一致検査の成功および失敗を決定する最小点数値を設定します。広い空間でロボットの予想位置に生じる誤差を減少させることが可能です。適切に設定された場合、以下のような情報を見ることができます。 

@@ -9,7 +9,7 @@ sidebar:
   title: 基本編(Turtlebot3の操作とROSの基礎)
   nav: "phyexp3\_basic"
 ---
-{% assign wayback_prefix = "http://web.archive.org/web/20200929183646/" %}
+{% assign wayback_prefix = "https://web.archive.org/web/20200929183646/" %}
 
 この実験はTurtlebot3+OpenManipulator-Xというロボットプラットフォームを用いて、
 広くロボットの制御に用いられるROS(Robot Operating System)の分散ノード
@@ -73,20 +73,20 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 
 - **メッセージ** ROSによるロボットへの指令は全てメッセージと呼ばれるデータをネットワーク通信でノードに送信することで実現される。ROSにおけるメッセージ送受信のアーキテクチャはいくつかあるが、この実験では**Publisher/Subscriberモデル**という、一方向通信について学ぶ。このほかにリクエストに対するレスポンスを受け取ることができる**クライアント／サービスモデル**がある。
 
-[ROS Wiki](http://wiki.ros.org/) にROSに関するドキュメントが
+[ROS Wiki](https://wiki.ros.org/) にROSに関するドキュメントが
 掲載されている。
 その中のノードやトピックに関連するチュートリアルページを以下にまとめる。
 
-| [ROS Wiki日本語版](http://wiki.ros.org/ja/) | [ROS Wiki](http://wiki.ros.org/) | [Wayback Machine](https://web.archive.org/) (日本語版) |
+| [ROS Wiki日本語版](https://wiki.ros.org/ja/) | [ROS Wiki](https://wiki.ros.org/) | [Wayback Machine](https://web.archive.org/) (日本語版) |
 |---|---|---|
-| [ROS チュートリアル](http://wiki.ros.org/ja/ROS/Tutorials/) | [URL](http://wiki.ros.org/ROS/Tutorials/) | [URL]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/) |
-| →[ROSのノードを理解する](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes) | [URL](http://wiki.ros.org/ROS/Tutorials/UnderstandingNodes) | [URL]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes) |
-| →[ROSトピックの理解](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics) | [URL](http://wiki.ros.org/ROS/Tutorials/UnderstandingTopics) | [URL]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics) |
-| →[ROSのサービスとパラメータを理解する](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams) | [URL](http://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams) | [URL]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams) |
-| →[シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29) | [URL](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29) | [URL]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29) |
+| [ROS チュートリアル](https://wiki.ros.org/ja/ROS/Tutorials/) | [URL](https://wiki.ros.org/ROS/Tutorials/) | [URL]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/) |
+| →[ROSのノードを理解する](https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes) | [URL](https://wiki.ros.org/ROS/Tutorials/UnderstandingNodes) | [URL]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingNodes) |
+| →[ROSトピックの理解](https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics) | [URL](https://wiki.ros.org/ROS/Tutorials/UnderstandingTopics) | [URL]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics) |
+| →[ROSのサービスとパラメータを理解する](https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams) | [URL](https://wiki.ros.org/ROS/Tutorials/UnderstandingServicesParams) | [URL]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingServicesParams) |
+| →[シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)](https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29) | [URL](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28python%29) | [URL]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29) |
 
-[ROS Wiki日本語版](http://wiki.ros.org/ja/)や
-[ROS Wiki](http://wiki.ros.org/)はアクセス集中のため、一時的に
+[ROS Wiki日本語版](https://wiki.ros.org/ja/)や
+[ROS Wiki](https://wiki.ros.org/)はアクセス集中のため、一時的に
 アクセスできなくなることがある。
 その場合は上記の表の [Wayback Machine](https://web.archive.org/) のURLから
 参照すればよい。
@@ -96,7 +96,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 
 ### 課題1-2
 {% capture staff01 %}
-1. 上の[「ROSトピックの理解」](http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)) を開いて、教員の説明を聞きながら順を追ってROS環境操作の各手順を実行し、内容を理解しなさい。
+1. 上の[「ROSトピックの理解」](https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)) を開いて、教員の説明を聞きながら順を追ってROS環境操作の各手順を実行し、内容を理解しなさい。
 その後、rostopic pubコマンドを使ってturtlesimのタートルを一定の並進速度・回転速度で動かす命令（ただしチュートリアルサイトの数字とは違う速度の指示値を与えよ）を実行して、そのときのrostopicコマンドの文字列と実行後のタートル表示ウインドウをキャプチャしてレポートファイルに貼りなさい。
 画面キャプチャには`gnome-screenshot`を使うことができる。
 ```bash
@@ -107,7 +107,7 @@ $ gnome-screenshot --area -f turtle.png
 
 ### 課題1-3
 {% capture staff01 %}
-1. 上の[「シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)」](http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29))のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
+1. 上の[「シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)」](https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29))のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
 2. 保存した２つのプログラムを指示に従って動かして、どういう動作をするか確かめなさい(ターミナルを開いてrosrunコマンドを使う)。
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>

@@ -9,7 +9,7 @@ sidebar:
   title: 生成した環境地図に基づくナビゲーション
   nav: "phyexp3_navigation"
 ---
-{% assign wayback_prefix = "http://web.archive.org/web/20200929183646/" %}
+{% assign wayback_prefix = "https://web.archive.org/web/20200929183646/" %}
 
 ナビゲーション（誘導）は、特定の環境で指定された位置にロボットを移動させることです。そのために与えられた環境にある障害物や壁などの幾何的な情報が含まれた地図が必要です。SLAMを実行することによって、
 センサが獲得した距離情報やロボットの移動量情報から未知環境の地図を自動的に生成することができました。
@@ -26,12 +26,12 @@ sidebar:
 
 {::comment}
 The below image 'costmapspec.png' is retrieved from
-http://wiki.ros.org/costmap_2d#Inflation by the following command;
-curl --remote-name --remote-time --remote-header-name 'http://wiki.ros.org/costmap_2d?action=AttachFile&do=get&target=costmapspec.png'
+https://wiki.ros.org/costmap_2d#Inflation by the following command;
+curl --remote-name --remote-time --remote-header-name 'https://wiki.ros.org/costmap_2d?action=AttachFile&do=get&target=costmapspec.png'
 {:/comment}
 ![](/assets/images/ritsumeikan/costmapspec.png)
 
-> [http://wiki.ros.org/costmap_2d#Inflation](http://wiki.ros.org/costmap_2d#Inflation)([URL on Wayback Machine]({{wayback_prefix}}http://wiki.ros.org/costmap_2d#Inflation))
+> [https://wiki.ros.org/costmap_2d#Inflation](https://wiki.ros.org/costmap_2d#Inflation)([URL on Wayback Machine]({{wayback_prefix}}https://wiki.ros.org/costmap_2d#Inflation))
 
 DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使用される代表的な方法です。DWAは速度空間内で並進速度(v)と回転速度(ω)を使用し、ロボットが移動できる経路を予測・計算し、ハードウェアが出しうるロボットの最大速度が限界値として定められます。dwa_local_plannerでは、ロボットが目的地に到着できるよう進む経路であるglobal planと、障害物の回避に使われるglobal costmapによってロボットに移動可能な速度コマンドを計算し、local planを作成します。DWAは以下の順序で動作します。
 
@@ -132,7 +132,7 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 
 これが完了すると、ロボットは緑の矢印で指定された位置と方向を初期ポーズとして使用し、実際の位置と方向を推定します。緑の矢印はタートルボット３の予想位置を表示します。レーザースキャナーは地図上に今ロボットが観測している壁の位置を表示します。地図とのズレが大きい場合はやり直します。多少ずれていてもロボットを移動させて観測情報を増やしていくと、次第に推定が確からしくなります。
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/2d_pose_estimate.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/2d_pose_estimate.png)
 
 > 上の図で、ロボットの周辺に広く表示された多数の小さな緑の矢印は、ロボットの初期位置を指定した際にロボットのセンサーと各種情報を介してAMCLが計算したロボットの現在位置です。ロボットの移動に従って分布していた現在地の予想値がロボットに向かって近づき、収束する様子が分かります。
 
@@ -147,7 +147,7 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 
 目的地設定が完了すると、Navigationアルゴリズムはロボットの現在位置から目的地までの経路を生成し、経路を辿れるようにロボットに命令を出します。ロボットが動いている間に経路上に**地図にはない障害物**が現れると、その障害物を回避できる経路を再度生成し直して移動を試みます。
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/2d_nav_goal.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/2d_nav_goal.png)
 
 目的地までの経路が生成できない場合、Navigation Goal設定が失敗する場合があります。ロボットが目的地まで移動する途中でロボットを停止させたい場合は、ロボットの現在位置を目的地として再設定します。
 
@@ -182,7 +182,7 @@ $ gnome-screenshot --area -f initial.jpg
 
 ## （発展）チューニングガイド 
 Navigation stackには複数のパラメータがあり、これらのパラメータの設定によって、それぞれ異なる形態のロボットに最適化されたナビゲーションを適用が可能となります。
-ここでは重要な、または頻繁に使用されるパラメータの説明を行います。様々なロボットや環境に応じた、より詳細なNavigationチューニングに関しては[Basic Navigation Tuning Guide](http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)([URL on Wayback Machine]({{ wayback_prefix }}http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide))を参照してください。
+ここでは重要な、または頻繁に使用されるパラメータの説明を行います。様々なロボットや環境に応じた、より詳細なNavigationチューニングに関しては[Basic Navigation Tuning Guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide))を参照してください。
 以下のパラメータは、costmapの計算に使用されるパラメータで、`turtlebot3_navigation/param/costmap_common_param_$(model).yaml`ファイルに保存され、プログラムを実行する際にロードされます。
 
 ### Costmap関連の主なパラメータ
@@ -190,7 +190,7 @@ Navigation stackには複数のパラメータがあり、これらのパラメ�
 **inflation_radius**  
 地図上の障害物から設定された値分の空間を取り、ロボットが移動する経路を生成する際に最小限の安全距離を維持するために使用されます。この値をロボットの半径よりも大きい値に設定することで、ロボットと障害物の衝突を避けることが可能となります。
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_inflation_radius.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_inflation_radius.png)
 
 
 **cost_scaling_factor** 
@@ -199,7 +199,7 @@ costmap_2d::INSCRIBED_INFLATED_OBSTACLEの値は、254に定義されていま�
 
 - exp{-1.0 * cost_scaling_factor * (distance_from_obstacle - inscribed_radius)} * (costmap_2d::INSCRIBED_INFLATED_OBSTACLE - 1)
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_cost_scaling_factor.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_cost_scaling_factor.png)
 
 
 ### AMCL関連の主なパラメータ
@@ -239,4 +239,4 @@ DWA関連のパラメータをロボットのハードウェアに合わせた�
 **sim_time**  
 ロボットの現在の位置から数秒程度の予想経路をシミュレーションするかどうかを設定します。
 
-![](http://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_sim_time.png)
+![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_sim_time.png)
