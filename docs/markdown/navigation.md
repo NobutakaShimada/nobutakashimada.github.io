@@ -185,6 +185,67 @@ Navigation stackには複数のパラメータがあり、これらのパラメ�
 ここでは重要な、または頻繁に使用されるパラメータの説明を行います。様々なロボットや環境に応じた、より詳細なNavigationチューニングに関しては[Basic Navigation Tuning Guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide))を参照してください。
 以下のパラメータは、costmapの計算に使用されるパラメータで、`turtlebot3_navigation/param/costmap_common_param_$(model).yaml`ファイルに保存され、プログラムを実行する際にロードされます。
 
+### 目標位置付近で停止せず回転し続ける問題
+ロボットに移動指示を出すと、目標位置付近まで
+移動した後に停止せず小さい半径で回転し続ける場合があります。
+目標位置付近で行われる細かい位置合わせにおいて、
+経路計画上の想定動作と実際のロボットの挙動が一致していないために
+起こる現象のようです。
+
+目標位置付近で停止せず回転し続ける現象が起きた場合は下記の
+コマンドを実行してください。
+```bash
+$ rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}
+```
+現在の目標を取り消してロボットを停止させることができます。
+
+### 経路計画のパラメータ変更
+目標位置付近で回転し続ける現象が起こらないよう、
+経路計画のパラメータを変更することができます。
+但し、ロボット実機の挙動とGazeboによるシミュレーション環境での
+ロボットの挙動は一部異なるため、それぞれの環境で適切な
+パラメータが異なる点に注意してください。
+
+デフォルトではGazebo環境に合うようパラメータを設定してあります。
+両環境で変更するべきパラメータは以下の通りです。
+
+| パラメータ名 | Gazebo環境用 | 実機環境用 | 参考情報 |
+||(デフォルト)|||
+|:-:|:-:|:-:|:-:|
+| /move_base/DWAPlannerROS/max_vel_theta | 1.2 | 6.4 | [解説](https://wiki.ros.org/dwa_local_planner#line-463)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-463)) (旧称 max_rot_vel として記載)|
+| /move_base/DWAPlannerROS/min_vel_theta | 1.0 | 4.6 | [解説](https://wiki.ros.org/dwa_local_planner#line-468)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-468)) (旧称 min_rot_vel として記載)|
+
+これらのパラメータは `rqt_reconfigure` や `rosparam` コマンドを
+使って変更できます。
+但し `navigation.launch` を起動するとパラメータはリセット
+されますので、 `navigation.launch` を起動した後で変更する
+必要があります。
+
+#### `rqt_reconfigure` でのパラメータ変更
+1. 下記のコマンドで `rqt_reconfigure` を起動してください。
+   ```bash
+   $ rosrun rqt_reconfigure rqt_reconfigure &
+   ```
+1. 左のペインで `move_base` を展開し、
+   その下にある `DWAPlannerROS` を選択してください。
+1. 右のペインにパラメータ一覧が表示されるので
+   その中の `max_vel_theta`, `min_vel_theta` の値を
+   それぞれ設定してください。
+
+#### `rosparam` コマンドでのパラメータ変更
+下記のようなコマンドでパラメータを設定してください
+(実機環境用の値を設定する例)。
+```bash
+$ rosparam set /move_base/DWAPlannerROS/max_vel_theta 6.4
+$ rosparam set /move_base/DWAPlannerROS/min_vel_theta 4.6
+```
+現在のパラメータの値は下記のコマンドで確認できます。
+```bash
+$ rosparam get /move_base/DWAPlannerROS/max_vel_theta
+$ rosparam get /move_base/DWAPlannerROS/min_vel_theta
+```
+
+
 ### Costmap関連の主なパラメータ
 
 **inflation_radius**  
