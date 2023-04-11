@@ -22,7 +22,7 @@ without_content_table: true
 # 立命館大学情報理工学部 実世界情報実験３ロボットテーマレジュメ
 
 {: .counter-style-upper-alpha}
-# 2022年度春学期実験用レジュメ
+# 2023年度春学期実験用レジュメ
 - [受講上の注意（最初に目を通すこと）](/docs/remarks)
 
 1. [基本編(Turtlebot3の操作とROSの基礎)](/docs/basic)
