@@ -13,7 +13,7 @@ header:
     - excerpt: '実世界情報実験３ロボットテーマ'
 without_content_table: true
 ---
-{% assign GITHUB_PAGES_BRANCH = "2022test" %}
+<!-- {% assign GITHUB_PAGES_BRANCH = "master" %} -->
 {% assign COLAB_PREFIX = "https://colab.research.google.com/github/"
    | append: site.repository | append: "/blob/"
    | append: GITHUB_PAGES_BRANCH %}
