@@ -47,7 +47,7 @@ RVizの **Publish Point** ボタンを押した後、地図上の点をクリッ
    ```bash
    $ roslaunch exp3 navigation.launch map_name:=map1
    ```
-   <span style="color: red; ">これらの起動は、以降の6.3まで必要です。</span>
+   **これらの起動は、以降の6.3まで必要です。**
    
 1. 新たな端末で `rostopic echo /clicked_point` を実行し `/clicked_point` に
    出力される情報を待ち受ける状態にする。
