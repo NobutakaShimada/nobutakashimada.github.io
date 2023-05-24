@@ -28,7 +28,27 @@ RVizの **Publish Point** ボタンを押した後、地図上の点をクリッ
 まずはこれを確認しましょう。
 
 ### `rostopic echo` を用いる場合 {#check-clicked-point-by-rostopic}
-1. [前節5.](/docs/navigation)に記載の方法でRVizを起動する。
+1. [前節5.](/docs/navigation)に記載の方法でRVizを起動する。 
+   ```bash
+   $ roscore
+   ```
+   Gazeboの場合
+   
+   ```bash
+   $ roslaunch exp3 gazebo_manipulator_world.launch
+   ```
+    実機の場合 (ロボット番号09の場合)
+   
+   ```bash
+   $ roslaunch exp3 machine.launch id:=09
+   ```
+   navigation.launchの実行 (Gazebo/実機の場合共通、map1の場合) 
+   
+   ```bash
+   $ roslaunch exp3 navigation.launch map_name:=map1
+   ```
+   **これらの起動は、以降の6.3まで必要です。**
+   
 1. 新たな端末で `rostopic echo /clicked_point` を実行し `/clicked_point` に
    出力される情報を待ち受ける状態にする。
 1. RViz上部の **Publish Point** ボタンをクリックする。
