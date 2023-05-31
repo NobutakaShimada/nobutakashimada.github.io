@@ -894,6 +894,24 @@ ROSパッケージの機能です。
 このトピックから情報を取得する例を載せてあります。
 詳細は https://github.com/tysik/obstacle_detector を参照してください。
 
+**!!注意!!** \\
+障害物検知のパラメータ設定によって、プロックで作製した壁を円形対象物体として認識することがあります。
+また、検出した物体の半径をRvis上で拡大表示し、ロボットと物体が接触しないようにロボットへの目標位置を与えることができます。
+しかし、半径拡大が大きすぎると、ロボットアームが棒に届かない場合が想定されます。
+このような場合には、**catkin_ws/obstacle_detector/src/obstacle_extractor.cpp**内の以下のパラメータを変更してください。
+**max_circle_radius** : 検出する円形対象物体の最大半径の設定　現状は0.3
+**radius_enlargment** : 検出する円形対象物体の半径拡大の設定　現状は0.1
+設定変更後は**catkin_ws**を再度ビルドする必要があります。
+```bash
+$ roscd catkin_ws
+$ catkin_make
+```
+ビルドが完了したら再度以下で実行して見てください。
+```bash
+$ roslaunch exp3 obstacle_detector.launch
+```
+\\
+
 {:id="exercise6-ex1"}
 {% capture exercise6-ex1 %}
 1. センサ情報から円筒状の物体を検知しその近くに移動する
