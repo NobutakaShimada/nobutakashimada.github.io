@@ -570,6 +570,9 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 -  `extend_arm()` : アームを伸ばす。
 -  `initialize_arm()` : アームをGazebo上の初期姿勢に戻す。
 -  `initialize_arm_real()` : アームを実機起動時の姿勢に戻す。
+-  `open_gripper()` : グリッパを開く。
+-  `close_gripper()` : グリッパを閉じる。
+
 
 これらの関数は `robot` オブジェクトのメソッドを使って実装されています。
 `robot` オブジェクトのメソッドのいくつかの機能を以下に示します。
@@ -621,9 +624,8 @@ def rotate_arm(robot):
         [{'joint1': -0.85*math.pi}, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
-    rospy.sleep(3)
     joint_waypoints = [
-        [{'joint1': 0.85*math.pi}, 6.0]
+        [{'joint1': 0.85*math.pi}, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
     rospy.sleep(3)
@@ -655,6 +657,15 @@ def initialize_arm_real(robot):
          }, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
+    
+def open_gripper(robot):
+    #Each entry means a pair of Gripper opening/closing amount[m](Min:-0.010, Max:0.015m) and time[sec].
+    gripper_waypoints = [[{'gripper': 0.015000}, 1.0]]
+    robot.follow_gripper_trajectory(gripper_waypoints)
+
+def close_gripper(robot):
+    gripper_waypoints = [[{'gripper': -0.0100}, 1.0]] 
+    robot.follow_gripper_trajectory(gripper_waypoints)
 
 if __name__ == '__main__':
     rospy.init_node('move_arm', anonymous=False)
@@ -678,7 +689,7 @@ if __name__ == '__main__':
    「アームをある軌道で動かし最後には初期状態に戻すような関数」を
    作成し、レポートに貼り付けてください。
    但し、アームの軌道は少なくとも3つの中継点を通るようなもので、
-   `rotate_arm()` とは異なるものにしてください。
+   `rotate_arm()` とは異なるものにしてください。また、動作の途中でグリッパの開閉を含んでもよい。
 1. 作成したプログラムによって実現されるアームの動作を説明する
    文章を作成しレポートで報告してください。
 1. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
@@ -985,3 +996,53 @@ $ roslaunch exp3 obstacle_detector.launch
 {: .notice--info}
 **ヒント:**
 プログラムの雛形を`go_to_obstacle_and_move_arm.py`として用意してあります。
+
+
+## **発展課題6-EX3 円形障害物を検知しそれを把持、運搬するプログラム**
+
+{:id="exercise6-ex3"}
+{% capture exercise6-ex3 %}
+1. 発展課題6-EX2ではセンサ情報から棒(円筒状の物体)を検知しその近くに移動した後に
+   アームを動作させて棒を倒しました。本ロボットにはグリッパが付属しています。せっかくなので、実際に棒(円筒状の物体)を
+   把持して他の場所へ移動させてみましょう。ただし、Gazeboを利用する場合は、棒の質量がデフォルトで1Kgとなるため、100g程度に設定し直してください。
+
+   プログラムを作成し、レポートに貼り付けてください。
+1. プログラム作成時のアイデアや目標(棒を検知する、棒を把持する位置に移動する、棒を把持する、移動させて棒を置くなど)を
+   達成するための作戦、アルゴリズムについての説明をレポートで報告
+   してください。
+   アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
+   までは一直線で移動できる、など)があればそれを明示すること。
+
+   フローチャートなどの画像を使うと伝わりやすいです。
+   レポートのノートブックには適宜セルを追加して図などの説明資料を
+   挿入し、それを参照しながら説明する文章を作成してください。
+1. 作成したプログラムを実行し、その様子を報告してください。
+   - 様子を説明する文章
+     (添付画像を適宜参照すると伝わりやすいです。
+     説明しやすい状況となるよう添付する画像を選ぶと
+     より伝わりやすいレポートとなります。)
+   - 動作前のRVizの画像と、動作前の周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
+   - 動作後のRVizの画像と、動作後の周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
+   - 意図通りに動作しなかった場合は、その状況が分かりやすい
+     RVizの画像と周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
+1. 動作結果について考察を行いレポートで報告してください。
+   - 意図通りに動いたとしたら、動作のどの部分からそう判断したかを
+     文章で報告してください。
+   - 意図通りに動かなかったとしてもその理由を考えて、
+     理由や改善するための案などを文章で報告してください。
+
+   どちらの場合でもその他に気付いた点があれば文章で報告してください。
+{% endcapture %}
+{% include phyexp3-exercise.html content=exercise6-ex3 title="発展課題6-EX3" %}
+
+{: .notice--info}
+**ヒント:**
+あらかじめ、棒を把持するためのロボットの姿勢や棒までの距離を想定して、プログラムを作成してください。
+
+
+
+
+
+
+
+
