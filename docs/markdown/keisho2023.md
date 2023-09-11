@@ -10,6 +10,7 @@ sidebar:
   nav: "phyexp3\_keisho2023"
 ---
 {% assign wayback_prefix = "https://web.archive.org/web/20200929183646/" %}
+# 立命館大学情報理工学部／立命館慶祥高校　体験授業2023 ROSロボットの自動走行を体験しよう
 
 この体験授業2023はTurtlebot3+OpenManipulator-Xというロボットプラットフォームを用いて、
 広くロボットの制御に用いられるROS(Robot Operating System)の分散ノード
@@ -42,7 +43,7 @@ sidebar:
 稼働時間が短くなります。長く使わない時はスイッチを切るようにします。
 
 
-## ROSを学ぶ前に〜付属コントローラでTurtlebot3を操作してみよう
+## 課題１：はじめに〜付属コントローラでTurtlebot3を操作してみよう
 
 ![RC100Bリモコン](https://emanual.robotis.com/assets/images/platform/turtlebot3/example/rc100b_with_bt410.png)
 
@@ -53,14 +54,14 @@ Turtlebot3には１台に１つBluetoothで接続されたリモコンが付属�
 
 **注意**　リモコンの停止ボタンはリモコンから指示した制御信号だけをキャンセルします。後述のROSノード(teleop)やlaunchファイルから指示した制御信号はキャンセルされないので注意してください。
 
-### 課題1
+### リモコンによるロボットの操縦体験
 {% capture staff01 %}
 リモコン操作でロボットの動きをよく観察しましょう。リモコンからの入力はどういう信号に変換されて送られていると思うか（位置、速度、加速度など）。各キーにバインドされた制御信号を予想しながら操作しましょう。
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 
-## ROSの基礎
+### ROSの基礎
 
 ![ROSの構造](/assets/images/ritsumeikan/ROS_architecture.png)
 
@@ -92,17 +93,6 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [Wayback Machine](https://web.archive.org/) は
 [Internet Archive](https://archive.org/) による過去ページの
 キャッシュデータを表示するサービスであり、表示には時間がかかる。
-
-### 課題2
-{% capture staff01 %}
-1. キーボードでPCを操作するコマンドを入力するために、ターミナルを開く。そのターミナル上で`roscore`を起動する。
-```bash
-$ roscore 
-```
-2. 起動すると英文でメッセージが表示される。そのまま端末のプロンプト`%`は戻ってこないままが正常です。
-3. 別のターミナルを開いて（新しいタブを開くと画面が
-{% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 ### 主なROS コマンド
 
@@ -142,8 +132,54 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 |rostopic type|   トピックの型を出力する|
 
 
+## 課題２：実ロボットとPCとの接続  
+この後のコマンドは、すべてHost PC端末(Remote PC / Raspberry PI4)上のターミナルでキーボードから打ち込んで実行します。
+1. roscoreの起動（すべての最初）
+    ターミナルを開いて以下のコマンドを入力
+        ```bash
+        $ roscore
+        ```
+2. Turtlebot3のへの接続 : machine.launch  
+    ロボットの電源を入れ、センサが回転しアームが持ち上がったら以下のコマンドを実行すると無線LAN経由でPCとロボットが接続されます。
+    roscoreとは別のターミナルを開いて（新しいタブを開くとよい）、以下のコマンドを入力(接続しようとするTurtleBot3の番号が09であると仮定)  
+    ```bash
+    $ roslaunch exp3 machine.launch id:=09
+    ```  
+    ![イメージリンク](https://emanual.robotis.com/assets/images/platform/turtlebot3/bringup/run_rviz.jpg)  
+    他のユーザーがTurtleBot3を使用している場合、launchファイル実行時に以下のメッセージが出て終了する。
+    ```bash
+    RLException: remote roslaunch failed to launch: tb3
+    The traceback for the exception was written to the log file
+    ```  
+    
+3. 情報可視化アプリRvizの起動
+   さらに新たなターミナルを開いて、以下のコマンドを入力する。
+   ```bash
+   $ roslaunch exp3 rviz.launch
+   ```
+4. キーボードからロボットへの移動コマンドを送るteleopの起動：teleop.launch
+   TurtleBot3をキーボードでコントロールするために、teleop.launchを起動する。
+   ```bash
+   $ roslaunch exp3 teleop.launch
+   Control Your TurtleBot3!
+   ---------------------------
+   Moving around:
+           w
+      a    s    d
+           x
+   w/x : increase/decrease linear velocity
+   a/d : increase/decrease angular velocity
+   space key, s : force stop
+   CTRL-C to quit
+   ```
+   キーボードのキーで自由に実機のturtlebot3ロボットを動かしてみましょう。
 
 
-
+### 
+{% capture staff01 %}
+1. Turtlebot実機に接続してノードを起動し（machine.launch)、教室のブロックフィールドに実機を置いてteleopで移動させてみよ。適当なところで停止させ、その様子を撮影した写真とその時のRVizの画面をノートブックに添付せよ。画面キャプチャには`gnome-screenshot`コマンドを使うことができます。
+2. 距離センサの反応する範囲にものを置いたり動かして、距離センサの反応がRVizの画面上で変化していることを比較して確認せよ。この時の実環境の様子とRVizの画面をキャプチャしてノートブックに添付せよ（２つの異なる状況でセンサーの反応が異なっていることがわかる画像を２種類添付すること）。
+{% endcapture %}
+<div class="notice--danger">{{ staff01 | markdownify }}</div>
 
 
