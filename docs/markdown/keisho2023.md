@@ -298,8 +298,11 @@ slam.launchやteleop.launchは必ず停止しておいてください（teleop�
 $ roslaunch exp3 navigation.launch map_name:=map1
 ```
 上の例はSLAMで生成し保存した地図の名前（拡張子を除く）が"map1"の場合です。別の名前のときは適宜対応した名前を入力してください。
+{% endcapture %}
+<div class="notice--success">{{ capture02 | markdownify }}</div>
 
 navigation.launchでは以下の多くのROSノードプロセスが起動し、互いに連携して動作します。
+{% capture capture02 %}
 1. **turtlebot3_remote.launch**
   - robot_state_publisher : ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
   - ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
