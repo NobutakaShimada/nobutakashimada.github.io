@@ -3,7 +3,7 @@ layout: phyexp3-lesson
 lang: en
 ref: phyexp3\_keisho2023
 permalink: /docs/keisho2023/
-section_number: 
+section_number: A
 section_title: 立命館大学情報理工学部／立命館慶祥高校　体験授業2023 ROSロボットの自動走行を体験しよう
 sidebar:
   title: 立命館大学情報理工学部／立命館慶祥高校　体験授業2023 ROSロボットの自動走行を体験しよう
@@ -267,7 +267,7 @@ OpenMANIPULATOR-Xを組み付けたTurtleBot3のSLAMでは、ロボットアー�
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/open_manipulator_slam.png)
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/slam/slam_running_for_mapping.png)
 
-## 地図に基づく自己位置推定と目的地誘導（ナビゲーション）
+## 課題４：地図に基づく自己位置推定と目的地誘導（ナビゲーション）
 ナビゲーション（誘導）は、特定の環境で指定された位置にロボットを移動させることです。そのために与えられた環境にある障害物や壁などの幾何的な情報が含まれた地図が必要です。SLAMを実行することによって、
 センサが獲得した距離情報やロボットの移動量情報から未知環境の地図を自動的に生成することができました。
 ナビゲーションを利用すると、地図情報、ロボットの内界センサ（車輪に装着された回転計：エンコーダ）、IMUセンサ及び距離センサ）の情報を使って、ロボットが現在位置から地図上の目標位置に移動することができます。
