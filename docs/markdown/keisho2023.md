@@ -263,7 +263,6 @@ OpenMANIPULATOR-Xを組み付けたTurtleBot3のSLAMでは、ロボットアー�
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/slam/slam_running_for_mapping.png)
 
 ## 地図に基づく自己位置推定と目的地誘導（ナビゲーション）
-
 ナビゲーション（誘導）は、特定の環境で指定された位置にロボットを移動させることです。そのために与えられた環境にある障害物や壁などの幾何的な情報が含まれた地図が必要です。SLAMを実行することによって、
 センサが獲得した距離情報やロボットの移動量情報から未知環境の地図を自動的に生成することができました。
 ナビゲーションを利用すると、地図情報、ロボットの内界センサ（車輪に装着された回転計：エンコーダ）、IMUセンサ及び距離センサ）の情報を使って、ロボットが現在位置から地図上の目標位置に移動することができます。
@@ -287,48 +286,40 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
 
 
 ### ナビゲーションの実行: navigation.launch
+{% capture capture02 %}
+SLAMで制作した地図をもとにナビゲーションを行うには以下のコマンドをターミナルから入力します。
+slam.launchやteleop.launchは必ず停止しておいてください（teleopとnavigationはともにロボットに移動指令を出すので、両者が干渉してうまく動かなくなります）。
 ```bash
 $ roslaunch exp3 navigation.launch map_name:=map1
 ```
-上の例はSLAMで生成し保存した地図の名前（拡張子を除く）が"map1"の場合。
+上の例はSLAMで生成し保存した地図の名前（拡張子を除く）が"map1"の場合です。別の名前のときは適宜対応した名前を入力してください。
 
-{% capture capture02 %}
-**roslaunch exp3 navigation.launch map_name:=map1**
-1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
-  - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
-  - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
+navigation.launchでは以下の多くのROSノードプロセスが起動し、互いに連携して動作します。
+1. **turtlebot3_remote.launch**
+  - robot_state_publisher : ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
     - subscribe : joint_states 
     - publish : tf
 
-  turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
-  turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
-
+  ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+  
 2. map_serverノード
-  - publish : map_metadata, map
-  - map_serverノードは、ディスクに保存されている地図を呼び出す役割を行います。ターミナルに入力されたコマンドでmap_fileパラメータは、地図の情報が保存されたファイルの位置を伝えます。
-
+  - map_serverノードは、SLAMで作成した地図画像ファイルを読み込み、必要に応じて障害物などの情報を提供します。
+  
 3. amcl.launch
-  - publish : tf, amcl_pose, particlecloud
-  - subscribe : scan, tf, initialpose, map
-  - 地図とセンサーのscan値、ロボットのinitialposeとtfを読み取り、particle filterを使用して地図上でロボットの位置を予測します。
+  - 地図とセンサーのscan値、ロボットの位置と各座標変換の情報を読み取り、particle filterを使用して地図上でロボットの位置を予測します。
 
   amclはParticle Filterというモンテカルロ法に基づく確率的状態推定アルゴリズムによって、センサ情報と地図情報からロボットの自己位置（２次元平面上の座標(x,y)とロボットの向きθ）を推定するノードです。RVizを起動すると、細かい矢印が多数表示されますが、これがamclの推定している推定パーティクルで、１つ１つが確率値を持つ推定候補です。最初は広い範囲に散らばっていて自己位置姿勢の推定が不確かなことが分かりますが、移動しながら情報を集めることによって次第にパーティクルが集まってきて真の自己位置が確からしく推定できるようになることを目視でよく確認してください。
 
 4. move_base
-  - subscribe : goal, cancel
-  - publish : feedback, status, result, cmd_vel
-
-  move_baseパッケージのmove_baseノードは、ロボットのNavigation stackにアクセスするROSインターフェイスを提供します。move_baseノードは、global plannerとlocal plannerを接続してロボットを目的地まで移動させ、この時それぞれのplannerに合ったcostmapも保管します。ロボットの目的地(goal)をAction形態のトピックで受信すると、現在地(feedback)と状態(status)、移動の結果(result)をアップデートするため、同様にAction形態のトピックを使用します。また、現在の状態に合わせてロボットを動かすためのcmd_velトピックが持続的にpublishされます。
+  - move_baseノードは、global plannerとlocal plannerを接続してロボットを目的地まで移動させ、この時それぞれのplannerに合ったcostmapも保管します。ロボットの目的地をAction形態のトピックで受信すると、現在地と状態、移動の結果をアップデートします。また、現在の状態に合わせてロボットを動かすためのcmd_velトピックが持続的にpublishされます。
 
 5. rviz
-  - subscribe : tf, odom, map, scan
-
-最後にrvizが自動的に実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成された地図を表示し、現在の自己位置推定の様子が可視化され、また移動の目標地点を指定してロボットを誘導することができます。
+  - 最後に可視化ツールrvizが自動的に実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成された地図を表示し、現在の自己位置推定の様子が可視化されます。rvizの画面操作により、ロボットの初期位置の指定や、移動の目標地点を指定して、ロボットを自動的に誘導することができます。
 {% endcapture %}
 <div class="notice--success">{{ capture02 | markdownify }}</div>
 
 
-### ロボットの初期姿勢を指定（Gazebo/実機の場合共通）
+### rviz画面上での初期位置指定
 
 ナビゲーションを行う際に最も重要なことは、ロボットの正確な初期位置を地図上で示すことです。元々どこにいそうなのかがわからなければ、ロボットが自己位置を推定するにはたくさんの可能性を試さねばならず時間と計算コストが非常にかかります。  
 ロボットのエンコーダとIMU、LDSなど各種センサから得られた情報をもとにTurtleBot3の位置を推定するには、確率をベースにしたAMCL(Adaptive Monte Carlo Localization)というparticle filterが使用されます。AMCLは、センサ情報に基づいてロボットの位置を推定します。また、アルゴリズムのパラメータに設定された移動量をロボットが移動するたびに、推定位置の値を更新し、更新が繰り返されるたびに推定位置の誤差が減少していきます。
@@ -347,7 +338,7 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 
 > **注意**： ナビゲーションを実行する前にteleop.launchが実行されている場合は、必ず終了させる必要があります。teleopは常に指定された速度(cmd_velトピック）を指令し続けているので、move_baseの指示する速度と衝突してうまく動作できなくなります）。
 
-### Navigation Goalを設定する（Gazebo/実機の場合共通）
+### 移動先ゴール（ロボットの位置と向き）の設定
 
 次にロボットを目標位置に誘導するために、到着目的地の位置と方向を指定します。初期位置の指定と同様に、Rvizの`2D Nav Goal`ボタンをクリックし、ロボットが移動できる目的地をクリックし、ロボットが向いている方向をドラッグして、矢印の方向を指定します。
 
@@ -361,14 +352,12 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 目的地までの経路が生成できない場合、Navigation Goal設定が失敗する場合があります。ロボットが目的地まで移動する途中でロボットを停止させたい場合は、ロボットの現在位置を目的地として再設定します。
 
 
-## 課題（実機編）
+### 課題内容
 
 {% capture staff01 %}
-1. 実機を教室内のコースに置き、SLAMの時に作った地図を指定してナビゲーションを実行してみなさい。ただしコースがSLAMの時と大きく変わっているとうまく動かない可能性がある。
-2. 最初に自己位置推定が不確かである状況を画面キャプチャして保存し、ノートブックに添付せよ。画面キャプチャはUbuntuではgnome-screenshotを使うことができる。
-3. ゴールを指定してナビゲーションを開始すると、移動経路がRViz上に示されること、移動している間に次第に自己位置推定が確からしくなる様子を確かめよ。このときの途中経過を画面キャプチャあるいは動画にして保存し、ノートブックに添付せよ(ノートブックには動画は直接張り込めないので、数枚の画像列にして貼ると良い)。動画を保存するのはsimplescreenrecoderを使うとできる（デスクトップ左端のアイコンにもある）。
-4. 実際にコース上に手や足、ブロックなどの地図には存在しない障害物を出現させ、ロボットがどのように避けるか確認しなさい。障害物のあるコースの様子を写真で撮影しノートブックに添付せよ。またそれを避ける移動経路を生成して移動していく様子のRViz画面を保存しノートブックに添付せよ。
-
+1. 実機を教室内のコースに置き、SLAMの時に作った地図を指定してナビゲーションを実行してみよう。ただしコースがSLAMの時と大きく変わっているとうまく動かない可能性があります。
+2. ゴールを指定してナビゲーションを開始すると、移動経路がRViz上に示されます。緑の矢印で表示されているのはロボットの現在の位置と向きの推定候補です（パーティクルフィルタ）。これらが移動している間に次第に密集して、自己位置推定が確からしくなる様子を確かめましょう。
+3. 実際にコース上に手や足、ブロックなどの地図には存在しない障害物をおいて、ロボットがどのように避けるか確認しましょう。地図にない物、あるいは動くものを置いても、（避けられる時は）回避するルートを自動的に再生成して、移動をつづけようとします。
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
 
