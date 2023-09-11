@@ -204,7 +204,7 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
   space key, s : force stop
   CTRL-C to quit
   ```
-  キーボードのキーで自由にGazebo内のロボットを動かしながら、どのように地図が生成されていくか確認する。
+  キーボードのキーで自由にturtlebot3ロボットを動かしながら、どのように地図が生成されていくか確認する。
   
 5. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
   ```bash
