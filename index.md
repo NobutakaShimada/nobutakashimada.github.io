@@ -32,7 +32,7 @@ without_content_table: true
 1. [生成した環境地図に基づくナビゲーション](/docs/navigation)
 1. [Pythonプログラミングによる移動指示とマニピュレータ操作](/docs/patrol)
 1. [（予備）OpenMANIPULATOR-Xを使ったマニピュレーション](/docs/manipulation)
-
+1. [2023立命館慶祥高校R-CONFERENCE体験授業コンテンツ](/docs/keisho2023)
 
 {: .counter-style-upper-alpha}
 # レポートファイル（ipynbファイル）
