@@ -100,7 +100,7 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 その後、rostopic pubコマンドを使ってturtlesimのタートルを一定の並進速度・回転速度で動かす命令（ただしチュートリアルサイトの数字とは違う速度の指示値を与えよ）を実行して、そのときのrostopicコマンドの文字列と実行後のタートル表示ウインドウをキャプチャしてレポートファイルに貼りなさい。
 画面キャプチャには`gnome-screenshot`を使うことができる。
 ```bash
-$ gnome-screenshot --area -f turtle.png 
+$ gnome-screenshot --area -f turtle.jpg
 ```
 {% endcapture %}
 <div class="notice--danger">{{ staff01 | markdownify }}</div>
@@ -169,7 +169,7 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 5. rostopic echoコマンドを実行して、流れているROSメッセージを端末に表示し、それをキャプチャしてノートブックに添付しなさい。
 6. rqt_graphコマンドを実行して、ノード・トピックの関係図を表示し、画像としてノートブックに添付しなさい。画面キャプチャには`gnome-screenshot`コマンドを使うことができる。
 ```bash
-$ gnome-screenshot --area -f graph.png 
+$ gnome-screenshot --area -f graph.jpg 
 ```
 7. talker2.pyを複数起動すると、2ノード以上からのテキストをlistener2.pyは表示することができる。実際に試してみて、なぜそれが可能なのか考察しノートブックで説明せよ。
 {% endcapture %}
