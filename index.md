@@ -41,14 +41,14 @@ without_content_table: true
   ([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))
 - [レポートWordファイル２（ワードファイル）](2024exp3report4-5.docx)
   ([課題4](/docs/slam), [課題5](/docs/navigation))
-- [レポートWordファイル３ (Google Colaboratoryで開く)]({{ "2023exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})
+- [レポートWordファイル３（ワードファイル）(2024exp3report6.docx)
   ([課題6](/docs/patrol))
-- [レポートipynbファイル１ (Google Colaboratoryで開く)]({{ "2023exp3report1-3.ipynb" | relative_url | prepend: COLAB_PREFIX}})
-  ([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))
-- [レポートipynbファイル２ (Google Colaboratoryで開く)]({{ "2023exp3report4-5.ipynb" | relative_url | prepend: COLAB_PREFIX}})
-  ([課題4](/docs/slam), [課題5](/docs/navigation))
-- [レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2023exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})
-  ([課題6](/docs/patrol))
+- ~~[レポートipynbファイル１ (Google Colaboratoryで開く)]({{ "2023exp3report1-3.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
+  ~~([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))~~
+- ~~[レポートipynbファイル２ (Google Colaboratoryで開く)]({{ "2023exp3report4-5.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
+  ~~([課題4](/docs/slam), [課題5](/docs/navigation))~~
+- ~~[レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2023exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
+  ~~([課題6](/docs/patrol))~~
 
 {: .notice--info}
 上記のipynbファイルへのリンクを開くと
