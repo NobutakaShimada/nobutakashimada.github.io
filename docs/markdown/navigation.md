@@ -302,13 +302,13 @@ DWA関連のパラメータをロボットのハードウェアに合わせた�
 
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_sim_time.png)
 
-##Navigationチューニングのメモ書き（For TA）
+## Navigationチューニングのメモ書き（For TA）
 
 Navigation時に狭いところを通れない、障害物に近づいて身動きできなくなる、などのトラブルが頻発することがある。
 概ねlocal plannerとglobal planner、さらにCostmapのパラメータチューニングの問題と思われ、以下に試行錯誤のメモを載せておく。
 
 
-###2022/3/31における考察
+### 2022/3/31における考察
 
 壁際でロボットがスタックするのはglobal_plannerが作ったpath（rviz上での赤い線）の旋回半径よりも、dwa_local_plannerの作ったpath(rviz上での黄色い短い線）の旋回半径が大きすぎるため。
 global planの軌道よりも大回りになってしまってオーバーステアになりカーブ外側にある壁に寄り添ってしまってそこで止まる。
@@ -326,7 +326,7 @@ https://github.com/ros-planning/navigation/blob/4a3d261daa4e7eafa40bf7e4505f8aa8
 実験用のブート環境ではmelodicの上にkinetic用のROBOTISパッケージが載っているので、どちらで反応するか、rqt_reconfigureを見てみないといけない。
 
 ---
-###2022/05/17のgazeboによる実験
+### 2022/05/17のgazeboによる実験
 
 Global costmapのパラメータであるinflation_radiusの値（現在0.25になっている）が小さすぎるので、コストマップが障害物から離れたところで急激にコストが下がるのでぎりぎりを狙ったplanができてしまう模様。元々はもう少し大きかったはず。 inflation_radiusの値が2.0程度の方がgazeboのgazebo_manipulator_world.launch（６角形）ではいい感じ見える。
 gazeboであまりにもmin_vel_thetaを大きくしすぎると振動しだして不安定になる。inflation_radiusの値でコントロールできるならその方がいい。
@@ -337,7 +337,7 @@ acc_lim_theta=2.0程度で検証。 ->　inflation_radiusはlocal costmapには�
 DWAPlannerROSのパスプラニングのパラメータであるpath_distance_bias、goal_distance_bias、occdist_scaleをあまりいじらない方が良さそう。occdist_scaleを大きくすると障害物から離れた経路を作ろうとするが、十分空いているのにそこを通過しないでスタックしてしまうことがgazeboではよく起きた。上のinflation_ radiusを調整することでうまくできればその方が良い。
 
 ---
-###2023/05/17 Gazebo上のnavigation実験時のメモ
+### 2023/05/17 Gazebo上のnavigation実験時のメモ
 
 dynamic reconfigureのツールはrqt_reconfigureより，rqt_guiのようがよさk．
 % rosrun rqt_gui rqt_gui
