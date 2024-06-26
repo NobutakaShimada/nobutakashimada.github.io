@@ -301,3 +301,50 @@ DWA関連のパラメータをロボットのハードウェアに合わせた�
 ロボットの現在の位置から数秒程度の予想経路をシミュレーションするかどうかを設定します。
 
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/navigation/tuning_sim_time.png)
+
+##Navigationチューニングのメモ書き（For TA）
+
+Navigation時に狭いところを通れない、障害物に近づいて身動きできなくなる、などのトラブルが頻発することがある。
+概ねlocal plannerとglobal planner、さらにCostmapのパラメータチューニングの問題と思われ、以下に試行錯誤のメモを載せておく。
+
+
+###2022/3/31における考察
+
+壁際でロボットがスタックするのはglobal_plannerが作ったpath（rviz上での赤い線）の旋回半径よりも、dwa_local_plannerの作ったpath(rviz上での黄色い短い線）の旋回半径が大きすぎるため。
+global planの軌道よりも大回りになってしまってオーバーステアになりカーブ外側にある壁に寄り添ってしまってそこで止まる。
+
+ではなぜlocal plannerの出力する旋回半径が大きくなるか？
+rosrun rqt_reconfigure rqt_reconfigure でparamを動的に変えながらチェックすると、min_vel_thetaが関係していそう。min_vel_thetaを「大きく」すると旋回半径が小さくなりやすくなり小回りが効くようになる。逆にmin_vel_thetaを小さくすると直線運動しかできなくなって旋回できないように見える。
+max_vel_thetaは最大の旋回角速度を制御していてロボットハードの性能上限を記述しているが、min_vel_thetaはそもそも「最小の角速度」ではおかしい（０のはずだから）。そうではなく下のsimple_trajectory_generator.cppによれば、並進速度がmin_vel_transに指定された値より大きいか、旋回速度がmin_vel_thetaに指定された値より大きいか、どちらかが成立するようにplanを生成する、という条件設定がされているように見える。
+これの意味はおそらく、移動中にゴール未達なのに停止してしまうplanが生成されないように、並進と旋回のどちらかがminで指定した値より大きい（つまり少なくとも並進か旋回のどちらかが行われている）状態を維持し続ける、という意図ではないか。
+
+https://github.com/ros-planning/navigation/blob/4a3d261daa4e7eafa40bf7e4505f8aa8678d7bd7/base_local_planner/src/simple_trajectory_generator.cpp#L193
+
+とすれば、min_vel_thetaをある程度大きい値にしておけば並進速度が小さくなっている状況では旋回速度を大きくとらねばならず、結果として旋回半径が小さくなり小回りが生成されやすくなるはず。
+
+ちなみに、ROSのmelodicとkineticではmin_vel_theta、min_rot_velと変数名が違うので注意が必要。
+実験用のブート環境ではmelodicの上にkinetic用のROBOTISパッケージが載っているので、どちらで反応するか、rqt_reconfigureを見てみないといけない。
+
+---
+###2022/05/17のgazeboによる実験
+
+Global costmapのパラメータであるinflation_radiusの値（現在0.25になっている）が小さすぎるので、コストマップが障害物から離れたところで急激にコストが下がるのでぎりぎりを狙ったplanができてしまう模様。元々はもう少し大きかったはず。 inflation_radiusの値が2.0程度の方がgazeboのgazebo_manipulator_world.launch（６角形）ではいい感じ見える。
+gazeboであまりにもmin_vel_thetaを大きくしすぎると振動しだして不安定になる。inflation_radiusの値でコントロールできるならその方がいい。
+min_vel_theta=1.7
+max_vel_theta=2.0
+acc_lim_theta=2.0程度で検証。 ->　inflation_radiusはlocal costmapには影響せず、global costmapにのみ関わる模様。2.0ではかなり大きくそれで小さく0.25にしていた経緯。なかなかいいパラメータがない。
+
+DWAPlannerROSのパスプラニングのパラメータであるpath_distance_bias、goal_distance_bias、occdist_scaleをあまりいじらない方が良さそう。occdist_scaleを大きくすると障害物から離れた経路を作ろうとするが、十分空いているのにそこを通過しないでスタックしてしまうことがgazeboではよく起きた。上のinflation_ radiusを調整することでうまくできればその方が良い。
+
+---
+###2023/05/17 Gazebo上のnavigation実験時のメモ
+
+dynamic reconfigureのツールはrqt_reconfigureより，rqt_guiのようがよさk．
+% rosrun rqt_gui rqt_gui
+
+rqt_gui上でmove_baseの中のglobal_costmapとlocal_costmapをえらぶと（その下にみえるinflation_layerとかを選んではいけない．local_costmapのセレクタを選ぶ）以下のパラメータが見える．
+footprint : ホームベース上のロボット形状を頂点リストで表現．これからロボットの大きさが計算される．
+robot_radius : footprintが設定されてない状況で，ロボットの大きさ（半径）を表現する．
+footprint_padding : footprintに対してさらに膨らませる半径を指定．
+以上のパラメータを大きくすると，global costmap もしくはlocal costmapの水色の領域，つまりロボットの中心が侵入してはいけない領域（侵入すると障害物に接触する）の広さを調整できる．これを大きめにしておくとロボットが大回りしてくれることが期待できる．
+ただし，min_vel_theta（平心速度と旋回速度の総和の最小値，低速だとできるだけ小さく旋回しようとする）の大きさが小さいと軌道より小回りしてしまって水色領域に入ってしまうことが観測される．調整できるかもしれない．
