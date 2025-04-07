@@ -22,7 +22,7 @@ without_content_table: true
 # 立命館大学情報理工学部 実世界情報実験３ロボットテーマレジュメ
 
 {: .counter-style-upper-alpha}
-# 2024年度春学期実験用レジュメ
+# 2025年度春学期実験用レジュメ
 - [受講上の注意（最初に目を通すこと）](/docs/remarks)
 
 1. [基本編(Turtlebot3の操作とROSの基礎)](/docs/basic)
@@ -37,18 +37,19 @@ without_content_table: true
 {: .counter-style-upper-alpha}
 # レポートファイル（docxファイル）
 - [レポートについて](/docs/report)
-- **[NEW]**[レポートWordファイル１（ワードファイル）](2024exp3report1-3.docx)
+- 2025年度からレポートをLaTeX(overleaf)にする予定です。後日説明をします。
+- ~~[レポートWordファイル１（ワードファイル）](2024exp3report1-3.docx)
   ([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))
-- **[NEW]**[レポートWordファイル２（ワードファイル）](2024exp3report4-5.docx)
+- ~~[レポートWordファイル２（ワードファイル）](2024exp3report4-5.docx)
  ([課題4](/docs/slam), [課題5](/docs/navigation))
-- **[NEW]**[レポートWordファイル３（ワードファイル）](2024exp3report6.docx)
+- ~~[レポートWordファイル３（ワードファイル）](2024exp3report6.docx)
   ([課題6](/docs/patrol))
-- ~~[レポートipynbファイル１ (Google Colaboratoryで開く)]({{ "2023exp3report1-3.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
-  ~~([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))~~
-- ~~[レポートipynbファイル２ (Google Colaboratoryで開く)]({{ "2023exp3report4-5.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
-  ~~([課題4](/docs/slam), [課題5](/docs/navigation))~~
-- ~~[レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2023exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
-  ~~([課題6](/docs/patrol))~~
+#- ~~[レポートipynbファイル１ (Google Colaboratoryで開く)]({{ "2023exp3report1-3.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
+#  ~~([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))~~
+#- ~~[レポートipynbファイル２ (Google Colaboratoryで開く)]({{ "2023exp3report4-5.ipynb" | relative_url | prep#end: COLAB_PREFIX}})~~
+#  ~~([課題4](/docs/slam), [課題5](/docs/navigation))~~
+#- ~~[レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2023exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
+#  ~~([課題6](/docs/patrol))~~
 
 {: .notice--info}
 上記のipynbファイルへのリンクを開くと
