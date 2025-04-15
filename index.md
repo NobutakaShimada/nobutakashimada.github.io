@@ -35,32 +35,9 @@ without_content_table: true
 1. [2023立命館慶祥高校R-CONFERENCE体験授業コンテンツ](/docs/keisho2023)
 
 {: .counter-style-upper-alpha}
-# レポートファイル（docxファイル）
-- [レポートについて](/docs/report)
-- 2025年度からレポートをLaTeX(overleaf)にする予定です。後日説明をします。
-- ~~[レポートWordファイル１（ワードファイル）](2024exp3report1-3.docx)
-  ([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))~~
-- ~~[レポートWordファイル２（ワードファイル）](2024exp3report4-5.docx)
- ([課題4](/docs/slam), [課題5](/docs/navigation))~~
-- ~~[レポートWordファイル３（ワードファイル）](2024exp3report6.docx)~~
-  ([課題6](/docs/patrol))
-#- ~~[レポートipynbファイル１ (Google Colaboratoryで開く)]({{ "2023exp3report1-3.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
-#  ~~([課題1](/docs/basic), [課題2](/docs/gazebo), [課題3](/docs/turtlebot3))~~
-#- ~~[レポートipynbファイル２ (Google Colaboratoryで開く)]({{ "2023exp3report4-5.ipynb" | relative_url | prep#end: COLAB_PREFIX}})~~
-#  ~~([課題4](/docs/slam), [課題5](/docs/navigation))~~
-#- ~~[レポートipynbファイル３ (Google Colaboratoryで開く)]({{ "2023exp3report6.ipynb" | relative_url | prepend: COLAB_PREFIX}})~~
-#  ~~([課題6](/docs/patrol))~~
-
-{: .notice--info}
-上記のipynbファイルへのリンクを開くと
-Google Colaboratory上にノートブックが表示されますが
-**そのまま保存することはできません**。
-「画面上部の `ドライブにコピー` を指示する」か
-「メニューの `ファイル` から `保存` を選択して
-`ドライブにコピーを保存` を指示する」
-のいずれかを行い、 **Google ドライブに保存する必要があります** 。
-その際にGoogleアカウントにログインしていない状態であれば
-ログインを求められますので **自分のGoogleアカウントでログイン** してください。
+# レポートファイル（PDFファイルとして提出）
+-  2025年度からレポートをLaTeX(Overleaf)にします以下のページを参照してください
+-  [レポートについて](/docs/report)
 
 {: .counter-style-upper-alpha}
 # 参考URL
