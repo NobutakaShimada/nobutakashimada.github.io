@@ -71,5 +71,4 @@ without_content_table: true
 # メンテナンス用
 - [backup script](backup.sh)
 - [launch file updates](launch.tar.gz)
-
-
+- [firmware setup](/docs/markdown/firmware_setup.md)
