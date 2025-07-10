@@ -48,7 +48,7 @@ TurtleBot3 のファームウェアを安定版に更新する方法について
   $ ./update.sh /dev/ttyACM0 om_with_tb3.opencr // 本機の適合はom_with_tb3.opencr
 ## 3. 動作確認
 ### 以下の項目について確認する．
-- 電源を入れなおした時にLIDARが回転し，ロボットアームが初期位置にセットされる
+- 電源を入れなおした時にLiDARが回転し，ロボットアームが初期位置にセットされる
 - `roslaunch exp3 teleop.launch`を実行してTurtlebot3を動作させることができる
 ## 4. トラブルシューティング
 ### ファームウェア書き込み時に失敗した
