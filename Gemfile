@@ -13,8 +13,10 @@ source "https://rubygems.org"
 
 # To upgrade, run `bundle update`.
 
-gem "jekyll", "~> 3.6.3"
+gem "jekyll", "~> 4.3"
 gem "minimal-mistakes-jekyll"
+gem "rexml"   # required for Ruby 3.0+
+gem "webrick" # required for Ruby 3.0+
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
@@ -23,5 +25,4 @@ group :jekyll_plugins do
   gem "jekyll-gist"
   gem "jekyll-feed"
   gem "jemoji"
-  gem 'jekyll-livereload'
 end

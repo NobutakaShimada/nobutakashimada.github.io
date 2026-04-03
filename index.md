@@ -19,9 +19,17 @@ without_content_table: true
    | append: site.repository | append: "/blob/"
    | append: GITHUB_PAGES_BRANCH %}
 
-{: .nonumber}
-
-# 立命館大学情報理工学部 実世界情報実験３ロボットテーマレジュメ
+<div class="site-banner">
+  <div class="site-banner__text">
+    <div class="site-banner__label">立命館大学 情報理工学部</div>
+    <h1 class="site-banner__title">実世界情報実験３<br>ロボットテーマ</h1>
+    <div class="site-banner__year">2026年度春学期</div>
+  </div>
+  <div class="site-banner__images">
+    <img src="/assets/images/ritsumeikan/tb3_hardware_setup.png" alt="TurtleBot3+OpenManipulator-X">
+    <img src="/assets/images/ritsumeikan/tb3_omx_nav.png" alt="ナビゲーション RViz">
+  </div>
+</div>
 
 {: .counter-style-upper-alpha}
 

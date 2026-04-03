@@ -62,8 +62,8 @@ sidebar:
     - TurtleBot3 (実ロボット)とシミュレーションの比較
 
 
-## 課題3
-{% capture staff01 %}
+{:id="exercise3"}
+{% capture exercise3 %}
 1. Turtlebot実機に接続してノードを起動し（machine.launch)、教室のブロックフィールドに実機を置いてteleopで移動させてみよ。適当なところで停止させ、その様子を撮影した写真とその時のRVizの画面をレポートファイルに添付せよ。画面キャプチャには`gnome-screenshot`コマンドを使うことができる。
 ```bash
 $ gnome-screenshot --area -f graph.jpg
@@ -71,7 +71,7 @@ $ gnome-screenshot --area -f graph.jpg
 2. 距離センサの反応する範囲にものを置いたり動かして、距離センサの反応がRVizの画面上で変化していることを比較して確認せよ。この時の実環境の様子とRVizの画面をキャプチャしてレポートファイルに添付せよ（２つの異なる状況でセンサーの反応が異なっていることがわかる画像を２種類添付すること）。
 3. 【追加課題】rqt_graphをつかって、実機を接続した状態のノードとトピックの全体図を画面に表示してみよ。gazeboでシミュレータ内のロボットと接続していたときと比較して、どこが異なるか、あるいは違いがないか、確認せよ。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise3 title="課題3" %}
 
 
 ## 実機とGazeboシミュレーションの差異

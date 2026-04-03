@@ -15,12 +15,291 @@ div.highlighter-rouge .highlight {
  padding-bottom:0em;
 }
 
-.contents-table-label{
-  margin: 0em;
+div.highlighter-rouge {
+  font-size: 1.1em !important;  /* _syntax.scssの0.9emを上書きして本文より少し大きく */
+}
+
+/* 本文の読みやすさ改善 */
+.page__content {
+  p, li {
+    line-height: 1.8;
+  }
+
+  /* コードブロック前後の余白 */
+  div.highlighter-rouge,
+  pre {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  /* 段落とコードブロックの間 */
+  p + div.highlighter-rouge,
+  li > div.highlighter-rouge {
+    margin-top: 0.6em;
+  }
+
+  div.highlighter-rouge + p {
+    margin-top: 0.8em;
+  }
+}
+
+.contents-table-label {
+  margin: 0 0 0.4em 0;
+}
+
+/* 目次スタイル */
+ol.page-toc {
+  margin: 0;
+  padding-left: 1.4em;
+  line-height: 1.0;        /* 全体の行間を詰める */
+
+  li {
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 1.0em;
+    line-height: 1.6 !important;  /* .page__content liの2.2を上書き */
+  }
+
+  /* 第1階層：大きめフォント・太字 */
+  > li {
+    font-size: 1.05em;
+    font-weight: bold;
+    margin-bottom: 0.05em;
+  }
+
+  /* 第2階層以降：通常フォント */
+  ol {
+    padding-left: 1.2em;
+    margin: 0;
+
+    li {
+      font-size: 0.92em;
+      font-weight: normal;
+      margin-bottom: 0.05em;
+    }
+
+    /* 第3階層 */
+    ol li {
+      font-size: 0.88em;
+    }
+  }
+}
+
+/* ページナビゲーションボタン */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1.2em;
+  flex-wrap: wrap;
+}
+
+.page-nav__left  { flex: 1; text-align: left; }
+.page-nav__center { flex: 0 0 auto; text-align: center; }
+.page-nav__right { flex: 1; text-align: right; }
+
+.page-nav__btn {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  font-size: 0.8em;
+  text-decoration: none !important;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  color: #444 !important;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #e0e0e0;
+    text-decoration: none !important;
+  }
+}
+
+.page-nav__btn--top {
+  background-color: #eaf2fb;
+  border-color: #aac8e8;
+  color: #2471a3 !important;
+
+  &:hover { background-color: #d0e8f5; }
+}
+
+/* 解説ブロックスタイル */
+div.ros-note {
+  background-color: #eaf7ea !important;
+  border-left: 6px solid #27ae60 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 6px rgba(39, 174, 96, 0.2) !important;
+  padding: 0 !important;
+}
+
+.ros-note-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.6em 1em;
+  border-bottom: 1px solid rgba(39, 174, 96, 0.3);
+  background-color: rgba(39, 174, 96, 0.08);
+}
+
+.ros-note-badge {
+  display: inline-block;
+  background-color: #27ae60;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.ros-note-title {
+  font-size: 1.05em;
+  color: #1a6e3c;
+  font-family: monospace;
+}
+
+.ros-note-content {
+  padding: 0.6em 1em;
+  font-size: 1em !important;
+  line-height: 1.8;
+
+  p, li {
+    margin-bottom: 0.6em;
+  }
+
+  ol, ul {
+    margin-bottom: 0.8em;
+  }
+}
+
+/* 課題ブロック強調スタイル */
+div.exercise {
+  background-color: #fce4e4 !important;
+  border-left: 6px solid #c0392b !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.2) !important;
+  padding: 0 !important;           /* 外側のpaddingを0にして自分で制御 */
+}
+
+.exercise-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.6em 1em;
+  border-bottom: 1px solid rgba(192, 57, 43, 0.3);
+  background-color: rgba(192, 57, 43, 0.06);
+}
+
+.exercise-content {
+  padding: 0.6em 1em;
+  font-size: 1em !important;  /* notice--dangerの0.9emを上書きして読みやすく */
+  line-height: 1.8;           /* 行間 */
+
+  p, li {
+    margin-bottom: 0.6em;     /* 段落・リスト項目の下に余白 */
+  }
+
+  ol, ul {
+    margin-bottom: 0.8em;
+  }
+}
+
+.exercise-badge {
+  display: inline-block;
+  background-color: #c0392b;
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .exercise-title {
-  font-size: larger;
+  font-size: 1.1em;
+  color: #7b1f1f;
+}
+
+/* トップページバナー */
+.site-banner {
+  display: flex;
+  align-items: stretch;
+  background: linear-gradient(135deg, #1a3c5e 0%, #2c6491 100%);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2em;
+  height: 400px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.site-banner__text {
+  flex: 0 0 auto;
+  width: 250px;
+  padding: 1em 1.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.site-banner__label {
+  color: #9ec8e8;
+  font-size: 0.8em;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+}
+
+.site-banner__title {
+  color: #ffffff !important;
+  font-size: 1.45em;
+  font-weight: bold;
+  line-height: 1.45;
+  margin: 0;
+  border: none !important;
+
+  &::before { content: "" !important; counter-increment: none !important; }
+}
+
+.site-banner__year {
+  color: #ffd966;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.site-banner__images {
+  flex: 1;
+  display: flex;
+  gap: 3px;
+  overflow: hidden;
+
+  img {
+    flex: 1;
+    min-width: 0;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-banner {
+    flex-direction: column;
+  }
+  .site-banner__text {
+    width: auto;
+    padding: 1.2em;
+  }
+  .site-banner__images {
+    min-height: 160px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
 
 .nonumber.class-h1:before{

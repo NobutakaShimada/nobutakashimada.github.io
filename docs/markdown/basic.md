@@ -54,11 +54,11 @@ Turtlebot3には１台に１つBluetoothで接続されたリモコンが付属�
 
 **注意**　リモコンの停止ボタンはリモコンから指示した制御信号だけをキャンセルします。後述のROSノード(teleop)やlaunchファイルから指示した制御信号はキャンセルされないので注意してください。
 
-### 課題1-1
-{% capture staff01 %}
+{:id="exercise1-1"}
+{% capture exercise1-1 %}
 リモコン操作でロボットの動きをよく観察しなさい。リモコンからの入力はどういう信号に変換されて送られていると思うか（位置、速度、加速度など）。各キーにバインドされた制御信号を予想してノートブックに記載しなさい。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise1-1 title="課題1-1" %}
 
 
 ## ROSの基礎
@@ -94,8 +94,8 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 [Internet Archive](https://archive.org/) による過去ページの
 キャッシュデータを表示するサービスであり、表示には時間がかかる。
 
-### 課題1-2
-{% capture staff01 %}
+{:id="exercise1-2"}
+{% capture exercise1-2 %}
 1. 上の[「ROSトピックの理解」](https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/UnderstandingTopics)) を開いて、教員の説明を聞きながら順を追ってROS環境操作の各手順を実行し、内容を理解しなさい。
 その後、rostopic pubコマンドを使ってturtlesimのタートルを一定の並進速度・回転速度で動かす命令（ただしチュートリアルサイトの数字とは違う速度の指示値を与えよ）を実行して、そのときのrostopicコマンドの文字列と実行後のタートル表示ウインドウをキャプチャしてレポートファイルに貼りなさい。
 画面キャプチャには`gnome-screenshot`を使うことができる。
@@ -103,14 +103,14 @@ ROSの中核部分は、**ノード**と呼ばれる複数のプログラム（P
 $ gnome-screenshot --area -f turtle.jpg
 ```
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise1-2 title="課題1-2" %}
 
-### 課題1-3
-{% capture staff01 %}
+{:id="exercise1-3"}
+{% capture exercise1-3 %}
 1. 上の[「シンプルな配信者(Publisher)と購読者(Subscriber)を書く(Python)」](https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/ja/ROS/Tutorials/WritingPublisherSubscriber%28python%29))のページを開いて、記載されている指示に従いtalker.pyとlistener.pyをダウンロードするか直接ファイルにコピーペーストして保存しなさい。
 2. 保存した２つのプログラムを指示に従って動かして、どういう動作をするか確かめなさい(ターミナルを開いてrosrunコマンドを使う)。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise1-3 title="課題1-3" %}
 
 - **rosrun** ROSのノードプログラムを起動するためのコマンド。以下の形式で呼び出す。１つ目の引数はパッケージと呼ばれる一塊りのアプリケーション。２つ目の引数はそのパッケージの中で起動すべきノードプログラムの名前である。
 ```bash
@@ -160,8 +160,8 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 
 ## ROSノードをPythonで実装してみる
 
-### 課題1-4
-{% capture staff01 %}
+{:id="exercise1-4"}
+{% capture exercise1-4 %}
 1. 授業中の解説を参考に、キーボードで入力したテキスト文字を送受信するROSノードをpython(rospy)を使って実装しなさい。python2ではキーボード入力の取得にraw_input()が使える。
 2. そのコード（サーバ：listener2.pyとクライアント：talker2.py）をレポートファイルに添付しなさい。
 3. テキストの送受信に使用されるトピック名と、送受信メッセージの定義（rosmsgコマンドを使用せよ）をノートブックに添付せよ。
@@ -169,14 +169,14 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 5. rostopic echoコマンドを実行して、流れているROSメッセージを端末に表示し、それをキャプチャしてレポートファイルに添付しなさい。
 6. rqt_graphコマンドを実行して、ノード・トピックの関係図を表示し、画像としてノートブックに添付しなさい。画面キャプチャには`gnome-screenshot`コマンドを使うことができる。
 ```bash
-$ gnome-screenshot --area -f graph.jpg 
+$ gnome-screenshot --area -f graph.jpg
 ```
 7. talker2.pyを複数起動すると、2ノード以上からのテキストをlistener2.pyは表示することができる。実際に試してみて、なぜそれが可能なのか考察しノートブックで説明せよ。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise1-4 title="課題1-4" %}
 
-### 課題1-5
-{% capture staff01 %}
+{:id="exercise1-5"}
+{% capture exercise1-5 %}
 1. talker2.pyとlistener2.pyのpythonコードを参考に、双方向でテキストを送受信できるように改造した.pyを実装せよ。
 2. 改造したコードをレポートファイルに添付しなさい。
 3. 【発展】実験室のPCやロボットはすべて同じLANに接続しているので，同じroscoreに接続すると別のPCで起動したノードでも相互にトピック通信を行うことができる．課題1-5のtalker/listenerが完成したら，以下の要領で教員のPCで起動しているroscoreに接続し，文字列を送ってみよ．うまくいけば教員のPCにメッセージが表示され，返事がとどくかもしれない．
@@ -201,9 +201,8 @@ talker.pyは明示的にwhileループが書かれていて一度このループ
 またlistener.pyにはループがないように見えるが、実は"rospy.spin()"の部分が内部でループになっている（この関数の中でcallback関数が呼び出されるのである）。
 よってループはどちらか一つにしないといけない。talker.pyの明示的なwhileループを残すほうがわかりやすいだろう。
 
-
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise1-5 title="課題1-5" %}
 
 
 

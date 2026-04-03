@@ -1,4 +1,9 @@
 <div class="notice--danger exercise">
-<strong class="exercise-title">{{ include.title | markdownify | strip_html }}</strong>
+<div class="exercise-header">
+  <span class="exercise-badge">課題</span>
+  <strong class="exercise-title">{{ include.title | markdownify | strip_html }}</strong>
+</div>
+<div class="exercise-content">
 {{ include.content | markdownify }}
+</div>
 </div>

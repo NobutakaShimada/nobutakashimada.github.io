@@ -7,6 +7,10 @@ sidebar:
   title: 受講上の注意
   nav: "phyexp3\_remarks"
 ---
+<nav class="page-nav" style="justify-content:center;margin-bottom:1.2em;">
+  <a href="/" class="page-nav__btn page-nav__btn--top">&#8962; トップページ</a>
+</nav>
+
 # 受講上の注意
 
 ## 感染症予防

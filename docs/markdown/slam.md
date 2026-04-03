@@ -28,29 +28,27 @@ LDSセンサはUSBインターフェースであるUSB2LDSボードを通じ、R
 ```bash
 $ roslaunch exp3 machine.launch id:=09
 ```
-{% capture capture00 %}
-**roslaunch hls_lfcd_lds_driver hlds_laser.launch**
+{% capture rosnote00 %}
 machine.launchファイル内部で呼び出され、Turtlebot3内部で起動されるノード。
 1. hlds_laser_publisher
     - publish : scan, rpms
 
 hlds_laser.launchを実行するとTurtlebot3内部でhlds_laser_publisherノードが起動し、センサから取得される距離データと回転速度をそれぞれscanとrpmsのトピック名でpublishされます。 sensor_msgsタイプのLaserScanメッセージであるscanトピックには獲得したロボット周辺の物体との距離データが配列の形で配信されます(rostopic echoコマンドで閲覧してみるとよい）。
 {% endcapture %}
-<div class="notice--success">{{ capture00 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote00 title="roslaunch hls_lfcd_lds_driver hlds_laser.launch" %}
 
 ### RVizの実行
 ```bash
 $ roslaunch exp3 rviz.launch
 ```
-{% capture capture00 %}
-**roslaunch exp3 rviz.launch**
+{% capture rosnote00b %}
 2. rviz
     - subscribe : scan
 
-rviz.launchを実行すると、rvizノードが起動し、Turtlebot3の現在の位置・姿勢や距離センサーの情報が可視化されたウィンドウ画面がディスプレイ上に開きます。  
+rviz.launchを実行すると、rvizノードが起動し、Turtlebot3の現在の位置・姿勢や距離センサーの情報が可視化されたウィンドウ画面がディスプレイ上に開きます。
 RVizノードでは、rvizの設定ファイルを読み込み（カスタマイズして別ファイルに保存することもできる）、scanデータをsubscribeし3次元グラフィックスで描画します（画面上の赤い四角）。
 {% endcapture %}
-<div class="notice--success">{{ capture00| markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote00b title="roslaunch exp3 rviz.launch" %}
 
 
 
@@ -134,13 +132,12 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   a.jpg a.pgm a.yaml 
   ```
 
-{% capture capture06 %}
-**roslaunch exp3 slam.launch**
+{% capture rosnote06 %}
 1. **urdf**
   - Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
 2. **robot_state_publisher**
   - robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtf(座標変換)の形式でpublishします。
-  - subscribe : joint_states 
+  - subscribe : joint_states
   - publish : tf
 3. **laser_filterノード**
   - LDSセンサの有効ではない値の範囲をフィルタリングするノードを実行します。ここでは、OpenMANIPULATORが設置されている後方部の角度を無視します。
@@ -149,17 +146,17 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 5. **turtlebot3_gmapping.rviz**
   - Gmappingを適用したSLAMをRviz画面に表示するために必要なRvizのデフォルト設定を適用し、Rvizを実行します。
 
-slam.launchファイルを実行すると、ロボットの情報(urdfファイル）を指定した位置にロードします。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します（この実験では意識する必要はありません）。  
+slam.launchファイルを実行すると、ロボットの情報(urdfファイル）を指定した位置にロードします。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します（この実験では意識する必要はありません）。
 {% endcapture %}
-<div class="notice--success">{{ capture06 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote06 title="roslaunch exp3 slam.launch" %}
 
 ### 地図
 ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します。保存されたmap.pgmイメージファイルを開くと、以下のようにロボットが移動できる白い領域と、障害物として識別されロボットが移動できない黒い領域、ロボットが探索していない灰色の領域に区分されます。このように生成されたマップは、次に紹介するNavigationで使用することができます。
 
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/slam/map.png)
 
-### 課題4-1
-{% capture staff01 %}
+{:id="exercise4-1"}
+{% capture exercise4-1 %}
 1. Gazebo起動時にgazebo_manipulator_world.launchを起動して、SLAMを実行し地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をレポートファイルに添付せよ。ターミナルからconvertコマンドを使って `convert a.pgm a.jpg`のようにjpg画像に変換してからレポートファイルに張り込むこと。
 2. Gazebo用に他の環境シーンのデータを用意してある。launchファイルを変えると別の環境シーンがGazeboに読み込まれるので次のうちの１つを読み込んで、SLAMを起動して地図を作成しレポートファイルに添付せよ。
   - gazebo_manipulator_house.launch
@@ -168,10 +165,10 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 
 (参考) ロボットの初期位置座標はroslaunchでGazeboを起動する時に引数で指定することができる。単位はメートルなのであまり大きくすると視野の外におかれてしまうので注意。デフォルトの座標値はそれぞれのlaunchファイルに記載してある（`~/exp3_ws/src/exp3/launch/gazebo`ディレクトリに置いてある）。
   ```bash
-  $ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.0 
+  $ roslaunch exp3 gazebo_manipulator_world.launch x_pos:=0.5 y_pos=-0.1 z_pos:=0.0
   ```
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise4-1 title="課題4-1" %}
 
 
 ### SLAMを実行する(Turtlebot3実機)
@@ -210,15 +207,14 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
   ```bash
   $ roslaunch exp3 save_map.launch map_name:=map1
   ```
-{% capture capture02 %}
-**roslaunch exp3 slam.launch**
+{% capture rosnote02 %}
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-  - subscribe : joint_states 
+  - subscribe : joint_states
   - publish : tf
 
-    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfモデルを指定した位置に読み込みます。また、joint_statesとurdfを利用して、tf（座標変換）をpublishするrobot_state_publisherノードを生成します。  
+    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfモデルを指定した位置に読み込みます。また、joint_statesとurdfを利用して、tf（座標変換）をpublishするrobot_state_publisherノードを生成します。
     turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
 
 2. **turtlebot3_gmapping.launch**
@@ -230,9 +226,9 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
 3. **rviz**
   - subscribe : tf, scan, map
 
-    最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。  
+    最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch exp3 slam.launch" %}
 
   **参考**  
   SLAMに限らずROSのモジュール連携では関係するコンピュータノードの時刻合わせが大変重要です。時刻が100msecほどズレているだけで正常に動作できないことがあります。時刻が合っていない時にはntpdateコマンドなどでNTPサーバに問い合わせて時刻合わせをすることができます。本実験ではNTPサービスをOS起動時に起動しているので意識する必要はないはずです。  
@@ -241,12 +237,12 @@ ROSにおいて地図は2次元Occupancy Grid map(OGM)を主に使用します�
   ```
 {: .notice}
 
-### 課題4-2
-{% capture staff01 %}
+{:id="exercise4-2"}
+{% capture exercise4-2 %}
 1. 教室内にスチロールブロックを使って作ったコースがいくつか設置してある。周りと相談して適宜変更して良いので、自分独自のコースアレンジをしてみよう。アレンジしたコースの写真を撮ってレポートファイルに添付せよ。
 2. アレンジしたコースにTurtlebot実機を置いて、上の要領でSLAMを実行しコースの環境地図を作成しなさい。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をレポートファイルに添付せよ。ターミナルからconvertコマンドを使って`convert a.pgm a.jpg`のようにjpg画像に変換してから、ファイルビューアを用いて変換したファイルのアイコンをレポートファイルのmarkdownセルにドロップすればよい。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise4-2 title="課題4-2" %}
 
 ### （参考）アーム（OpenManipulator-X）搭載時の制限
 

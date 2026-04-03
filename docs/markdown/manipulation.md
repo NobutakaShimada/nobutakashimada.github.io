@@ -25,13 +25,11 @@ roscoreを起動した後で、以下のlaunchファイルをつかってGazebo�
 ```bash
 $ roslaunch exp3 gazebo_manipulator_handle.launch
 ```
-{% capture capture02 %}
-**roslaunch exp3 gazebo_manipulator_handle.launch**
-
+{% capture rosnote02 %}
 Gazebo上にOpenMANIPULATORを搭載したTurtleBot3 Waffle Piのモデルがロードされ、ロボットと通信するコントローラarm_controller、gripper_controllerがそれぞれ実行されます。これらはそれぞれ、ロボットアームの関節とグリッパーを制御するコントローラーです。
 次節に説明するmove_groupノードがこれらのコントローラと通信してロボットを制御します。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch exp3 gazebo_manipulator_handle.launch" %}
 
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/assemble.png)
 
@@ -43,12 +41,10 @@ MoveItと連動するためにはmove_groupノードを実行する必要があ�
 ```bash
 $ roslaunch exp3 move_group.launch
 ```
-{% capture capture03 %}
-**roslaunch exp3 move_group.launch**
-
+{% capture rosnote03 %}
 move_group.launchを実行すると、move_groupノードが起動されます。 move_groupノードは、RViZなどのグラフィカルユーザーインタフェースなどを介してコマンドを受けとり、ロボットコントローラーにaction形式で伝達します。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch exp3 move_group.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_move_controller.png)
 
@@ -59,12 +55,10 @@ GUIでInteractive Markerを活用したロボットアームを制御でき、�
 ```bash
 $ roslaunch exp3 moveit_rviz.launch
 ```
-{% capture capture04 %}
-**roslaunch exp3 moveit_rviz.launch**
-
+{% capture rosnote04 %}
 このコマンドでMoveItが有効になったRvizが実行されます。Motion Planning pluginが起動し、moveit_setup_assistantを介して既に保存されているモーションやinteractive markerを介して設定したモーションを、move_groupに伝達することができます。目標姿勢を設定した後、Plan and Executeボタンを押すと、ロボットが動きはじめます。
 {% endcapture %}
-<div class="notice--success">{{ capture04 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch exp3 moveit_rviz.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_rviz.png)
 
@@ -79,12 +73,10 @@ Rvizを使用せずにGazebo上のロボットと接続し、ロボットアー�
 ```bash
 $ roslaunch exp3 gui_manipulation.launch
 ```
-{% capture capture05 %}
-**roslaunch exp3 gui_manipulation.launch**
-
+{% capture rosnote01 %}
 ユーザーインターフェースでC++ move_group_interfaceを使用したqt guiが実行されます。インタフェースを介して受けとった現在のジョイント角度およびグリッパ位置がGUI上に表示されます。Sendボタンをクリックすると、設定された位置についてインターフェースを介してmove_groupに伝え、コントローラーに伝達しロボットを動かします。
 {% endcapture %}
-<div class="notice--success">{{ capture05 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch exp3 gui_manipulation.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_gui_controller.png)
 
@@ -106,56 +98,51 @@ $ roscore
 ```bash
 $ roslaunch exp3 machine.launch id:=09
 ```
-{% capture capture06 %}
-**roslaunch exp3 machine.launch id:=09**
-
+{% capture rosnote05 %}
 machine.launchを実行すると、以前と同じくSSH経由でTurtlebot3内で必要なノードを自動起動します。その中でLRFや車輪の回転制御、アーム・グリッパーなどのモーターコントローラーノードなどが起動します。
 
 {% endcapture %}
-<div class="notice--success">{{ capture06 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote05 title="roslaunch exp3 machine.launch id:=09" %}
 
 ### Arm/Gripper Controllerを起動する。
 以下のコマンドによってTurtlebot3のアームとグリッパを制御するノードを実行します。
 ```bash
 $ roslaunch exp3 robot_manipulation.launch
 ```
-{% capture capture07 %}
-**roslaunch exp3 robot_manipulation.launch**
-
+{% capture rosnote06 %}
 robot_manipulation.launchを実行すると、アーム・グリッパに関連するノードとして、arm_controllerとgripper_controllerのコントローラーノードが実行されます（これらはturtlebot3の中ではなくリモートPC側で実行されます）。またロボットの姿勢状態を表す座標変換(tf:transform)情報をpublishするrobot_state_publisherノードを起動します。move_groupと通信するaction serverコントローラーの役割として、それぞれmove_groupを介してアームとグリッパー関節の目標軌跡を読み込み、順にpublishします。publishされたトピックは、ロボットの関節に組み込まれたモータに伝達され、OpenMANIPULATORを動かします。
 
 {% endcapture %}
-<div class="notice--success">{{ capture07 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote06 title="roslaunch exp3 robot_manipulation.launch" %}
 
 ### move_groupを実行する
 MoveItと連動しているユーザーインターフェースであるmove_groupノードを実行します。
 ```bash
 $ roslaunch exp3 move_group.launch
 ```
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch exp3 move_group.launch" %}
 
 ### RVizを実行する
 各種データの視覚化とInteractive Markerを活用したOpenMANIPULATORの制御のため、RVizを実行します。
 ```bash
 $ roslaunch exp3 moveit_rviz.launch
 ```
-<div class="notice--success">{{ capture04 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch exp3 moveit_rviz.launch" %}
 
 ### ROBOTIS GUI を実行する
 RVizとは別に、必要に応じてROBOTIS GUIを介し、OpenMANIPULATORを制御することもできます。
 ```bash
 $ roslaunch exp3 gui_manipulation.launch
 ```
-<div class="notice--success">{{ capture05 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch exp3 gui_manipulation.launch" %}
 
-## 課題（Gazebo/実機編）
-
-{% capture staff01 %}
+{:id="exercise7-gazebo-real"}
+{% capture exercise7-gazebo-real %}
 1. GazeboシミュレータとRViZを起動して、RViZ上のMotion Planningタブ上でアームとグリッパそれぞれに目標姿勢を指定し、軌道生成を行ってアームとグリッパを動作させてみよ。２通りくらいの例を実行し、初期姿勢の状態と動作後のゴール状態についてRViZ上のロボット表示とGazebo上のロボットの様子を画面キャプチャしてノートに貼り付けよ。
 2. 1.と同様の内容を実機ロボットと接続して実行せよ。Gazebo上のロボットの代わりに実機の姿勢をスマフォ等で撮影して貼り付けよ。
 3. 実機を操作して適当な物体を把持してみよ。レンジセンサの出力をRViZ上で確認すると目標位置の参考になるかもしれない。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise7-gazebo-real title="課題（Gazebo/実機編）" %}
 
 ## 発展テーマ（解説未完成）
 
@@ -180,10 +167,10 @@ $ git clone https://github.com/tysik/obstacle_detector.git
 $ cd ~/exp3_ws
 $ catkin_make
 ```
-{% capture capture08 %}
+{% capture rosnote07 %}
 上記の操作はかならず教員に相談してから実行してください。ROSの環境を壊してしまう可能性があります。
 {% endcapture %}
-<div class="notice--success">{{ capture08 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote07 title="" %}
 
 
 ### Turtlebot3用のlaunchファイルのダウンロードと起動
@@ -201,10 +188,8 @@ $ tar zxvf launch-rviz.tar.gz
 $ roslaunch exp3 obstacle_detection.launch
 ```
 
-{% capture capture09 %}
-**roslaunch exp3 obstacle_detection.launch**
-
+{% capture rosnote08 %}
 LRFセンサーの情報をもとに平面もしくは円筒状の障害物を検知して、RViZ上に表示することができます。
 {% endcapture %}
-<div class="notice--success">{{ capture09 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote08 title="roslaunch exp3 obstacle_detection.launch" %}
 

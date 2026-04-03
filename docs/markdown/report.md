@@ -7,6 +7,9 @@ sidebar:
   title: レポートの提出について
   nav: "phyexp3\_report"
 ---
+<nav class="page-nav" style="justify-content:center;margin-bottom:1.2em;">
+  <a href="/" class="page-nav__btn page-nav__btn--top">&#8962; トップページ</a>
+</nav>
 
 # レポートの提出について
 

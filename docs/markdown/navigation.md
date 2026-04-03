@@ -64,8 +64,7 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
   ```bash
   $ roslaunch exp3 machine.launch id:=09
   ```
-  {% capture capture01 %}
-  **roslaunch exp3 machine launch id:=09**
+  {% capture rosnote01 %}
   1. turtlebot3_core.launch
       - subscribe : cmd_vel
       - publish : joint_states, odom
@@ -76,22 +75,21 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
 machine.launchファイルを実行すると、SSHによってTurtlebot3に自動的に接続し、Turtlebot3内でローカルノードを自動的に起動します。
 Turtlebot3の中では、turtlebot3_core.launchとturtlebot3_lidar.launchファイルが実行され、TurtleBot3の状態をチェックするノード(node)であるturtlebot3_diagnosticsが生成され、TurtleBot3の各種センサやハードウェアの状態についての情報をpublishします。turtlebot3_core.launchファイルでは、OpenCRと通信してjoint_states、odomをpublishし、cmd_velをsubscribeするノードが生成されます。turtlebot3_lidar.launchファイルでは、LIDARを作動させ、センサーから得られたscanデータをpublishするノード(node)が生成されます。
   {% endcapture %}
-  <div class="notice--success">{{ capture01 | markdownify }}</div>
+  {% include phyexp3-ros-note.html content=rosnote01 title="roslaunch exp3 machine launch id:=09" %}
 
 ### navigation.launchの実行（Gazebo/実機の場合共通）
   ```bash
   $ roslaunch exp3 navigation.launch map_name:=map1
   ```
   上の例はSLAMで生成し保存した地図の名前（拡張子を除く）が"map1"の場合。
-{% capture capture02 %}
-**roslaunch exp3 navigation.launch map_name:=map1**
+{% capture rosnote02 %}
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-    - subscribe : joint_states 
+    - subscribe : joint_states
     - publish : tf
 
-  turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+  turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
   turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
 
 2. map_serverノード
@@ -116,7 +114,7 @@ Turtlebot3の中では、turtlebot3_core.launchとturtlebot3_lidar.launchファ�
 
 最後にrvizが自動的に実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成された地図を表示し、現在の自己位置推定の様子が可視化され、また移動の目標地点を指定してロボットを誘導することができます。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch exp3 navigation.launch map_name:=map1" %}
 
 
 ### ロボットの初期姿勢を指定（Gazebo/実機の場合共通）
@@ -152,9 +150,8 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 目的地までの経路が生成できない場合、Navigation Goal設定が失敗する場合があります。ロボットが目的地まで移動する途中でロボットを停止させたい場合は、ロボットの現在位置を目的地として再設定します。
 
 
-## 課題（Gazebo編）
-
-{% capture staff01 %}
+{:id="exercise5-gazebo"}
+{% capture exercise5-gazebo %}
 1. Gazeboシミュレータ環境を起動し、SLAMの時に作った地図を指定してナビゲーションを実行してみなさい。
 2. 最初に自己位置推定が不確かである状況を画面キャプチャして保存し、レポートファイルに添付せよ。画面キャプチャはUbuntuではgnome-screenshotを使うことができる。例えば保存するファイルをinitial.jpgにするときは以下のコマンドを実行して、マウスでキャプチャする範囲を指定する。
 ```bash
@@ -166,11 +163,10 @@ $ gnome-screenshot --area -f initial.jpg
 ![](/assets/images/ritsumeikan/gazebo_object_insert.png)
 
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise5-gazebo title="課題5-1（Gazebo編）" %}
 
-## 課題（実機編）
-
-{% capture staff01 %}
+{:id="exercise5-real"}
+{% capture exercise5-real %}
 1. 実機を教室内のコースに置き、SLAMの時に作った地図を指定してナビゲーションを実行してみなさい。ただしコースがSLAMの時と大きく変わっているとうまく動かない可能性がある。
 2. 最初に自己位置推定が不確かである状況を画面キャプチャして保存し、レポートファイルに添付せよ。画面キャプチャはUbuntuではgnome-screenshotを使うことができる。
 3. ゴールを指定してナビゲーションを開始すると、移動経路がRViz上に示されること、移動している間に次第に自己位置推定が確からしくなる様子を確かめよ。このときの途中経過を画面キャプチャあるいは動画にして保存し、レポートファイルに添付せよ(レポートファイルには動画は直接張り込めないので、数枚の画像列にして貼ると良い)。動画を保存するのはsimplescreenrecoderを使うとできる（デスクトップ左端のアイコンにもある）。
@@ -178,7 +174,7 @@ $ gnome-screenshot --area -f initial.jpg
 5. 【追加】ブロックを並べて長い経路（壁や障害物を避けてまわり込むような移動経路）を設定し、実機ロボットをナビゲートした時にどういうことが起きるかを観察してその様子を記載せよ。このとき途中でロボットが止まってしまう、行ったりきたりする、といったことが起きた場合は、何が原因でそうなっているか、その時の実環境の様子や Rviz における観測の様子、コストマップの様子を添付しつつ、状況の説明と推測を記載せよ。
 
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise5-real title="課題5-2（実機編）" %}
 
 
 ## （発展）チューニングガイド 

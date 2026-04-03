@@ -8,6 +8,15 @@ layout: default
   {% include page__hero_video.html %}
 {% endif %}
 
+{% assign prev_section = page.section_number | minus: 1 %}
+{% assign next_section = page.section_number | plus: 1 %}
+{% assign prev_page = nil %}
+{% assign next_page = nil %}
+{% for p in site.pages %}
+  {% if p.section_number == prev_section %}{% assign prev_page = p %}{% endif %}
+  {% if p.section_number == next_section %}{% assign next_page = p %}{% endif %}
+{% endfor %}
+
 <div id="main" role="main">
   <article class="splash" itemscope itemtype="http://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -16,11 +25,32 @@ layout: default
     {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date: "%B %d, %Y" }}">{% endif %}
 
     <section class="page__content" itemprop="text">
+      <nav class="page-nav">
+        <div class="page-nav__left">
+          {% if prev_page %}
+          <a href="{{ prev_page.permalink }}" class="page-nav__btn page-nav__btn--prev">
+            &#9664; {{ prev_page.section_number }}. {{ prev_page.section_title }}
+          </a>
+          {% endif %}
+        </div>
+        <div class="page-nav__center">
+          <a href="/" class="page-nav__btn page-nav__btn--top">&#8962; トップページ</a>
+        </div>
+        <div class="page-nav__right">
+          {% if next_page %}
+          <a href="{{ next_page.permalink }}" class="page-nav__btn page-nav__btn--next">
+            {{ next_page.section_number }}. {{ next_page.section_title }} &#9654;
+          </a>
+          {% endif %}
+        </div>
+      </nav>
+
       <h1 class="class-h1 startsec{{ page.section_number }}">{{page.section_title}}</h1>
+
     {% unless page.without_content_table %}
         <div class="notice--info">
         <h2 class="nonumber contents-table-label">Contents</h2>
-        {% include toc.html html=content h_min=2 ordered=true %}
+        {% include toc.html html=content h_min=2 ordered=true class="page-toc" %}
         </div>
     {% endunless %}
       {{ content }}

@@ -24,21 +24,21 @@ sidebar:
 ![Turtlebot3+OpenManipulator-X](https://emanual.robotis.com/assets/images/platform/turtlebot3/manipulation/hardware_setup.png)
 
 ### 起動手順
-{% capture capture02 %}
+{% capture rosnote01 %}
 1. アームがホームポジション（　腕が本体上でたたまれている状態）になっていることを確認する。
 2. バッテリーが接続され、本体前面のスロットに正しく装着されているか確認する。
 3. 本体上面の距離センサに干渉する物がないことを確認する
 4. 平らで開けた場所に置いて、本体前面のスイッチを入れる
 5. アームがホームポジションに移動し、距離センサが回転し始める。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="" %}
 ### 停止手順
-{% capture capture02 %}
+{% capture rosnote02 %}
 1. 走行している場合は付属リモコンや"teleop" ROSノードからメッセージを送り停止させる。方法がない時は本体を両手でピックアップする（アームを持たないこと）。
 2. 電源が落ちるとアームが脱力するので支えられるように準備する。
 3. 本体前面のスイッチを切る。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="" %}
 
 ### バッテリーについて
 
@@ -57,11 +57,11 @@ Turtlebot3には１台に１つBluetoothで接続されたリモコンが付属�
 
 **注意**　リモコンの停止ボタンはリモコンから指示した制御信号だけをキャンセルします。後述のROSノード(teleop)やlaunchファイルから指示した制御信号はキャンセルされないので注意してください。
 
-### リモコンによるロボットの操縦体験
-{% capture staff01 %}
+{:id="exerciseA-1"}
+{% capture exerciseA-1 %}
 リモコン操作でロボットの動きをよく観察しましょう。リモコンからの入力はどういう信号に変換されて送られていると思うか（位置、速度、加速度など）。各キーにバインドされた制御信号を予想しながら操作しましょう。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exerciseA-1 title="リモコンによるロボットの操縦体験" %}
 
 
 ### ROSの基礎
@@ -138,30 +138,30 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 ## 課題２：実ロボットとPCとの接続  
 この後のコマンドは、すべてHost PC端末(Remote PC / Raspberry PI4)上のターミナルでキーボードから打ち込んで実行します。
 ### ロボットとの接続手順
-{% capture capture02 %}
+{% capture rosnote03 %}
 1. roscoreの起動（すべての最初）
    ターミナルを開いて以下のコマンドを入力
    ```bash
    $ roscore
    ```
-2. Turtlebot3のへの接続 : machine.launch  
+2. Turtlebot3のへの接続 : machine.launch
     ロボットの電源を入れ、センサが回転しアームが持ち上がったら以下のコマンドを実行すると無線LAN経由でPCとロボットが接続されます。
-    roscoreとは別のターミナルを開いて（新しいタブを開くとよい）、以下のコマンドを入力(接続しようとするTurtleBot3の番号が09であると仮定)  
+    roscoreとは別のターミナルを開いて（新しいタブを開くとよい）、以下のコマンドを入力(接続しようとするTurtleBot3の番号が09であると仮定)
     ```bash
     $ roslaunch exp3 machine.launch id:=09
-    ```  
+    ```
     他のユーザーがTurtleBot3を使用している場合、launchファイル実行時に以下のメッセージが出て終了する。
     ```bash
     RLException: remote roslaunch failed to launch: tb3
     The traceback for the exception was written to the log file
-    ```  
-    
+    ```
+
 3. 情報可視化アプリRvizの起動
    さらに新たなターミナルを開いて、以下のコマンドを入力すると、ロボット内蔵のカメラや距離センサーの情報をビジュアライズするツールが起動します。
    ```bash
    $ roslaunch exp3 rviz.launch
    ```
-   ![イメージリンク](https://emanual.robotis.com/assets/images/platform/turtlebot3/bringup/run_rviz.jpg)  
+   ![イメージリンク](https://emanual.robotis.com/assets/images/platform/turtlebot3/bringup/run_rviz.jpg)
 
 4. キーボードからロボットへの移動コマンドを送るteleopの起動：teleop.launch
    TurtleBot3をキーボードでコントロールするために、teleop.launchを起動する。
@@ -180,14 +180,14 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
    ```
    キーボードのキーで自由に実機のturtlebot3ロボットを動かしてみましょう。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="" %}
 
-### 課題内容
-{% capture staff01 %}
+{:id="exerciseA-2"}
+{% capture exerciseA-2 %}
 1. Turtlebot実機に接続してノードを起動し（machine.launch)、教室のブロックフィールドに実機を置いてteleopで移動させてみよう。適当なところで停止させ、rvizの画面に映る障害物の様子などを確認してみよう。
 2. 距離センサの反応する範囲にものを置いたり動かして、距離センサの反応がRVizの画面上で変化していることを比較して確認しよう。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exerciseA-2 title="課題内容（課題２）" %}
 
 
 ## 課題３：センサーに基づく環境地図の自動生成（SLAM）
@@ -207,7 +207,7 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 SLAMにはいくつかのアルゴリズムがありますが、この授業ではgmappingという手法と実装を使います。
 
 ### SLAMを実行する(Turtlebot3実機)
-{% capture capture02 %}
+{% capture rosnote04 %}
 0. 先の手順にしたがってroscore, machine.launchを起動しておきます。ただしrvizは停止させておきます(rviz.launchをしたターミナルタブ上でCtrl-C（CtrlキーとCを同時に押す）を入力すると停止してプロンプトが帰ってきます)。
 
 1. SLAMを実行します。
@@ -229,7 +229,7 @@ SLAMにはいくつかのアルゴリズムがありますが、この授業で�
   CTRL-C to quit
   ```
   キーボードのキーで自由にロボットを動かしながら、どのように地図が生成されていくか確認してみよう。
-  
+
 4. 十分環境内でロボットを移動させて地図が出来上がったら、RVizやslamを動かしたままで新しい端末を開き、save_map.launchを起動して地図を保存します。
   ```bash
   $ roslaunch exp3 save_map.launch map_name:=map1
@@ -245,7 +245,7 @@ SLAMにはいくつかのアルゴリズムがありますが、この授業で�
   ```
 作成した地図が格納されたpgmファイルは画像ファイルです。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="" %}
 
 **参考**  
 SLAMに限らずROSのモジュール連携では関係するコンピュータノードの時刻合わせが大変重要です。時刻が100msecほどズレているだけで正常に動作できないことがあります。時刻が合っていない時にはntpdateコマンドなどでNTPサーバに問い合わせて時刻合わせをすることができます。本実験ではNTPサービスをOS起動時に起動しているので意識する必要はないはずです。  
@@ -254,12 +254,12 @@ $ sudo ntpdate ntp.ritsumei.ac.jp
 ```
 {: .notice}
 
-### 課題内容
-{% capture staff01 %}
+{:id="exerciseA-3"}
+{% capture exerciseA-3 %}
 1. 教室内の床面に物を置いてコースを作ってみよう。回転している距離センサの高さのところまで高くないと検知されないのである程度背の高いもの（鞄や立てかけた本などでもよい）を置いてみよう。必ずしも、壁で取り囲まなくても構わない。椅子や机の足のような細い棒状のものは小さくしか写らないので注意。
 2. アレンジしたコースにTurtlebot実機を置いて、上の要領でSLAMを実行しコースの環境地図を作成してみよう。作成できた地図画像(`~/exp3_ws/src/exp3/map`ディレクトリにある）をファイルビューアからアクセスして確認してみよう。地図画像の画素には白と黒とグレーの３種類があるはずです。それぞれに意味がありますが、考えてみましょう。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exerciseA-3 title="課題内容（課題３）" %}
 
 ### （参考）アーム（OpenManipulator-X）搭載時の制限
 
@@ -291,7 +291,7 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
 
 
 ### ナビゲーションの実行: navigation.launch
-{% capture capture02 %}
+{% capture rosnote05 %}
 SLAMで制作した地図をもとにナビゲーションを行うには以下のコマンドをターミナルから入力します。
 slam.launchやteleop.launchは必ず停止しておいてください（teleopとnavigationはともにロボットに移動指令を出すので、両者が干渉してうまく動かなくなります）。
 ```bash
@@ -299,13 +299,13 @@ $ roslaunch exp3 navigation.launch map_name:=map1
 ```
 上の例はSLAMで生成し保存した地図の名前（拡張子を除く）が"map1"の場合です。別の名前のときは適宜対応した名前を入力してください。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote05 title="" %}
 
 navigation.launchでは以下の多くのROSノードプロセスが起動し、互いに連携して動作します。
-{% capture capture02 %}
+{% capture rosnote06 %}
 1. **turtlebot3_remote.launch**
   - robot_state_publisher : ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-  - ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+  - ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
 2. map_serverノード
   - map_serverノードは、SLAMで作成した地図画像ファイルを読み込み、必要に応じて障害物などの情報を提供します。
 3. amcl.launch
@@ -316,7 +316,7 @@ navigation.launchでは以下の多くのROSノードプロセスが起動し、
 5. rviz
   - 最後に可視化ツールrvizが自動的に実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成された地図を表示し、現在の自己位置推定の様子が可視化されます。rvizの画面操作により、ロボットの初期位置の指定や、移動の目標地点を指定して、ロボットを自動的に誘導することができます。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote06 title="" %}
 
 
 ### rviz画面上での初期位置指定
@@ -328,11 +328,11 @@ navigation.launchでは以下の多くのROSノードプロセスが起動し、
 RVizが起動し、ロボットがナビゲーションを実行するための地図が表示されたら、最初のロボットの位置は実際のロボットの現在位置とはズレています。  
 そこで、Rviz画面の上にあるボタンの中から`2D Pose Estimate`ボタンでロボットの初期位置を実際のロボット位置姿勢に合わせます。  
 
-{% capture capture02 %}
+{% capture rosnote07 %}
   1. Rvizで`2D Pose Estimate`ボタンをクリックする。
   2. 地図上でロボットが実際に位置する点をクリックし、ロボットの前面が向いている方向に矢印をドラッグして、大きな緑色の矢印の方向をロボットが向いている方向に設定する。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote07 title="" %}
 
 これが完了すると、ロボットは緑の矢印で指定された位置と方向を初期ポーズとして使用し、実際の位置と方向を推定します。緑の矢印はタートルボット３の予想位置を表示します。レーザースキャナーは地図上に今ロボットが観測している壁の位置を表示します。地図とのズレが大きい場合はやり直します。多少ずれていてもロボットを移動させて観測情報を増やしていくと、次第に推定が確からしくなります。
 
@@ -346,11 +346,11 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 
 次にロボットを目標位置に誘導するために、到着目的地の位置と方向を指定します。初期位置の指定と同様に、Rvizの`2D Nav Goal`ボタンをクリックし、ロボットが移動できる目的地をクリックし、ロボットが向いている方向をドラッグして、矢印の方向を指定します。
 
-{% capture capture02 %}
+{% capture rosnote08 %}
 1. Rviz上部の `2D Nav Goal`ボタンをクリック。
 2. 地図上でロボットが移動する目的地をクリックし、ロボットが向いている方向をドラッグして、目的地設定を完了。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote08 title="" %}
 
 目的地設定が完了すると、Navigationアルゴリズムはロボットの現在位置から目的地までの経路を生成し、経路を辿れるようにロボットに命令を出します。ロボットが動いている間に経路上に**地図にはない障害物**が現れると、その障害物を回避できる経路を再度生成し直して移動を試みます。
 
@@ -359,14 +359,13 @@ RVizが起動し、ロボットがナビゲーションを実行するための�
 目的地までの経路が生成できない場合、Navigation Goal設定が失敗する場合があります。ロボットが目的地まで移動する途中でロボットを停止させたい場合は、ロボットの現在位置を目的地として再設定します。
 
 
-### 課題内容
-
-{% capture staff01 %}
+{:id="exerciseA-4"}
+{% capture exerciseA-4 %}
 1. 実機を教室内のコースに置き、SLAMの時に作った地図を指定してナビゲーションを実行してみよう。ただしコースがSLAMの時と大きく変わっているとうまく動かない可能性があります。
 2. ゴールを指定してナビゲーションを開始すると、移動経路がRViz上に示されます。緑の矢印で表示されているのはロボットの現在の位置と向きの推定候補です（パーティクルフィルタ）。これらが移動している間に次第に密集して、自己位置推定が確からしくなる様子を確かめましょう。
 3. 実際にコース上に手や足、ブロックなどの地図には存在しない障害物をおいて、ロボットがどのように避けるか確認しましょう。地図にない物、あるいは動くものを置いても、（避けられる時は）回避するルートを自動的に再生成して、移動をつづけようとします。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exerciseA-4 title="課題内容（課題４）" %}
 
 
 ## （発展）チューニングガイド 

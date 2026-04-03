@@ -28,8 +28,7 @@ SLAMなどセンサー情報の処理をテストするときは、センサー�
 $ roslaunch exp3 empty_world.launch
 ```
 
-{% capture capture03 %}
-**roslaunch exp3 empty_world.launch**
+{% capture rosnote03 %}
 - publish : joint_states, odom, scan, tf
 - subscribe : cmd_vel
 
@@ -38,7 +37,7 @@ $ roslaunch exp3 empty_world.launch
 2. Gazeboが起動しウィンドウが表示されたら、**物理シミュレーションをスタートさせる必要**があります。**画面の左下のプレイボタン[▶] を押して時間をスタートさせる**ことを忘れないようにしましょう。
 3. 次にteleop.launchを実行して画面の指示に従ってキーボードのキーを押すと、Gazeboシミュレータがteleopノードが生成した速度指令値を読み取り、シミュレータに生成されたロボットが動くことを確認できます（次節で詳述する）。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch exp3 empty_world.launch" %}
 
 ![](/assets/images/ritsumeikan/empty_world_turtlebot.png)
 
@@ -92,12 +91,10 @@ $ roslaunch exp3 teleop.launch
 CTRL-C to quit
 ```  
 キーボードのキーで自由にGazebo内のロボットを動かしてみる。
-{% capture capture02 %}
-**roslaunch exp3 teleop.launch**
-
+{% capture rosnote02 %}
 teleop.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取って「あるトピック」に並進速度と旋回速度の各成分をpublishする。publishされたメッセージは最終的にロボット内のファームウェアに伝達されDYNAMIXELを制御するためのコマンドとして出力される。受信されたコマンドに従って車輪と接続されたDYNAMIXELが駆動し、ロボットを動かす。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch exp3 teleop.launch" %}
 
 
 ### 障害物回避による自律走行 
@@ -105,13 +102,12 @@ teleop.launchファイルを実行して生成されたturtlebot3_teleop_keyboar
 ```bash
 $ roslaunch exp3 automove.launch
 ```
-{% capture capture02 %}
-**roslaunch exp3 automove.launch**
+{% capture rosnote02b %}
 automove.launchファイルを実行すると、turtlebot3_gazeboパッケージのturtlebot3_driveノードを起動する。turtlebot3_driveノードはC++で書かれた自動走行指示をpublishするノードで、ソースコードはturtlebot3_gazebo/src/turtlebot3_drive.cppである。このソースファイルの中の閾値（どのくらいの距離で障害物と判定するか）や回避ロジックを変更すれば、独自の自動走行をさせることができるようになる。
 
 ソースファイルを変更した時は、`~/catkin_ws`フォルダに移動して、`catkin_make`コマンドを実行する必要がある。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02b title="roslaunch exp3 automove.launch" %}
 
 ## Rvizによる情報可視化
 Rvizはシミュレーションが実行されている間に発行されたトピックを視覚化します。下記のコマンドを入力し、新しいターミナルウィンドウでRVizをスタートすることができます。 
@@ -120,8 +116,8 @@ $ roslaunch exp3 rviz.launch
 ```
 ![](https://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_gazebo_rviz.png)
 
-## 課題2
-{% capture staff01 %}
+{:id="exercise2"}
+{% capture exercise2 %}
 1. Gazeboシミュレータ(gazebo.launch)とRViz(rviz.launch)、teleop(teleop.launch)を起動してTurtlebotを適当に移動させ、その時のGazeboの画面（視点を自由に移動せよ）、RVizの画面をキャプチャしてレポートファイルに添付せよ。画面キャプチャには`gnome-screenshot`コマンドを使うことができる。
 ```bash
 $ gnome-screenshot --area -f graph.jpg
@@ -132,4 +128,4 @@ $ gnome-screenshot --area -f graph.jpg
 5. teleop.launchや各種コマンドを駆使して、Turtlebot3への行動命令が流れているトピックを特定せよ。そのトピック名と、メッセージの型名、メッセージの定義(rosmsg showコマンドを用いよ）をレポートファイルに添付せよ。
 6. rqt_graphコマンドを実行して、ノード・トピックの関係図を表示し、画像としてレポートファイルに添付しなさい。
 {% endcapture %}
-<div class="notice--danger">{{ staff01 | markdownify }}</div>
+{% include phyexp3-exercise.html content=exercise2 title="課題2" %}
