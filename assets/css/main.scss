@@ -278,7 +278,8 @@ div.exercise {
   img {
     flex: 1;
     min-width: 0;
-    max-height: 100%;
+    width: 0;
+    height: 400px;
     object-fit: contain;
     object-position: center center;
     display: block;
