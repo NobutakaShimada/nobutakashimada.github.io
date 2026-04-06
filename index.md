@@ -57,7 +57,7 @@ without_content_table: true
 
 # 参考URL
 
-- [gedit Text Editor (English)](https://help.gnome.org/users/gedit/stable/)
+- [gedit Text Editor (English)](https://gedit-text-editor.org/index.html)
 - [Turtlebot3 e-Manual(English)](https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/)
 - [OpenMANIPULATOR-X e-Manual(English)](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
 - [ROS公式ドキュメント](http://wiki.ros.org/ja/ROS)
