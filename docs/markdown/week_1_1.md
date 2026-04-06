@@ -301,8 +301,7 @@ Subscribed topics:
 
 ```
 
-{% capture capture03 %}
-**roslaunch turtlebot3_bringup turtlebot3_robot.launch**
+{% capture rosnote01 %}
 1. turtlebot3_core.launch
     - subscribe : cmd_vel
     - publish : joint_states, odom
@@ -312,7 +311,7 @@ Subscribed topics:
 
 turtlebot3_robot.launchファイルを実行すると、turtlebot3_core.launchとturtlebot3_lidar.launchファイルが実行され、TurtleBot3の状態をチェックするノード(node)であるturtlebot3_diagnosticsが生成され、TurtleBot3の各種センサやハードウェアの状態についての情報をpublishします。turtlebot3_core.launchファイルでは、OpenCRと通信してjoint_states、odomをpublishし、cmd_velをsubscribeするノードが生成されます。turtlebot3_lidar.launchファイルでは、LIDARを作動させ、センサーから得られたscanデータをpublishするノード(node)が生成されます。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch turtlebot3_bringup turtlebot3_robot.launch" %}
 
 ```bash
 $ rqt_graph
@@ -328,18 +327,17 @@ $ export TURTLEBOT3_MODEL=${TB3_MODEL}
 $ roslaunch turtlebot3_bringup turtlebot3_remote.launch
 ```
 
-{% capture capture04 %}
-**roslaunch turtlebot3_bringup turtlebot3_remote.launch**
+{% capture rosnote02 %}
 1. turtlebot3_remote.launch
     - urdf：Unified Robot Description Formatの略で、ロボットの構成や接続形態を表すXML形式のファイルです。
     - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-    - subscribe : joint_states 
+    - subscribe : joint_states
     - publish : tf
 
-turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
 turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
 {% endcapture %}
-<div class="notice--success">{{ capture04 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch turtlebot3_bringup turtlebot3_remote.launch" %}
 
 ![](/assets/images/ritsumeikan/010.png)
 
@@ -348,13 +346,12 @@ turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれ�
 $ rosrun rviz rviz -d `rospack find turtlebot3_description`/rviz/model.rviz
 ```
 
-{% capture capture05 %}
-**rosrun rviz rviz -d \`rospack find turtlebot3_description\`/rviz/model.rviz**
+{% capture rosnote03 %}
 - subscribe : tf, scan
 
 rvizを実行すると、tfとscanデータをそれぞれロボットの姿勢と周辺の障害物の情報として視覚化します。
 {% endcapture %}
-<div class="notice--success">{{ capture05 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="rosrun rviz rviz -d `rospack find turtlebot3_description`/rviz/model.rviz" %}
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/bringup/run_rviz.jpg)
 
@@ -369,16 +366,15 @@ $ export TURTLEBOT3_MODEL=%{TB3_MODEL}
 $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
-{% capture capture06 %}
-**roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch**
+{% capture rosnote04 %}
 - publish : cmd_vel
 
-turtlebot3_teleop_key.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取ってlinearとangular値を更新し、linearとangularが含まれたtwist形式のtopicであるcmd_velをpublishします。  
-その後、Turtlebot3のSBCで実行されたturtlebot3_robot.launchに含まれたturtlebot3_core.launchでcmd_velを受信します。  
-cmd_velトピックは、rosserialを介してOpenCRに伝達され、OpenCRにアップロードされたファームウェアでDYNAMIXELを制御するためのコマンドとして出力されます。  
+turtlebot3_teleop_key.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取ってlinearとangular値を更新し、linearとangularが含まれたtwist形式のtopicであるcmd_velをpublishします。
+その後、Turtlebot3のSBCで実行されたturtlebot3_robot.launchに含まれたturtlebot3_core.launchでcmd_velを受信します。
+cmd_velトピックは、rosserialを介してOpenCRに伝達され、OpenCRにアップロードされたファームウェアでDYNAMIXELを制御するためのコマンドとして出力されます。
 受信されたコマンドに従って車輪と接続されたDYNAMIXELが駆動し、ロボットを動かします。
 {% endcapture %}
-<div class="notice--success">{{ capture06 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" %}
 
 
 ノードが正常に起動されている場合は、次の命令は、ターミナルウィンドウに現れます。

@@ -41,8 +41,7 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
   ```bash
   $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
   ```
-  {% capture capture01 %}
-  **roslaunch turtlebot3_bringup turtlebot3_robot.launch**
+  {% capture rosnote01 %}
   1. turtlebot3_core.launch
       - subscribe : cmd_vel
       - publish : joint_states, odom
@@ -52,7 +51,7 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
 
   turtlebot3_robot.launchファイルを実行すると、turtlebot3_core.launchとturtlebot3_lidar.launchファイルが実行され、TurtleBot3の状態をチェックするノード(node)であるturtlebot3_diagnosticsが生成され、TurtleBot3の各種センサやハードウェアの状態についての情報をpublishします。turtlebot3_core.launchファイルでは、OpenCRと通信してjoint_states、odomをpublishし、cmd_velをsubscribeするノードが生成されます。turtlebot3_lidar.launchファイルでは、LIDARを作動させ、センサーから得られたscanデータをpublishするノード(node)が生成されます。
   {% endcapture %}
-  <div class="notice--success">{{ capture01 | markdownify }}</div>
+  {% include phyexp3-ros-note.html content=rosnote01 title="roslaunch turtlebot3_bringup turtlebot3_robot.launch" %}
 
 ### [Remote PC] Navigationファイルを実行してください。
   当コマンドを行う前にTurtlebot3のモデル名を指定しなければなりません。$ {TB3_MODEL}は、burger、waffle、waffle_piの中で使用するモデル名を指定してください。exportの設定を永続化するためには、Export Turtlebot3_MODELのページを参照してください。
@@ -62,15 +61,14 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
   $ roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
   ```
 
-{% capture capture02 %}
-**roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml**
+{% capture rosnote02 %}
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-    - subscribe : joint_states 
+    - subscribe : joint_states
     - publish : tf
 
-    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
     turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
 
 2. map_serverノード
@@ -91,7 +89,7 @@ DWA(Dynamic Window Approach)は、障害物を回避する経路の生成に使�
   - subscribe : tf, odom, map, scan
   - 最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml" %}
 
   上記の命令を実行すると、ビジュアル化ツールRvizが実行されます。Rvizを別途実行するためには、下記の命令のコマンドをを使用してください。
   ```bash

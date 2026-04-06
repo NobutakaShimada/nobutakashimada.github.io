@@ -42,28 +42,26 @@ $ cd ~/catkin_ws && catkin_make
 $ export TURTLEBOT3_MODEL=${TB3_MODEL}
 $ roslaunch turtlebot3_fake turtlebot3_fake.launch
 ```
-{% capture capture01 %}
-**roslaunch turtlebot3_fake turtlebot3_fake.launch**
+{% capture rosnote01 %}
 - publish : odom, joint_states
 - subscribe : cmd_vel
 {% endcapture %}
-<div class="notice--success">{{ capture01 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch turtlebot3_fake turtlebot3_fake.launch" %}
 
 ```bash
 $ export TURTLEBOT3_MODEL=${TB3_MODEL}
 $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
-{% capture capture02 %}
-**roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch**
+{% capture rosnote02 %}
 - publish : cmd_vel
 
-turtlebot3_teleop_key.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取ってlinearとangular値を更新し、linearとangularが含まれたtwist形式のtopicであるcmd_velをpublishします。  
-その後、Turtlebot3のSBCで実行されたturtlebot3_robot.launchに含まれたturtlebot3_core.launchからcmd_velを受信します。  
-cmd_velトピックはrosserialを介してOpenCRに伝達され、OpenCRにアップロードされたファームウェアでDYNAMIXELを制御するためのコマンドとして出力されます。  
+turtlebot3_teleop_key.launchファイルを実行して生成されたturtlebot3_teleop_keyboardノードでは、キーボードの入力を読み取ってlinearとangular値を更新し、linearとangularが含まれたtwist形式のtopicであるcmd_velをpublishします。
+その後、Turtlebot3のSBCで実行されたturtlebot3_robot.launchに含まれたturtlebot3_core.launchからcmd_velを受信します。
+cmd_velトピックはrosserialを介してOpenCRに伝達され、OpenCRにアップロードされたファームウェアでDYNAMIXELを制御するためのコマンドとして出力されます。
 受信されたコマンドに従って車輪と接続されたDYNAMIXELが駆動し、ロボットを動かします。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" %}
 
 ### Gazeboを使ったTurtlebot３シミュレーション 
 
@@ -81,15 +79,14 @@ $ export TURTLEBOT3_MODEL=${TB3_MODEL}
 $ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ```
 
-{% capture capture03 %}
-**roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch**
+{% capture rosnote03 %}
 - publish : joint_states, odom, scan, tf
 - subscribe : cmd_vel
 
 turtlebot3_empty_world.launchを実行すると、設定ファイルに従ってGazeboシミュレータが実行され、設定されたTurtleBot3モデルがGazeboシミュレータに生成されます。この時使用されるxacroとURDFファイルの設定に従ってimu、scan、odom、joint_states、tfのtopicをpublishし、cmd_velをsubscribeします。
 その後、teleopノードを介してcmd_velをpublishすると、Gazeboシミュレータがその値をsubscribeし、シミュレータに生成されたロボットが動くことを確認できます。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch" %}
 
 
 ![](http://emanual.robotis.com/assets/images/platform/turtlebot3/simulation/turtlebot3_empty_world.png)
@@ -119,12 +116,12 @@ $ roslaunch turtlebot3_gazebo turtlebot3_house.launch
 
 #### TurtleBot3 の駆動 
 
-##### Gazeboの遠隔操作 
-[Remote PC] TurtleBot3 をキーボードでコントロールするために、新しいターミナルで下記のコマンドを使って遠隔操作を実行します。 
+##### Gazeboの遠隔操作
+[Remote PC] TurtleBot3 をキーボードでコントロールするために、新しいターミナルで下記のコマンドを使って遠隔操作を実行します。
 ```bash
 $ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" %}
 
 
 ##### 衝突回避 

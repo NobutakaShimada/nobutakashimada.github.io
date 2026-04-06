@@ -34,33 +34,31 @@ LinuxがインストールされたPCと接続する場合は、USBポートの�
 ```bash
 $ roslaunch hls_lfcd_lds_driver hlds_laser.launch
 ```
-{% capture capture00 %}
-**roslaunch hls_lfcd_lds_driver hlds_laser.launch**
+{% capture rosnote01 %}
 1. hlds_laser_publisher
     - publish : scan, rpms
 
 hlds_laser.launchを実行するとhlds_laser_publisherノードが生成され、センサのデータと回転速度をそれぞれscanとrpmsのtopicでpublishします。 sensor_msgsタイプのLaserScanメッセージであるscanにはLDSセンサが回転し、獲得したロボット周辺の物体との距離データが配列の形で蓄積、保存されます。
 {% endcapture %}
-<div class="notice--success">{{ capture00 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch hls_lfcd_lds_driver hlds_laser.launch" %}
 
 ### RVizとhlds_laser_publisherノードの実行
 ```bash
 $ roslaunch hls_lfcd_lds_driver view_hlds_laser.launch
 ```
 
-{% capture capture01 %}
-**roslaunch hls_lfcd_lds_driver view_hlds_laser.launch**
+{% capture rosnote02 %}
 1. hlds_laser_publisher
     - publish : scan, rpms
 
 2. rviz
     - subscribe : scan
 
-view_hlds_laser.launchを実行すると、hlds_laser.launchファイルとrvizノードが実行されます。  
-hlds_laser.launchを実行するとhlds_laser_publisherノードが生成され、センサのデータと回転速度をそれぞれscanとrpmsのtopicでpublishします。 sensor_msgsタイプのLaserScanメッセージであるscanにはLDSセンサが回転し、獲得したロボット周辺の物体との距離データが配列の形で蓄積、保存されます。  
+view_hlds_laser.launchを実行すると、hlds_laser.launchファイルとrvizノードが実行されます。
+hlds_laser.launchを実行するとhlds_laser_publisherノードが生成され、センサのデータと回転速度をそれぞれscanとrpmsのtopicでpublishします。 sensor_msgsタイプのLaserScanメッセージであるscanにはLDSセンサが回転し、獲得したロボット周辺の物体との距離データが配列の形で蓄積、保存されます。
 RVizノードでは、rvizの設定ファイルを読み込み、画面に表示してscanデータをsubscribeし、3次元グラフィックスで視覚化します。
 {% endcapture %}
-<div class="notice--success">{{ capture01 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch hls_lfcd_lds_driver view_hlds_laser.launch" %}
 
 ## センサのソースコードをダウンロード
 
@@ -170,15 +168,14 @@ SLAMでマップを作成する際、いくつかの注意点があります。
   $ export TURTLEBOT3_MODEL=${TB3_MODEL}
   $ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
   ```
-{% capture capture02 %}
-**roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping**
+{% capture rosnote03 %}
 1. **roslaunch turtlebot3_bringup turtlebot3_remote.launch**
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-  - subscribe : joint_states 
+  - subscribe : joint_states
   - publish : tf
 
-    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
     turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
 
 2. **turtlebot3_gmapping.launch**
@@ -190,9 +187,9 @@ SLAMでマップを作成する際、いくつかの注意点があります。
 3. **rviz**
   - subscribe : tf, scan, map
 
-    最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。  
+    最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping" %}
 
 **参照**  
 上のコマンドを実行した際SLAMがRviz画面上で正常に実行されない場合、Remote PCとTurtleBot3 SBCで以下のコマンドを実行してシステムクロックを同期化してください。  
@@ -209,21 +206,20 @@ Gmapping、cartographerといった複数のSLAMをサポートし、コマン�
 $ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=cartographer
 ```
 
-{% capture capture03 %}
-**roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=cartographer**
+{% capture rosnote04 %}
 1. roslaunch turtlebot3_bringup turtlebot3_remote.launch
   - urdf：Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
   - robot_state_publisher : robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-  - subscribe : joint_states 
+  - subscribe : joint_states
   - publish : tf
 
-    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+    turtlebot3_remote.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
     turtlebot3_slam.launchファイル内部にturtlebot3_remote.launchが含まれているのでturtlebot3_slam.launchが実行されると自動的にturtlebot3_remote.launchが最初に実行されます｡
 
 2. turtlebot3_cartographer.launch
   - subscribe : scan, imu, odom
   - publish : submap_list, map
-  
+
     実行文の末尾にslam_methods:=cartographerというオプションを入力したため、cartographerの実行に関連するファイルであるturtlebot3_cartographer.launchが実行されます。このファイルの内部では、再びLDSの設定が保存されたtu​​rtlebot3_lds_2d.luaを呼び出し、cartographerの使用に必要な各種パラメータを定義して、cartographer_rosパッケージのcartographer_nodeノードを実行し、scan、imu、odomなどのtopicをsubscribeしてsubmap_listをpublishします。また、cartographer_rosパッケージのcartographer_occupancy_grid_nodeノードを実行し、cartographer_nodeでpublishされたsubmap_listをsubscribeしてmapをpublishします。
 
 3. rviz
@@ -231,7 +227,7 @@ $ roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=cartographer
 
     最後にrvizの設定ファイルを適用したrvizが実行され、tf、scan、mapデータをsubscribeしてロボットとセンサ値、gmappingによって生成されたマップを視覚化します。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=cartographer" %}
 
 デフォルトで提供しているGmapping以外のSLAMを使用するには、以下のように関連パッケージをインストールする必要があります。
 - cartographerをインストール：現時点で最新バージョンのcartographer(v1.0.0)は、2018年以来アップデートされておらず、TurtleBot3パッケージでシミュレーション行う場合、正常に駆動しない場合があります。TurtleBot3のSLAMをシミュレーションする際にはGmappingを使用してください。  

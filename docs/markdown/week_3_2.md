@@ -36,8 +36,7 @@ $ roscore
 ```bash
 $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
-{% capture capture01 %}
-**roslaunch turtlebot3_bringup turtlebot3_robot.launch**
+{% capture rosnote01 %}
 1. **turtlebot3_core.launch**
     - subscribe : cmd_vel
     - publish : joint_states, odom
@@ -47,7 +46,7 @@ $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 
 OpenCRのファームウェアが変更されたため、turtlebot3_robot.launchファイルを実行すると、Week1で説明したturtlebot3_robot.launchを実行させたときにpublishされるトピックに加えて、joint_trajectory_point、gripper_positionのトピック2種をsubscribeします。joint_trajectory_pointはOpenMANIPULATORの各関節の位置値を伝達し、OpenCRを通じてOpenMANIPULATORを構成するDYNAMIXELアクチュエータに伝達されます。gripper_positionはOpenMANIPULATORグリッパの位置値であり、joint_trajectory_pointと同様に、OpenCRを通じてグリッパーを構成するDYNAMIXELに伝達され、グリッパを制御します。rqtのMessage Publisherを使用して位置値を転送する方法によっても簡単に制御することができます。
 {% endcapture %}
-<div class="notice--success">{{ capture01 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch turtlebot3_bringup turtlebot3_robot.launch" %}
 
 SLAMを使用して地図を作成する場合は、Manipulationを使用していないため、以下のOpenMANIPULATORを制御するコントローラーとmove_groupインタフェースは実行する必要はありません。
 
@@ -65,13 +64,12 @@ $ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
 ```bash
 $ roslaunch turtlebot3_manipulation_slam slam.launch
 ```
-{% capture capture06 %}
-**roslaunch turtlebot3_manipulation_slam slam.launch**
+{% capture rosnote02 %}
 1. **urdf**
   - Unified Robot Description Formatの略で、ロボットの構成と接続形態を表すXML形式のファイルです。
 2. **robot_state_publisher**
   - robot_state_publisherでは、ロボットの各関節の情報を受信し、得られた関節についての情報をurdfを参考にtfの形式でpublishします。
-  - subscribe : joint_states 
+  - subscribe : joint_states
   - publish : tf
 3. **laser_filterノード**
   - LDSセンサの有効ではない値の範囲をフィルタリングするノードを実行します。ここでは、OpenMANIPULATORが設置されている後方部の角度を無視します。
@@ -80,9 +78,9 @@ $ roslaunch turtlebot3_manipulation_slam slam.launch
 5. **turtlebot3_gmapping.rviz**
   - Gmappingを適用したSLAMをRviz画面に表示するために必要なRvizのデフォルト設定を適用し、Rvizを実行します。
 
-turtlebot3_manipulation_slam.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。  
+turtlebot3_manipulation_slam.launchファイルを実行すると、ロボットのurdfを定義された位置から読み込みます。また、joint_statesとurdfを利用して、tfをpublishするrobot_state_publisherノードを生成します。
 {% endcapture %}
-<div class="notice--success">{{ capture06 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch turtlebot3_manipulation_slam slam.launch" %}
 
 ## turtlebot3_teleop_keyノードを実行する
 [Remote PC] 作成されていない地図上の位置にロボットを移動させ、地図を完成させます。
@@ -110,7 +108,7 @@ $ roscore
 ```bash
 $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
-<div class="notice--success">{{ capture01 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch turtlebot3_bringup turtlebot3_robot.launch" %}
 
 ## Navigationを実行する
 [Remote PC] 以下のコマンドを実行すると、Navigationの実行に必要な様々なパラメータと地図、GUI環境を作るためのURDFやRviz環境設定などを読み込みます。多くのノードが同時に実行される実行ファイルであるため、実行されるファイルとノードを最初に確認してから実行してください。
@@ -118,8 +116,7 @@ $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```bash
 $ roslaunch turtlebot3_manipulation_navigation navigation.launch map_file:=~/${map_name}.yaml
 ```
-{% capture capture07 %}
-**roslaunch turtlebot3_manipulation_navigation navigation.launch map_file:=~/${map_name}.yaml**
+{% capture rosnote03 %}
 1. **urdf**
   - TurtleBot3とOpenMANIPULATORが結合した形のturtlebot3_manipulation_robot.urdf.xacroファイルを読み込みます。このファイルでは、TurtleBot3の形態を記述したファイルと、OpenMANIPULATORの形態を記述したファイルを結合し、全体的なロボットの形を作り上げます。
 2. **robot_state_publisher**
@@ -135,7 +132,7 @@ $ roslaunch turtlebot3_manipulation_navigation navigation.launch map_file:=~/${m
 7. **rviz**
   - 各種データとパラメータを視覚化したGUIウィンドウを生成します。
 {% endcapture %}
-<div class="notice--success">{{ capture07 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch turtlebot3_manipulation_navigation navigation.launch map_file:=~/${map_name}.yaml" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_nav.png)
 
@@ -148,8 +145,7 @@ Navigationを実行する際にOpenMANIPULATORを制御するノードを生成�
 ```bash
 $ roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
 ```
-{% capture capture02 %}
-**roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch**
+{% capture rosnote04 %}
 1. **turtlebot3_manipulation_bringupノード**
   - turtlebot3_manipulation_bringup.launchを実行すると、arm_controllerとgripper_controllerこれら2つのコントローラーが実行されます。move_groupと通信するaction serverコントローラーの役割として、それぞれmove_groupを介してアームとグリッパー関節の目標軌跡を読み込み、順にpublishします。publishされたトピックは、OpenCRを介してロボットの関節に組み込まれたDYNAMIXELに伝達され、OpenMANIPULATORを動かします。
 
@@ -162,7 +158,7 @@ $ roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.laun
 
 turtlebot3_core.launchとturtlebot3_lidar.launchファイルが実行され、TurtleBot3の状態をチェックするノード(node)であるturtlebot3_diagnosticsが生成され、TurtleBot3の各種センサやハードウェアの状態についての情報をpublishします。turtlebot3_core.launchファイルでは、OpenCRと通信してjoint_states、odomをpublishし、cmd_velをsubscribeするノードが生成されます。turtlebot3_lidar.launchファイルでは、LIDARを作動させ、センサーから得られたscanデータをpublishするノード(node)が生成されます。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch" %}
 
 ### move_groupノードの実行
 move_groupノードを実行した後は、MoveItを使用してOpenMANIPULATORを制御することも、ROBOTIS GUIを使用して制御することもできます。ここでは、ROBOTIS GUIを実行する方法を紹介します。2つのうち、適切なインターフェースを使用してください。
@@ -170,12 +166,10 @@ move_groupノードを実行した後は、MoveItを使用してOpenMANIPULATOR�
 ```bash
 $ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
 ```
-{% capture capture03 %}
-**roslaunch turtlebot3_manipulation_moveit_config move_group.launch**
-
+{% capture rosnote05 %}
 move_group.launchを実行すると、move_groupノードが実行されます。 move_groupノードは、ユーザーインタフェースを介してコマンドを受けとり、ロボットコントローラにaction形式で伝達します。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote05 title="roslaunch turtlebot3_manipulation_moveit_config move_group.launch" %}
 
 ### ROBOTIS GUIコントローラーを実行
 [Remote PC] ROBOTIS GUIは、OpenMANIPULATORの1番目のDYNAMIXELを基準にグリッパーの有効な把持位置(グリッパー間の赤い六面体)をリファレンスとするTask Space Controlや各ジョイント関節の角度をレファレンスとするJoint Space Controlをサポートします。
@@ -184,9 +178,7 @@ move_group.launchを実行すると、move_groupノードが実行されます�
 ```bash
 $ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 ```
-{% capture capture05 %}
-**roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch**
-
+{% capture rosnote06 %}
 ユーザーインターフェースでC++ move_group_interfaceを使用したqt guiが実行されます。インタフェースを介して受けとった現在のジョイント位置およびend-effector位置がgui上に表示されます。Sendボタンをクリックすると、設定された位置値についてインターフェースを介してmove_groupに伝え、コントローラーに伝達し、ロボットを動かします。
 {% endcapture %}
-<div class="notice--success">{{ capture05 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote06 title="roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch" %}

@@ -72,8 +72,7 @@ $ export TURTLEBOT3_MODEL=waffle_pi
 ```bash
 $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
-{% capture capture01 %}
-**roslaunch turtlebot3_bringup turtlebot3_robot.launch**
+{% capture rosnote01 %}
 1. **turtlebot3_core.launch**
     - subscribe : cmd_vel
     - publish : joint_states, odom
@@ -83,7 +82,7 @@ $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 
 OpenCRのファームウェアが変更されたため、turtlebot3_robot.launchファイルを実行すると、Week1で説明したturtlebot3_robot.launchを実行させたときにpublishされるトピックに加えて、joint_trajectory_point、gripper_positionのトピック2種をsubscribeします。joint_trajectory_pointはOpenMANIPULATORの各関節の位置値を伝達し、OpenCRを通じてOpenMANIPULATORを構成するDYNAMIXELアクチュエータに伝達されます。gripper_positionはOpenMANIPULATORグリッパーの位置値であり、joint_trajectory_pointと同様に、OpenCRを通じてグリッパーを構成するDYNAMIXELに伝達され、グリッパーを制御します。rqtのMessage Publisherを使用して位置値を転送する方法によっても簡単に制御することができます。
 {% endcapture %}
-<div class="notice--success">{{ capture01 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote01 title="roslaunch turtlebot3_bringup turtlebot3_robot.launch" %}
 
 # GazeboシミュレータでOpenMANIPULATORを制御する
 
@@ -92,13 +91,11 @@ OpenCRのファームウェアが変更されたため、turtlebot3_robot.launch
 ```bash
 $ roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation.launch
 ```
-{% capture capture02 %}
-**roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation.launch**
-
+{% capture rosnote02 %}
 Gazebo上にOpenMANIPULATORが結合されたTurtleBot3 Waffle Piモデルがロードされ、ロボットと通信する2つのロボットコントローラであるarm_controller、gripper_controllerが実行されます。これらはそれぞれ、ロボットアームの関節とグリッパーを制御するコントローラーです。
 方式は、実際のロボットを使用する場合と同じです。以下のコードを実行し、move_groupと通信してロボットを制御します。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote02 title="roslaunch turtlebot3_manipulation_gazebo turtlebot3_manipulation.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_gazebo.png)
 
@@ -109,12 +106,10 @@ Gazebo上にOpenMANIPULATORが結合されたTurtleBot3 Waffle Piモデルがロ
 ```bash
 $ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
 ```
-{% capture capture03 %}
-**roslaunch turtlebot3_manipulation_moveit_config move_group.launch**
-
+{% capture rosnote03 %}
 move_group.launchを実行すると、move_groupノードが実行されます。 move_groupノードは、ユーザーインタフェースを介してコマンドを受けとり、ロボットコントローラーにaction形式で伝達します。
 {% endcapture %}
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch turtlebot3_manipulation_moveit_config move_group.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_move_controller.png)
 
@@ -125,12 +120,10 @@ GUIでInteractive Markerを活用したロボットアームを制御でき、�
 ```bash
 $ roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
 ```
-{% capture capture04 %}
-**roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch**
-
+{% capture rosnote04 %}
 MoveItが有効になったRvizが実行されます。Motion Planning pluginが実行され、それまでにmoveit_setup_assistantを介して既に保存されているモーションやinteractive markerを介して設定したモーションを、move_groupに伝達することができます。目標位置を設定した後、Plan and Executeボタンを押すと、ロボットが動きはじめます。
 {% endcapture %}
-<div class="notice--success">{{ capture04 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_rviz.png)
 
@@ -145,12 +138,10 @@ MoveIt!のInteractive Markerを活用してOpenMANIPULATORーXをコントロー
 ```bash
 $ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 ```
-{% capture capture05 %}
-**roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch**
-
+{% capture rosnote05 %}
 ユーザーインターフェースでC++ move_group_interfaceを使用したqt guiが実行されます。インタフェースを介して受けとった現在のジョイント位置およびend-effector位置がgui上に表示されます。Sendボタンをクリックすると、設定された位置値についてインターフェースを介してmove_groupに伝え、コントローラーに伝達しロボットを動かします。
 {% endcapture %}
-<div class="notice--success">{{ capture05 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote05 title="roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch" %}
 
 ![](/assets/images/ritsumeikan/tb3_omx_gui_controller.png)
 
@@ -177,31 +168,30 @@ $ roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```bash
 $ roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch
 ```
-{% capture capture02 %}
-**roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch**
+{% capture rosnote06 %}
 **turtlebot3_manipulation_bringupノード**
 
 turtlebot3_manipulation_bringup.launchを実行すると、arm_controllerとgripper_controllerこれら2つのコントローラーが実行されます。move_groupと通信するaction serverコントローラーの役割として、それぞれmove_groupを介してアームとグリッパー関節の目標軌跡を読み込み、順にpublishします。publishされたトピックは、OpenCRを介してロボットの関節に組み込まれたDYNAMIXELに伝達され、OpenMANIPULATORを動かします。
 {% endcapture %}
-<div class="notice--success">{{ capture02 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote06 title="roslaunch turtlebot3_manipulation_bringup turtlebot3_manipulation_bringup.launch" %}
 
 ## move_groupを実行する
 [Remote PC] MoveItと連動しているユーザーインターフェースであるmove_groupノードを実行します。
 ```bash
 $ roslaunch turtlebot3_manipulation_moveit_config move_group.launch
 ```
-<div class="notice--success">{{ capture03 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote03 title="roslaunch turtlebot3_manipulation_moveit_config move_group.launch" %}
 
 ## RVizを実行する
 [Remote PC] 各種データの視覚化とInteractive Markerを活用したOpenMANIPULATORの制御のため、RVizを実行します。
 ```bash
 $ roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch
 ```
-<div class="notice--success">{{ capture04 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote04 title="roslaunch turtlebot3_manipulation_moveit_config moveit_rviz.launch" %}
 
 ## ROBOTIS GUI を実行する
 [Remote PC] RVizとは別に、必要に応じてROBOTIS GUIを介し、OpenMANIPULATORを制御することもできます。
 ```bash
 $ roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch
 ```
-<div class="notice--success">{{ capture05 | markdownify }}</div>
+{% include phyexp3-ros-note.html content=rosnote05 title="roslaunch turtlebot3_manipulation_gui turtlebot3_manipulation_gui.launch" %}
