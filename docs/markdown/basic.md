@@ -172,6 +172,12 @@ ROSコマンドはターミナル（端末）上のシェルからコマンド�
 $ gnome-screenshot --area -f graph.jpg
 ```
 7. talker2.pyを複数起動すると、2ノード以上からのテキストをlistener.pyは表示することができる。実際に試してみて、なぜそれが可能なのか考察しレポートで説明せよ。
+
+**＜ヒント＞** rosrunで実行する場合は、talker.pyなどのpythonファイルの実行権限がついている必要があります。`ls -l`コマンドでみると'rwx'という記号がでてきますが、xが実行権限です。実行権限をつけるには`chmod +x talker.py`などと実行します。
+
+また、pythonファイルの先頭に'#!/usr/bin/env python'の行が必要です。これを入れ忘れると、rosrunはファイルがシェルスクリプトだとおもって先頭に書いてある'import'というコマンドを実行します。importコマンドは画面キャプチャをするコマンドで、起動するとマウスポインタが十字の形になります。その場合はrosrunを実行したターミナルでCtrl-Cを押して止めてください。
+
+うまくいかない場合はrosrunではなく、`python talker.py`のようにpythonを直接起動して実行してみてください。同じように動作します。
 {% endcapture %}
 {% include phyexp3-exercise.html content=exercise1-4 title="課題1-4" %}
 
@@ -191,7 +197,7 @@ $ export ROS_MASTER_URI=http://10.40.41.69:11311
 $ source ~/.bashrc
 ```
 
-課題1-5のヒント：
+**＜課題1-5のヒント＞：**
 双方向に送受信できるということは、一つのノードがpublisherの機能とsubscriberの機能の両方を兼ね備える必要がある。
 さらに、双方向で送受信できるのだから、talkerとlistenerの区別はもはやないことになる。
 つまりpublisherとsubscriberの２つとも一つのノード(python script)に実装すればよい。
