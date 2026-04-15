@@ -173,7 +173,11 @@ $ gnome-screenshot --area -f graph.jpg
 ```
 7. talker2.pyを複数起動すると、2ノード以上からのテキストをlistener.pyは表示することができる。実際に試してみて、なぜそれが可能なのか考察しレポートで説明せよ。
 
-**＜ヒント＞** rosrunで実行する場合は、talker.pyなどのpythonファイルの実行権限がついている必要があります。`ls -l`コマンドでみると'rwx'という記号がでてきますが、xが実行権限です。実行権限をつけるには`chmod +x talker.py`などと実行します。
+**＜ヒント＞** rosrunで実行する場合は、talker.pyなどのpythonファイルの実行権限がついている必要があります。`ls -l`コマンドでみると'rwx'という記号がでてきます。
+```bash
+-rwxrwxr-x 1 ubuntu ubuntu  500 Apr  8 15:19 talker.py
+```
+xが実行権限です。実行権限をつけるには`chmod +x talker.py`などと実行します。
 
 また、pythonファイルの先頭に'#!/usr/bin/env python'の行が必要です。これを入れ忘れると、rosrunはファイルがシェルスクリプトだとおもって先頭に書いてある'import'というコマンドを実行します。importコマンドは画面キャプチャをするコマンドで、起動するとマウスポインタが十字の形になります。その場合はrosrunを実行したターミナルでCtrl-Cを押して止めてください。
 
