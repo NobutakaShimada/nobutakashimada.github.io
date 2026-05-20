@@ -20,50 +20,55 @@ sidebar:
 [発展課題6-EX1](#exercise6-ex1)
 [発展課題6-EX2](#exercise6-ex2)
 
-
-
 ## Pythonプログラムでの地図上座標の取得
+
 RVizの **Publish Point** ボタンを押した後、地図上の点をクリックする
 ことで、その位置の座標が `/clicked_point` というtopicに出力されます。
 まずはこれを確認しましょう。
 
-### `rostopic echo` を用いる場合 {#check-clicked-point-by-rostopic}
-1. [前節5.](/docs/navigation)に記載の方法でRVizを起動する。 
+### `rostopic echo` を用いる場合
+
+1. [前節5.](/docs/navigation)に記載の方法でRVizを起動する。
+
    ```bash
    $ roscore
    ```
+
    Gazeboの場合
-   
+
    ```bash
    $ roslaunch exp3 gazebo_manipulator_world.launch
    ```
-    実機の場合 (ロボット番号09の場合)
-   
+
+   実機の場合 (ロボット番号09の場合)
+
    ```bash
    $ roslaunch exp3 machine.launch id:=09
    ```
-   navigation.launchの実行 (Gazebo/実機の場合共通、map1の場合) 
-   
+
+   navigation.launchの実行 (Gazebo/実機の場合共通、map1の場合)
+
    ```bash
    $ roslaunch exp3 navigation.launch map_name:=map1
    ```
-   robot_manipulation.launchの実行 (Gazebo/実機の場合共通) 
-   
+
+   robot_manipulation.launchの実行 (Gazebo/実機の場合共通)
+
    ```bash
    $ roslaunch exp3 robot_manipulation.launch
    ```
+
    **これらの起動は、以降すべての動作で必要です。**
-   
-1. 新たな端末で `rostopic echo /clicked_point` を実行し `/clicked_point` に
+2. 新たな端末で `rostopic echo /clicked_point` を実行し `/clicked_point` に
    出力される情報を待ち受ける状態にする。
-1. RViz上部の **Publish Point** ボタンをクリックする。
-1. 地図上の点をクリックする。
+3. RViz上部の **Publish Point** ボタンをクリックする。
+4. 地図上の点をクリックする。
    `/clicked_point` のtopicに座標情報が出力されるのを確認する。
 
 複数の点について座標を確認し、RViz上でのX軸、Y軸、Z軸の向きを確認してください。
 
-
 ### **課題6-1 Pythonプログラムを用いた座標の取得**
+
 `rostopic echo` コマンドを用いてtopicの情報を表示する代わりに
 Pythonプログラム中でtopicの情報を取得することもできます。
 プログラム内で利用できるデータとして取得できるので、それに応じて
@@ -79,11 +84,11 @@ Pythonプログラム中でtopicの情報を取得することもできます。
    を実行し、topicの情報が表示されることを確認してください。
    これを複数の位置について行い、RViz上でのX軸、Y軸の向きを確認
    してください。
-1. `teleop` などを使ってロボットを初期位置からある程度離れた
+2. `teleop` などを使ってロボットを初期位置からある程度離れた
    位置に移動した後、
    RVizの **Publish Point** の機能でロボットの中心位置を指定して
    その座標を取得し、レポートで報告してください。
-1. RViz上の表示を以下のように調整した後の状態で
+3. RViz上の表示を以下のように調整した後の状態で
    RVizのウィンドウをキャプチャしレポートに貼り付けてください。
    - `map` frame における原点(X,Y) = (0,0)が
      地図表示パネルの中心に位置するようにする。
@@ -94,11 +99,11 @@ Pythonプログラム中でtopicの情報を取得することもできます。
      ままとする。
    - RVizの左側に表示される表示内容選択パネル( `Displays` )を畳んで
      地図を見やすくしておく。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-1 title="課題6-1" %}
-
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-1 title="課題6-1" %}
 
 ### ファイルの内容確認
+
 先程実行したPython scriptは `~/exp3_ws/src/exp3/scripts/` という
 ディレクトリ(フォルダ)にある `print_clicked_point.py` というファイルに
 記述されています。
@@ -107,9 +112,11 @@ Pythonプログラム中でtopicの情報を取得することもできます。
 あります。
 下記のようなコマンドで `print_clicked_point.py` の内容を確認する
 ことができます。
+
 ```bash
 $ cat ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
 ```
+
 このコマンドは端末上に内容が出力された後に終了し、検索したり遡って
 見ることはできません(端末自身のスクロールバーである程度は遡れます)。
 
@@ -120,6 +127,7 @@ $ cat ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
 する方法もあります。
 以下の例では `~/exp3_ws/src/exp3/scripts` というディレクトリに
 移動してから相対パスで `cat` コマンドを起動しています。
+
 ```bash
 $ cd ~/exp3_ws/src/exp3/scripts
 $ cat print_clicked_point.py
@@ -130,6 +138,7 @@ $ cat print_clicked_point.py
 登録してありますので `roscd` で移動することもできます。
 例えば下記のように `roscd` コマンドを使うと上記と同じようなことが
 できます。
+
 ```bash
 $ roscd exp3/scripts
 $ cat print_clicked_point.py
@@ -137,29 +146,35 @@ $ cat print_clicked_point.py
 
 ファイルの内容を確認するには `cat` コマンドの他にも色々な方法があります。
 以下にその例を示します。
+
 - `less` コマンドで表示する。
+
   ```bash
   $ less ~/exp3_ws/src/exp3/scripts/print_clicked_point.py
   ```
-  `cat` と異なり矢印キーや`j`, `k`キーの
+
+  `cat` と異なり矢印キーや `j`, `k`キーの
   入力で表示位置を移動できます。`q`を入力するとコマンドを終了します。
   (参考: [manpage of less](https://manpages.ubuntu.com/manpages/bionic/ja/man1/less.1.html) )
 
   相対パスを使う場合は以下のようになります。
+
   ```bash
   $ roscd exp3/scripts
   $ less print_clicked_point.py
   ```
-
 - エディタ(gedit)で開く。
+
   ```bash
   $ gedit ~/exp3_ws/src/exp3/scripts/print_clicked_point.py &
   ```
+
   端末とは別にウィンドウが開いて表示、編集できます。
   行末の「&」はバックグラウンド実行(端末とは別に同時平行的に実行される)を
   意味します。
 
   相対パスを使う場合は以下のようになります。
+
   ```bash
   $ roscd exp3/scripts
   $ gedit print_clicked_point.py &
@@ -173,20 +188,9 @@ $ cat print_clicked_point.py
 
   まず下記の方法などでディレクトリを表示するウィンドウを開きます。
 
-  {: type="a"}
-  1. 画面左端に並んだアイコンの中にある `Files` をクリックして
-     ウィンドウを開き、 `exp_3_ws` → `src` → `exp3` → `scripts`
-     と辿る。
-  1. `xdg-open` コマンドで直接ウィンドウを開く。
-     ```bash
-     $ xdg-open ~/exp3_ws/src/exp3/scripts/ &
-     ```
-
-  開いたウィンドウ内で `print_clicked_point.py` を右クリックし、
-  **Open With Text Editor** を選択する。
-
 `print_clicked_point.py` の内容は以下のようになっています。
-~~~ python
+
+```python
 #!/usr/bin/env python
 import rospy
 
@@ -204,14 +208,20 @@ if __name__ == '__main__':
         topic_name, geometry_msgs.msg.PointStamped
     )
     rospy.loginfo('The clicked point information: %s' % (point,))
-~~~
+```
+
 このプログラムでは `rospy.wait_for_message()` 関数を用いてtopicからの情報を
 待ち、得られた情報を `point` という変数に代入してそれを表示しています。
 この関数については
 [rospy.clientのマニュアルの `wait_for_message` の項](https://docs.ros.org/en/melodic/api/rospy/html/rospy.client-module.html#wait_for_message)
 を参照してください。
 
+{: .notice--info}
+**ヒント:**
+rospy.wait_for_message()で１回だけメッセージが届くのを待っているので、RVizでクリックしてメッセージが発行され、それを受け取ってしまうとも'clicked_point'の購読は終了します。つまり、クリックしてしまったあとにrqt_graphの画面をリロードしてもこのトピックの購読の様子が見れません。rqt_graphで/clicked_pointが購読されている様子を見たい場合は、print_clicked_point.pyを実行した状態で、RVizのボタンをクリックする前にrqt_graphをリロードしてみてください。
+
 ### Pythonプログラムのインタラクティブな実行
+
 Pythonは [インタプリタ](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%97%E3%83%AA%E3%82%BF) なので、
 **プログラムをその場で入力しながら実行** することができます。
 
@@ -220,10 +230,12 @@ Pythonは [インタプリタ](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%
 みましょう。
 `~/exp3_ws/src/exp3/scripts/` のディレクトリに移動してから
 `python -i` コマンドでプログラムを実行してみてください。
+
 ```bash
 $ roscd exp3/scripts
 $ python -i print_clicked_point.py
 ```
+
 実行後、 `Waiting for a point to be clicked...` のメッセージが
 表示されてからRVizの **Publish Point** の機能で適当な位置を指定
 してください。
@@ -232,7 +244,8 @@ $ python -i print_clicked_point.py
 状態になります。
 下記の行のそれぞれを実行して、 `point` 変数内の情報にアクセスする
 方法を確認してみてください。
-~~~ python
+
+```python
 print(point)
 
 print(point.header)
@@ -240,14 +253,14 @@ print(point.header)
 print(point.point)
 
 print(point.point.x)
-~~~
+```
+
 プログラムの動作確認やデバッグ、改良の際にインタラクティブ実行は
 大変便利です。
 以下の課題に取り組む際も是非活用してください。
 
-
-
 ## プログラム内に記述された座標への移動
+
 前節の[5.生成した環境地図に基づくナビゲーション](/docs/navigation)
 ではRVizの **2D Nav Goal** ボタンを使ってRViz上の指定した位置へロボットを
 移動させていましたが、Pythonプログラム上でこのような移動を指示することも
@@ -257,7 +270,8 @@ print(point.point.x)
 ディレクトリに `go_to_fixed_point.py` というファイルがあります。
 これをエディタで開いてください。
 内容は以下のようになっています。
-~~~ python
+
+```python
 #!/usr/bin/env python
 import rospy
 
@@ -281,7 +295,8 @@ if __name__ == '__main__':
     goal = robot.make_goal(frame_id, point_xyz, angle)
     rospy.loginfo('Go to the goal:\n%s' % (goal, ))
     robot.go_to_goal(goal)
-~~~
+```
+
 変数 `point_xyz` は3つの要素を持つlistで、これでX座標,Y座標,Z座標を
 指定します。
 座標系は `frame_id` で指定されていて、 `map` です(地図を基準とした座標)。
@@ -294,14 +309,17 @@ X軸の正の方向が0度となっています。
 地図上の適当な位置の座標を確認し、 `go_to_fixed_point.py` を編集して
 その座標を `point_xyz` に設定してください。
 その状態で
+
 ```bash
 $ rosrun exp3 go_to_fixed_point.py
 ```
+
 を実行し、ロボットが指定した位置に移動することを確認してください。
 また、目標位置の座標を変更して複数回実験を行い、座標に応じた位置に
 移動していることを確認してください。
 
 ### 目標位置付近で停止せず回転し続ける問題
+
 上記のプログラムでロボットに移動指示を出すと、目標位置付近まで
 移動した後に停止せず小さい半径で回転し続ける場合があります。
 目標位置付近で行われる細かい位置合わせにおいて、
@@ -310,12 +328,15 @@ $ rosrun exp3 go_to_fixed_point.py
 
 目標位置付近で停止せず回転し続ける現象が起きた場合は下記の
 コマンドを実行してください。
+
 ```bash
 $ rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}
 ```
+
 現在の目標を取り消してロボットを停止させることができます。
 
 ### 経路計画のパラメータ変更
+
 目標位置付近で回転し続ける現象が起こらないよう、
 経路計画のパラメータを変更することができます。
 但し、ロボット実機の挙動とGazeboによるシミュレーション環境での
@@ -326,10 +347,11 @@ $ rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}
 両環境で変更するべきパラメータは以下の通りです。
 
 | パラメータ名 | Gazebo環境用 | 実機環境用 | 参考情報 |
-||(デフォルト)|||
-|:-:|:-:|:-:|:-:|
-| /move_base/DWAPlannerROS/max_vel_theta | 1.2 | 6.4 | [解説](https://wiki.ros.org/dwa_local_planner#line-463)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-463)) (旧称 max_rot_vel として記載)|
-| /move_base/DWAPlannerROS/min_vel_theta | 1.0 | 4.6 | [解説](https://wiki.ros.org/dwa_local_planner#line-468)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-468)) (旧称 min_rot_vel として記載)|
+
+|                                        | (デフォルト) |    |                                                                                                                                                                                  |
+| :------------------------------------: | :----------: | :-: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| /move_base/DWAPlannerROS/max_vel_theta |     1.2     | 6.4 | [解説](https://wiki.ros.org/dwa_local_planner#line-463)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-463)) (旧称 max_rot_vel として記載) |
+| /move_base/DWAPlannerROS/min_vel_theta |     1.0     | 4.6 | [解説](https://wiki.ros.org/dwa_local_planner#line-468)([URL on Wayback Machine]({{ wayback_prefix }}https://wiki.ros.org/dwa_local_planner#line-468)) (旧称 min_rot_vel として記載) |
 
 これらのパラメータは `rqt_reconfigure` や `rosparam` コマンドを
 使って変更できます。
@@ -338,40 +360,45 @@ $ rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}
 必要があります。
 
 #### `rqt_reconfigure` でのパラメータ変更
+
 1. 下記のコマンドで `rqt_reconfigure` を起動してください。
    ```bash
    $ rosrun rqt_reconfigure rqt_reconfigure &
    ```
-1. 左のペインで `move_base` を展開し、
+2. 左のペインで `move_base` を展開し、
    その下にある `DWAPlannerROS` を選択してください。
-1. 右のペインにパラメータ一覧が表示されるので
+3. 右のペインにパラメータ一覧が表示されるので
    その中の `max_vel_theta`, `min_vel_theta` の値を
    それぞれ設定してください。
 
 #### `rosparam` コマンドでのパラメータ変更
+
 下記のようなコマンドでパラメータを設定してください
 (実機環境用の値を設定する例)。
+
 ```bash
 $ rosparam set /move_base/DWAPlannerROS/max_vel_theta 6.4
 $ rosparam set /move_base/DWAPlannerROS/min_vel_theta 4.6
 ```
+
 現在のパラメータの値は下記のコマンドで確認できます。
+
 ```bash
 $ rosparam get /move_base/DWAPlannerROS/max_vel_theta
 $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 ```
 
-
 ### **課題6-2 Pythonプログラム内の変数で指定した位置への移動**
 
 {:id="exercise6-2"}
 {% capture exercise6-2 %}
+
 1. 地図上でロボットが到達可能な移動先を設定し、目標位置の `map` frameに
    おける座標をレポートで報告してください。
-1. 変数 `point_xyz` に目標位置の `map` frameにおける座標が代入される
+2. 変数 `point_xyz` に目標位置の `map` frameにおける座標が代入される
    ように `go_to_fixed_point.py` を修正して、
    修正後のプログラムをレポートに貼り付けてください。
-1. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
+3. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
    付けてください。
    加えて、作成したプログラム実行中のノード間の情報のやりとりに
    ついて貼り付けた画像を参照しながら説明する文章を作成しレポートで
@@ -381,8 +408,9 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
    ように表示されるかについては
    [`rqt_graph`とactionについてのヒント](#exercise6-2-hint)を
    参照してください。
-1. 移動前の状況として、RViz上の表示を以下のように調整した後の状態で
+4. 移動前の状況として、RViz上の表示を以下のように調整した後の状態で
    RVizのウィンドウをキャプチャしレポートに貼り付けてください。
+
    - `map` frame における原点(X,Y) = (0,0)が
      地図表示パネルの中心に位置するようにする。
    - `map` frame におけるX軸が画面の水平方向であり、X軸の正の方向が
@@ -394,21 +422,22 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
      地図を見やすくしておく。
 
    実機で実験を行った場合は移動前の周囲状況の写真も貼り付けてください。
-1. 修正した `go_to_fixed_point.py` を下記のコマンドで実行し、
+5. 修正した `go_to_fixed_point.py` を下記のコマンドで実行し、
    ロボットが指定した位置に移動することを確認してください。
+
    ```bash
    $ rosrun exp3 go_to_fixed_point.py
    ```
-1. 移動後の状況として、RVizのウィンドウをキャプチャしレポートに
+6. 移動後の状況として、RVizのウィンドウをキャプチャしレポートに
    貼り付けてください。
    但し、移動前の状況と比較できるようRViz内の地図表示パネルの
    表示範囲や角度が移動前のものと変わらないようにしてください。
 
    実機で実験を行った場合は移動後の周囲状況の写真も貼り付けてください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-2 title="課題6-2" %}
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-2 title="課題6-2" %}
 
-{: .notice--info id="exercise6-2-hint"} 
+{: .notice--info id="exercise6-2-hint"}
 **`rqt_graph`とactionについてのヒント:**\\
 `go_to_fixed_point.py` がロボットを移動させる際にはROSの
 [actionという機能](https://wiki.ros.org/actionlib#Overview)
@@ -442,9 +471,8 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 を利用して
 いて、これを参考にすればより細かい制御を行うことも可能です。
 
-
-
 ## **課題6-3 RViz上で指定した位置への移動**
+
 `go_to_fixed_point.py` では移動先の位置はプログラム内に
 直接書かれていました。
 このように、何らかの情報をプログラム上に直接書いておくことは
@@ -459,15 +487,16 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 
 {:id="exercise6-3"}
 {% capture exercise6-3 %}
+
 1. 実験室のLinux環境の `~/exp3_ws/src/exp3/scripts/` のディレクトリに
    あらかじめ `go_to_clicked_point.py` という名前でプログラムの雛形を
    用意してあります。
    これを修正してRVizの **Publish Point** ボタンの機能で位置を指定すると
    ロボットがその位置に移動するプログラムを作成しレポートに貼り付けて
    ください。
-1. 指定する位置を変えてプログラムを実行することを複数回行い、指定した
+2. 指定する位置を変えてプログラムを実行することを複数回行い、指定した
    位置に移動できることを確認してください。
-1. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
+3. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
    付けてください。
    加えて、作成したプログラム実行中のノード間の情報のやりとりに
    ついて貼り付けた画像を参照しながら説明する文章を作成しレポートで
@@ -477,8 +506,9 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
    ように表示されるかについては
    [`rqt_graph`とactionについてのヒント](#exercise6-2-hint)を
    参照してください。
-1. 下記の条件で移動前のRVizの画面をキャプチャし
+4. 下記の条件で移動前のRVizの画面をキャプチャし
    レポートに貼り付けてください([課題6-2](#exercise6-2) と同様)。
+
    - `map` frame における原点(X,Y) = (0,0)が
      地図表示パネルの中心に位置するようにする。
    - `map` frame におけるX軸が画面の水平方向であり、X軸の正の方向が
@@ -490,22 +520,24 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
      地図を見やすくしておく。
 
    実機で実験を行った場合は周囲状況の写真も貼り付けてください。
-1. 移動前と同様の条件で移動後についてもRVizの画面をキャプチャし
+5. 移動前と同様の条件で移動後についてもRVizの画面をキャプチャし
    レポートに貼り付けてください。
    実機で実験を行った場合は周囲状況の写真も貼り付けてください。
-1. ロボットが意図通りに動いたかを考察してください。
+6. ロボットが意図通りに動いたかを考察してください。
+
    - 意図通りに動いたとしたら、どのような状況からそう判断したかを
      画像を参照しながら説明してください。
    - 意図通りに動かなかったとしたら、その理由を説明し改善方法を
      考えて挙げてください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-3 title="課題6-3" %}
-
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-3 title="課題6-3" %}
 
 ## アームの操作
+
 ### アーム動作の前準備
+
 以下に紹介するプログラムでロボットのアームを動かす場合は事前に
 `navigation.launch` を地図情報付きで起動しておく必要があります。
 これはロボット本体は移動させない場合でも必要で、Gazebo環境と実機環境の
@@ -516,67 +548,73 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 以下に必要な手順とコマンド例をまとめます。
 
 #### Gazeboの場合
+
 1. `roscore`を起動する。
-1. Gazeboを起動する。
+2. Gazeboを起動する。
 
    起動コマンドの例:
+
    ```bash
    $ roslaunch exp3 gazebo_manipulator_stage_4.launch
    ```
-
-1. Gazeboのシミュレーション環境の時間を開始させる。
+3. Gazeboのシミュレーション環境の時間を開始させる。
 
    GazeboのPlayボタンをクリックするか、下記のコマンドを実行する。
+
    ```bash
    $ rosservice call gazebo/unpause_physics
    ```
-
-1. `navigation.launch` を起動する。
+4. `navigation.launch` を起動する。
 
    起動コマンドの例:
+
    ```bash
    $ roslaunch exp3 navigation.launch map_name:=stage4
    ```
 
 #### 実機の場合
+
 1. `roscore`を起動する。
-1. `machine.launch` を起動する。
+2. `machine.launch` を起動する。
 
    起動コマンドの例:
+
    ```bash
    $ roslaunch exp3 machine.launch id:=25
    ```
-
-1. `navigation.launch` を起動する。
+3. `navigation.launch` を起動する。
 
    起動コマンドの例:
+
    ```bash
    $ roslaunch exp3 navigation.launch map_name:=stage4
    ```
-
-1. `robot_manipulation.launch` を起動する。
+4. `robot_manipulation.launch` を起動する。
 
    起動コマンドの例:
+
    ```bash
    $ roslaunch exp3 robot_manipulation.launch
    ```
 
 ### `move_arm.py`
+
 実験室のLinux環境の `~/exp3_ws/src/exp3/scripts/` のディレクトリに
 `move_arm.py` という名前のプログラムを用意してあります。
 このプログラムでは3つの関数が定義されていて、それぞれの機能は以下の
 通りです。
--  `rotate_arm()` : アームを回転させる。
--  `extend_arm()` : アームを伸ばす。
--  `initialize_arm()` : アームをGazebo上の初期姿勢に戻す。
--  `initialize_arm_real()` : アームを実機起動時の姿勢に戻す。
--  `open_gripper()` : グリッパを開く。
--  `close_gripper()` : グリッパを閉じる。
 
+- `rotate_arm()` : アームを回転させる。
+- `extend_arm()` : アームを伸ばす。
+- `initialize_arm()` : アームをGazebo上の初期姿勢に戻す。
+- `initialize_arm_real()` : アームを実機起動時の姿勢に戻す。
+- `open_gripper()` : グリッパを開く。
+- `close_gripper()` : グリッパを閉じる。
 
 これらの関数は `robot` オブジェクトのメソッドを使って実装されています。
 `robot` オブジェクトのメソッドのいくつかの機能を以下に示します。
 これらのメソッドは `exp3_turtlebot.py` で定義されています。
+
 - `robot.follow_joint_trajectory(joint_waypoints)` : 引数で与えられた
   関節角度列の通りにアームの関節を動かす。
 - `robot.get_current_joint_positions()` : 現在の関節角度を返す。
@@ -585,32 +623,39 @@ $ rosparam get /move_base/DWAPlannerROS/min_vel_theta
 
 `move_arm.py` は以下のようにして実行できますが、そのままでは
 何もしないプログラムとなっています。
+
 ```bash
 $ rosrun exp3 move_arm.py
 ```
+
 まずは上記の3つの関数を使ってアームを動かすようプログラムを修正して
 どのような動作が行われるか確認してください。
 ロボット実機でアームを動作させる際には事前に
 `robot_manipulation.launch` を起動しておく必要があります。
+
 ```bash
 $ roslaunch exp3 robot_manipulation.launch
 ```
 
 インタラクティブ実行を用いて `rotate_arm(robot)` などを実行させて
 動作を確認することもできます。
+
 ```bash
 $ roscd exp3/scripts
 $ python -i move_arm.py
 ```
+
 現在のアームの姿勢の情報は `robot` オブジェクトの
 `get_current_joint_positions()` メソッドで取得する
 こともできます。
-~~~ python
+
+```python
 print(robot.get_current_joint_positions())
-~~~
+```
 
 `move_arm.py` の内容は以下の通りです。
-~~~ python
+
+```python
 #!/usr/bin/env python
 import rospy
 import math
@@ -657,7 +702,7 @@ def initialize_arm_real(robot):
          }, 3.0]
     ]
     robot.follow_joint_trajectory(joint_waypoints)
-    
+  
 def open_gripper(robot):
     #Each entry means a pair of Gripper opening/closing amount[m](Min:-0.010, Max:0.015m) and time[sec].
     gripper_waypoints = [[{'gripper': 0.015000}, 1.0]]
@@ -679,20 +724,21 @@ if __name__ == '__main__':
     # WRITE CODE HERE
 
     ########################################################
-~~~
+```
 
 ### **課題6-4 アーム動作の作成**
 
 {:id="exercise6-4"}
 {% capture exercise6-4 %}
+
 1. `move_arm.py` であらかじめ定義されている関数を参考にして
    「アームをある軌道で動かし最後には初期状態に戻すような関数」を
    作成し、レポートに貼り付けてください。
    但し、アームの軌道は少なくとも3つの中継点を通るようなもので、
    `rotate_arm()` とは異なるものにしてください。また、動作の途中でグリッパの開閉を含んでもよい。
-1. 作成したプログラムによって実現されるアームの動作を説明する
+2. 作成したプログラムによって実現されるアームの動作を説明する
    文章を作成しレポートで報告してください。
-1. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
+3. プログラム動作中に `rqt_graph` を実行し、その画像をレポートに貼り
    付けてください。
    加えて、作成したプログラム実行中のノード間の情報のやりとりに
    ついて貼り付けた画像を参照しながら説明する文章を作成しレポートで
@@ -702,23 +748,23 @@ if __name__ == '__main__':
    ように表示されるかについては
    [`rqt_graph`とactionについてのヒント](#exercise6-2-hint)を
    参照してください。
-1. 実際に実機で動作させてその様子を撮影し、写真をレポートに
+4. 実際に実機で動作させてその様子を撮影し、写真をレポートに
    貼り付けてください。
    アーム動作の流れが分かりやすいよう特徴的なタイミングを
    選び、複数の写真を時系列順に貼り付けてください。
-1. ロボットが意図通りに動いたかを考察してください。
+5. ロボットが意図通りに動いたかを考察してください。
+
    - 意図通りに動いたとしたら、どのような状況からそう判断したかを
      画像を参照しながら説明してください。
    - 意図通りに動かなかったとしたら、その理由を説明し改善方法を
      考えて挙げてください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-4 title="課題6-4" %}
-
-
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-4 title="課題6-4" %}
 
 ## RVizで指定された点にある棒を倒すプログラム
+
 これまでに作成したロボットを移動させるプログラムとアームを動かす
 プログラムを組み合わせて、地図領域内に立てた棒をアームで倒す
 プログラムを作ってみましょう。
@@ -780,6 +826,7 @@ launchファイルを指定することでその環境を利用できます。
 その範囲の適当な点を移動目標とする、などです。
 
 ### Gazebo環境の物体配置初期化
+
 Gazeboによるシミュレーション環境で棒を倒した後、棒を再度立てるのは
 操作が難しいので、続けて実験する際には物体配置の初期化を行って
 ください。
@@ -790,6 +837,7 @@ Gazeboのウィンドウの `Edit` メニューの中に `Reset Model Poses`
 初期配置に戻り、続けて実験することができます。
 この項目と同じ効果を持つ下記のコマンドを実行することでも物体配置を
 初期化できます。
+
 ```bash
 $ rosservice call /gazebo/reset_world
 ```
@@ -804,10 +852,11 @@ $ rosservice call /gazebo/reset_world
 
 {:id="exercise6-5"}
 {% capture exercise6-5 %}
+
 1. 「RVizで棒の立っている位置を指定するとその棒の近くに移動し、
    アームを伸ばしてから回転させて棒を倒すプログラム」を作成し
    レポートに貼り付けてください。
-1. プログラム作成時のアイデアや目標(棒の近くに移動する、
+2. プログラム作成時のアイデアや目標(棒の近くに移動する、
    アーム動作で棒を倒す)を達成するための作戦、アルゴリズムについての
    説明をレポートで報告してください。
    アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
@@ -816,8 +865,9 @@ $ rosservice call /gazebo/reset_world
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートファイルには適宜スペースを追加して図などの説明資料を
    挿入し、それを参照しながら説明する文章を作成してください。
-1. 作成したプログラムを実行し、その様子を報告してください。
+3. 作成したプログラムを実行し、その様子を報告してください。
    レポートには下記の情報を含めてください。
+
    - 様子を説明する文章
      (添付画像を適宜参照すると伝わりやすいです。
      説明しやすい状況となるよう添付する画像を選ぶと
@@ -829,27 +879,27 @@ $ rosservice call /gazebo/reset_world
    - 意図通りに動作しなかった場合は、その状況が分かりやすい
      RVizの画像と周囲状況の画像
      (シミュレーションならGazeboの画像、実機実験なら写真)
-1. 動作結果について考察を行いレポートで報告してください。
+4. 動作結果について考察を行いレポートで報告してください。
    読者に伝わりやすいよう、添付画像を適宜参照すること。
+
    - 意図通りに動いたとしたら、動作のどの部分からそう判断したかを
      文章で報告してください。
    - 意図通りに動かなかったとしてもその理由を考えて、
      理由や改善するための案などを文章で報告してください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-5 title="課題6-5" %}
-
-
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-5 title="課題6-5" %}
 
 ## **課題6-6 RVizで指定された点にある棒を倒すプログラム(連続動作版)**
 
 {:id="exercise6-6"}
 {% capture exercise6-6 %}
+
 1. [課題6-5](#exercise5-6) で作成したプログラムをもとに、
    「RVizで位置を指定するとその位置の棒を倒す」という一連の動作を
    繰り返し行えるプログラムを作成し、レポートに貼り付けてください。
-1. プログラム作成時のアイデアや目標(棒の近くに移動する、
+2. プログラム作成時のアイデアや目標(棒の近くに移動する、
    アーム動作で棒を倒す、これらの動作を繰り返す)を達成するための
    作戦、アルゴリズムについての説明をレポートで報告してください。
    アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
@@ -858,7 +908,8 @@ $ rosservice call /gazebo/reset_world
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートファイルには適宜スペースを追加して図などの説明資料を
    挿入し、それを参照しながら説明する文章を作成してください。
-1. 作成したプログラムを実行し、その様子を報告してください。
+3. 作成したプログラムを実行し、その様子を報告してください。
+
    - 様子を説明する文章
      (添付画像を適宜参照すると伝わりやすいです。
      説明しやすい状況となるよう添付する画像を選ぶと
@@ -867,24 +918,24 @@ $ rosservice call /gazebo/reset_world
    - 動作後のRVizの画像と、動作後の周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
    - 意図通りに動作しなかった場合は、その状況が分かりやすい
      RVizの画像と周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
-1. 動作結果について考察を行いレポートで報告してください。
+4. 動作結果について考察を行いレポートで報告してください。
+
    - 意図通りに動いたとしたら、動作のどの部分からそう判断したかを
      文章で報告してください。
    - 意図通りに動かなかったとしてもその理由を考えて、
      理由や改善するための案などを文章で報告してください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-6 title="課題6-6" %}
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-6 title="課題6-6" %}
 
 {: .notice--info}
 **ヒント:**
 1回の動作後、アームを伸ばしたまま移動しようとすると障害物に接触する
 可能性があります。
 
-
-
 ## **発展課題6-EX1 円形障害物を検知しその近くに移動するプログラム**
+
 上記の課題では倒すべき棒の位置は人がRVizで指定していましたが、
 ロボットのセンサにも棒は写るのでセンサで得られた情報から棒を
 発見することも原理的には可能です。
@@ -894,9 +945,11 @@ ROSプログラムを導入してあります。
 動作を行うプログラムを作ってみましょう。
 
 円筒状の障害物を検知するためのROSプログラムは下記のコマンドで実行できます。
+
 ```bash
 $ roslaunch exp3 obstacle_detector.launch
 ```
+
 これを実行すると、検出された円筒状障害物の情報が
 `/tracked_obstacles` というトピックに出力されるようになります。
 これは[obstacle_detector](https://github.com/tysik/obstacle_detector)という
@@ -913,21 +966,26 @@ ROSパッケージの機能です。
 **max_circle_radius** : 検出する円形対象物体の最大半径の設定　現状は0.3
 **radius_enlargment** : 検出する円形対象物体の半径拡大の設定　現状は0.1
 設定変更後は**catkin_ws**を再度ビルドする必要があります。
+
 ```bash
 $ roscd catkin_ws
 $ catkin_make
 ```
+
 ビルドが完了したら再度以下で実行して見てください。
+
 ```bash
 $ roslaunch exp3 obstacle_detector.launch
 ```
+
 \\
 
 {:id="exercise6-ex1"}
 {% capture exercise6-ex1 %}
+
 1. センサ情報から円筒状の物体を検知しその近くに移動する
    プログラムを作成し、レポートに貼り付けてください。
-1. プログラム作成時のアイデアや目標(棒を検知する、棒の近くに移動する)を
+2. プログラム作成時のアイデアや目標(棒を検知する、棒の近くに移動する)を
    達成するための作戦、アルゴリズムについての説明をレポートで報告して
    ください。
    アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
@@ -936,7 +994,8 @@ $ roslaunch exp3 obstacle_detector.launch
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートファイルには適宜スペースを追加して図などの説明資料を
    挿入し、それを参照しながら説明する文章を作成してください。
-1. 作成したプログラムを実行し、その様子を報告してください。
+3. 作成したプログラムを実行し、その様子を報告してください。
+
    - 様子を説明する文章
      (添付画像を適宜参照すると伝わりやすいです。
      説明しやすい状況となるよう添付する画像を選ぶと
@@ -945,26 +1004,26 @@ $ roslaunch exp3 obstacle_detector.launch
    - 動作後のRVizの画像と、動作後の周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
    - 意図通りに動作しなかった場合は、その状況が分かりやすい
      RVizの画像と周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
-1. 動作結果について考察を行いレポートで報告してください。
+4. 動作結果について考察を行いレポートで報告してください。
+
    - 意図通りに動いたとしたら、動作のどの部分からそう判断したかを
      文章で報告してください。
    - 意図通りに動かなかったとしてもその理由を考えて、
      理由や改善するための案などを文章で報告してください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-ex1 title="発展課題6-EX1" %}
-
-
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-ex1 title="発展課題6-EX1" %}
 
 ## **発展課題6-EX2 円形障害物を検知しそれを倒すプログラム**
 
 {:id="exercise6-ex2"}
 {% capture exercise6-ex2 %}
+
 1. センサ情報から棒(円筒状の物体)を検知しその近くに移動した後に
    アームを動作させて棒を倒す
    プログラムを作成し、レポートに貼り付けてください。
-1. プログラム作成時のアイデアや目標(棒を検知する、棒を倒せる位置に
+2. プログラム作成時のアイデアや目標(棒を検知する、棒を倒せる位置に
    移動する、棒を倒すなど)を
    達成するための作戦、アルゴリズムについての説明をレポートで報告
    してください。
@@ -974,7 +1033,8 @@ $ roslaunch exp3 obstacle_detector.launch
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートファイルには適宜スペースを追加して図などの説明資料を
    挿入し、それを参照しながら説明する文章を作成してください。
-1. 作成したプログラムを実行し、その様子を報告してください。
+3. 作成したプログラムを実行し、その様子を報告してください。
+
    - 様子を説明する文章
      (添付画像を適宜参照すると伝わりやすいです。
      説明しやすい状況となるよう添付する画像を選ぶと
@@ -983,31 +1043,32 @@ $ roslaunch exp3 obstacle_detector.launch
    - 動作後のRVizの画像と、動作後の周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
    - 意図通りに動作しなかった場合は、その状況が分かりやすい
      RVizの画像と周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
-1. 動作結果について考察を行いレポートで報告してください。
+4. 動作結果について考察を行いレポートで報告してください。
+
    - 意図通りに動いたとしたら、動作のどの部分からそう判断したかを
      文章で報告してください。
    - 意図通りに動かなかったとしてもその理由を考えて、
      理由や改善するための案などを文章で報告してください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-ex2 title="発展課題6-EX2" %}
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-ex2 title="発展課題6-EX2" %}
 
 {: .notice--info}
 **ヒント:**
-プログラムの雛形を`go_to_obstacle_and_move_arm.py`として用意してあります。
-
+プログラムの雛形を `go_to_obstacle_and_move_arm.py`として用意してあります。
 
 ## **発展課題6-EX3 円形障害物を検知しそれを把持、運搬するプログラム**
 
 {:id="exercise6-ex3"}
 {% capture exercise6-ex3 %}
+
 1. 発展課題6-EX2ではセンサ情報から棒(円筒状の物体)を検知しその近くに移動した後に
    アームを動作させて棒を倒しました。本ロボットにはグリッパが付属しています。せっかくなので、実際に棒(円筒状の物体)を
    把持して他の場所へ移動させてみましょう。ただし、Gazeboを利用する場合は、棒の質量がデフォルトで1Kgとなるため、100g程度に設定し直してください。
 
    プログラムを作成し、レポートに貼り付けてください。
-1. プログラム作成時のアイデアや目標(棒を検知する、棒を把持する位置に移動する、棒を把持する、移動させて棒を置くなど)を
+2. プログラム作成時のアイデアや目標(棒を検知する、棒を把持する位置に移動する、棒を把持する、移動させて棒を置くなど)を
    達成するための作戦、アルゴリズムについての説明をレポートで報告
    してください。
    アルゴリズムが前提としている仮定(ロボットの初期位置から棒の位置
@@ -1016,7 +1077,8 @@ $ roslaunch exp3 obstacle_detector.launch
    フローチャートなどの画像を使うと伝わりやすいです。
    レポートファイルには適宜スペースを追加して図などの説明資料を
    挿入し、それを参照しながら説明する文章を作成してください。
-1. 作成したプログラムを実行し、その様子を報告してください。
+3. 作成したプログラムを実行し、その様子を報告してください。
+
    - 様子を説明する文章
      (添付画像を適宜参照すると伝わりやすいです。
      説明しやすい状況となるよう添付する画像を選ぶと
@@ -1025,24 +1087,17 @@ $ roslaunch exp3 obstacle_detector.launch
    - 動作後のRVizの画像と、動作後の周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
    - 意図通りに動作しなかった場合は、その状況が分かりやすい
      RVizの画像と周囲状況の画像(シミュレーションならGazeboの画像、実機実験なら写真)
-1. 動作結果について考察を行いレポートで報告してください。
+4. 動作結果について考察を行いレポートで報告してください。
+
    - 意図通りに動いたとしたら、動作のどの部分からそう判断したかを
      文章で報告してください。
    - 意図通りに動かなかったとしてもその理由を考えて、
      理由や改善するための案などを文章で報告してください。
 
    どちらの場合でもその他に気付いた点があれば文章で報告してください。
-{% endcapture %}
-{% include phyexp3-exercise.html content=exercise6-ex3 title="発展課題6-EX3" %}
+   {% endcapture %}
+   {% include phyexp3-exercise.html content=exercise6-ex3 title="発展課題6-EX3" %}
 
 {: .notice--info}
 **ヒント:**
 あらかじめ、棒を把持するためのロボットの姿勢や棒までの距離を想定して、プログラムを作成してください。
-
-
-
-
-
-
-
-
